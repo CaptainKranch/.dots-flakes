@@ -26,12 +26,6 @@
           }
         );
       })
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -72,7 +66,6 @@
     xorg.libXinerama
     xorg.xinit
     xorg.xinput
-
   ];
 
   #XORG
@@ -92,6 +85,25 @@
     pulse.enable = true;
   };
 
+  # Bluethooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "es_CO.UTF-8";
+    LC_IDENTIFICATION = "es_CO.UTF-8";
+    LC_MEASUREMENT = "es_CO.UTF-8";
+    LC_MONETARY = "es_CO.UTF-8";
+    LC_NAME = "es_CO.UTF-8";
+    LC_NUMERIC = "es_CO.UTF-8";
+    LC_PAPER = "es_CO.UTF-8";
+    LC_TELEPHONE = "es_CO.UTF-8";
+    LC_TIME = "es_CO.UTF-8";
+  };
+
   # GPU
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl.enable = true;
@@ -103,7 +115,7 @@
   # TODO: Set your hostname
   networking.hostName = "yonaguni";
 
-  # TODO: This is just an example, be sure to use whatever bootloader you prefer
+  #Bootloader
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/nvme0n1";
   boot.loader.grub.useOSProber = true;
