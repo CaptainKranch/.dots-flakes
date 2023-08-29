@@ -52,6 +52,11 @@
   };
 
   # FIXME: Add the rest of your current configuration
+  #Bootloader
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/nvme0n1";
+  boot.loader.grub.useOSProber = true;
+
   environment.systemPackages = with pkgs; [ 
     vim 
     git
@@ -112,13 +117,14 @@
   hardware.nvidia.forceFullCompositionPipeline = true;
   hardware.nvidia.powerManagement.enable = true;
 
+  # Steam
+  programs.steam = {
+    enable = true;
+  };
+
   # TODO: Set your hostname
   networking.hostName = "yonaguni";
 
-  #Bootloader
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/nvme0n1";
-  boot.loader.grub.useOSProber = true;
  
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
