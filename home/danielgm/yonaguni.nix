@@ -1,7 +1,10 @@
 { inputs, outputs, ... }: {
   imports = [
     ./global
-    ./programs/games
+    ./programs/firefox
+    ./programs/inkdrop
+    ./programs/nvim
+
   ];
 }
 

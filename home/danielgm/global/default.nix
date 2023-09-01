@@ -5,8 +5,8 @@
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
-    inputs.nix-colors.homeManagerModule
-    ../programs/nvim
+    #inputs.nix-colors.homeManagerModule
+    #../programs/nvim
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
@@ -42,7 +42,7 @@
 
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
-  home.packages = with pkgs; [ steam spotify firefox];
+  home.packages = with pkgs; [ spotify ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;

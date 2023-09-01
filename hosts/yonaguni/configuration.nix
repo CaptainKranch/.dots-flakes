@@ -29,7 +29,6 @@
     ];
     # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
     };
   };
@@ -58,7 +57,6 @@
   boot.loader.grub.useOSProber = true;
 
   environment.systemPackages = with pkgs; [ 
-    vim 
     git
     dmenu
     home-manager
@@ -78,6 +76,31 @@
   services.xserver.windowManager.dwm.enable = true;
 #  services.xserver.displayManager.sddm.enable = true;
 #  services.xserver.displayManager.autoLogin.enable = true;
+
+  #Wireguard
+  networking.firewall.checkReversePath = false;
+
+  # Fonst
+  fonts = {
+    fonts = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      font-awesome
+      source-han-sans
+      source-han-sans-japanese
+      source-han-serif-japanese
+      (nerdfonts.override { fonts = [ "Meslo" ]; })
+    ];
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+	      monospace = [ "Meslo LG M Regular Nerd Font Complete Mono" ];
+	      serif = [ "Noto Serif" "Source Han Serif" ];
+	      sansSerif = [ "Noto Sans" "Source Han Sans" ];
+      };
+    };
+  };
 
   #Audio
   sound.enable = false;
@@ -125,7 +148,10 @@
   # TODO: Set your hostname
   networking.hostName = "yonaguni";
 
- 
+  # Open ports in the firewall.
+  networking.firewall.allowedTCPPorts = [ 57621 ];
+  networking.firewall.allowedUDPPorts = [ 51820 ];
+
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     # FIXME: Replace with your username
