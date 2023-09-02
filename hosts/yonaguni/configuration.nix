@@ -22,7 +22,7 @@
       # neovim-nightly-overlay.overlays.default
       (final: prev: {
         dwm = prev.dwm.overrideAttrs (old: { 
-          src = /home/danielgm/.dotfiles/suckless/dwm-captainkranch;
+          src = /home/danielgm/.dots-flakes/modules/dwm;
           }
         );
       })

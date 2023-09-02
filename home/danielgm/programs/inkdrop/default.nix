@@ -1,43 +1,9 @@
-{ pkgs ? import <nixpkgs> { system = builtins.currentSystem; } 
-, stdenv ? pkgs.stdenv
-, lib ? pkgs.lib
-, libxkbcommon ? pkgs.libxkbcommon
-, libdrm ? pkgs.libdrm
-, alsaLib ? pkgs.alsaLib
-, atk ? pkgs.atk
-, at-spi2-atk ? pkgs.at-spi2-atk
-, cairo ? pkgs.cairo
-, cups ? pkgs.cups
-, dbus ? pkgs.dbus
-, dpkg ? pkgs.dpkg
-, expat ? pkgs.expat
-, fontconfig ? pkgs.fontconfig
-, freetype ? pkgs.freetype
-, fetchurl ? pkgs.fetchurl
-, gdk-pixbuf ? pkgs.gdk-pixbuf
-, glib ? pkgs.glib
-, gtk2 ? pkgs.gtk2
-, gtk3 ? pkgs.gtk3
-, libpulseaudio ? pkgs.libpulseaudio
-, makeWrapper ? pkgs.makeWrapper
-, nspr ? pkgs.nspr
-, nss ? pkgs.nss
-, pango ? pkgs.pango
-, udev ? pkgs.udev
-, xorg ? pkgs.xorg
-, libuuid ? pkgs.libuuid
-, at-spi2-core ? pkgs.at-spi2-core
-, libsecret ? pkgs.libsecret
-, coreutils ? pkgs.coreutils
-, mesa ? pkgs.mesa
-, gnome ? pkgs.gnome
-, gsettings ? pkgs.settings-desktop-schemas
-}:
+{ lib, pkgs, stdenv, fetchurl, coreutils, dpkg, makeWrapper, ... }:
 
 let
   version = "5.5.3";
 
-  deps = [
+  deps = with pkgs; [
     libxkbcommon
     libuuid
     libdrm
@@ -82,7 +48,7 @@ let
   ];
 
 in
-
+with lib;
 stdenv.mkDerivation {
   pname = "inkdrop";
   inherit version;
@@ -125,7 +91,7 @@ stdenv.mkDerivation {
       --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath deps}"
   '';
 
-  meta = with lib; {
+  meta = {
     homepage = "https://www.inkdrop.app/";
     description = "Organizing your Markdown notes made simple";
     license = licenses.unfreeRedistributable;

@@ -10,6 +10,12 @@
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    #Firefox addons
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: 
@@ -27,7 +33,7 @@
       nixosConfigurations = {
         # Main Desktop
         yonaguni = lib.nixosSystem {
-          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          extaSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
           # > Our main nixos configuration file <
           modules = [ ./hosts/yonaguni/configuration.nix ];
         };

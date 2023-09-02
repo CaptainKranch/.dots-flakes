@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+
+get_datetime() {
+    date +"%a %d %b %Y | %I:%M %p"
+}
+
+while true
+do
+    xsetroot -name "$(get_datetime)";
+    sleep 15;
+done
