@@ -5,6 +5,8 @@
 #    ./programs/inkdrop
     ./programs/nvim
     ./programs/discord
+    ./programs/deluge
+    ./programs/starship
 
   ];
 }
