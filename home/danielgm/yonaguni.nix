@@ -2,8 +2,9 @@
   imports = [
     ./global
     ./programs/firefox
-    ./programs/inkdrop
+#    ./programs/inkdrop
     ./programs/nvim
+    ./programs/discord
 
   ];
 }
