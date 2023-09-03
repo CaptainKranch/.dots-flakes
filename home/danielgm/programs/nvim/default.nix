@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ./ui.nix
     ./lsp.nix
     ./syntaxes.nix
   ];
@@ -122,6 +123,7 @@
       vim-table-mode
       editorconfig-nvim
       vim-surround
+      lualine-nvim
       {
         plugin = nvim-autopairs;
         type = "lua";
