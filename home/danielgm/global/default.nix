@@ -8,6 +8,7 @@
     #inputs.nix-colors.homeManagerModule
     ./alsa-utils.nix
     ./feh.nix
+    ./gtk.nix
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix

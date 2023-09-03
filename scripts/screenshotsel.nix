@@ -1,5 +1,5 @@
 { pkgs }:
-pkgs.weiteShellScriptBin "take-screenshot-with-selection" ''
+pkgs.writeShellScriptBin "take-screenshot-with-selection" ''
   
   directory="/home/danielgm/Pictures/screenshots/"
   file_name="$(date +'%m-%d-%Y-%H%M%S.png')"
