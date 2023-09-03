@@ -96,7 +96,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_a,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
@@ -117,6 +117,7 @@ static Key keys[] = {
 	{ MODKEY,                            XK_F12, spawn,         SHCMD ("amixer sset Master mute ")},
     { MODKEY|ControlMask|ShiftMask,      XK_s,   spawn,         SHCMD ("/home/danielgm/.dotfiles/scripts/screenshot.sh") },
     { MODKEY|ShiftMask,                  XK_s,   spawn,         SHCMD ("screenshot-sel") },
+    { MODKEY,                            XK_l,   spawn,         SHCMD ("screen-lock") },
 
 
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },

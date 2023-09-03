@@ -77,11 +77,11 @@
   services.xserver = {
     enable = true;
     windowManager.dwm.enable = true;
-    displayManager = {
-      sddm.enable = true;
-      sddm.theme = "${import ../../home/danielgm/global/sdd-theme.nix {inherit pkgs; }}";
-
-    };
+#    displayManager = {
+#      lightDm.enable = true;
+#      sddm.theme = "${import ../../home/danielgm/global/sdd-theme.nix {inherit pkgs; }}";
+#
+#    };
   };
 #  services.xserver.displayManager.autoLogin.enable = true;
 

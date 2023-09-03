@@ -9,7 +9,7 @@
     ./programs/deluge
     ./programs/starship
     ./programs/slack
-
+    ./programs/btop
   ];
 }
 
