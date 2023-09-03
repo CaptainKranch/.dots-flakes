@@ -73,6 +73,15 @@
   ];
 
   #XORG
+  services.xserver = {
+    enable = true;
+    windowManager.dwm.enable = true;
+    displayManager = {
+      sddm.enable = true;
+      sddm.theme = "${import ../../home/danielgm/global/sdd-theme.nix {inherit pkgs; }}";
+
+    };
+  };
   services.xserver.enable = true;
   services.xserver.windowManager.dwm.enable = true;
   services.xserver.displayManager.sddm.enable = true;
