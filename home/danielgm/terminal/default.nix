@@ -1,7 +1,8 @@
 {...}: {
   imports = [
 #   ./alacritty.nix
-    ./kitty.nix
 #    ./wezterm.nix
+    ./kitty.nix
+    ./nushell.nix
   ];
 }
