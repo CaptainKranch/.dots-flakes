@@ -5,7 +5,11 @@
       plugin = lualine-nvim;
       type = "lua";
       config = /* lua */ ''
-        require('lualine').setup{}
+      require('lualine').setup{
+        options = {
+          theme = "iceberg_dark",
+        }
+      }
       '';
     }
   ];

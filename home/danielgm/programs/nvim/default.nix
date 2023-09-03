@@ -6,6 +6,7 @@
     ./syntaxes.nix
     ./telescope.nix
     ./lua-line.nix
+    ./theme-tokyonight.nix
   ];
   home.sessionVariables.EDITOR = "nvim";
     programs.neovim = {
@@ -94,34 +95,7 @@
       nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
     '';
     extraLuaConfig = /* lua */ ''
-      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-      vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
-      vim.keymap.set("n", "<space>f", vim.lsp.buf.format, { desc = "Format code" })
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
-      vim.keymap.set("n", "<space>c", vim.lsp.buf.code_action, { desc = "Code action" })
-
-      -- Diagnostic
-      vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Floating diagnostic" })
-      vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-      vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-      vim.keymap.set("n", "gl", vim.diagnostic.setloclist, { desc = "Diagnostics on loclist" })
-      vim.keymap.set("n", "gq", vim.diagnostic.setqflist, { desc = "Diagnostics on quickfix" })
-
-      function add_sign(name, text)
-        vim.fn.sign_define(name, { text = text, texthl = name, numhl = name})
-      end
-
-      add_sign("DiagnosticSignError", "󰅚 ")
-      add_sign("DiagnosticSignWarn", " ")
-      add_sign("DiagnosticSignHint", "󰌶 ")
-      add_sign("DiagnosticSignInfo", " ")
-
-      local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-      vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-      vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+      colorscheme tokyonight-moon
     '';
 
     plugins = with pkgs.vimPlugins; [
