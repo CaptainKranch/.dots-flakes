@@ -35,6 +35,28 @@
           }
         })
         add_lsp("ltex-ls", lspconfig.ltex, {})
+
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+        vim.keymap.set("n", "<space>f", vim.lsp.buf.format, { desc = "Format code" })
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
+        vim.keymap.set("n", "<space>c", vim.lsp.buf.code_action, { desc = "Code action" })
+        -- Diagnostic
+        vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Floating diagnostic" })
+        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+        vim.keymap.set("n", "gl", vim.diagnostic.setloclist, { desc = "Diagnostics on loclist" })
+        vim.keymap.set("n", "gq", vim.diagnostic.setqflist, { desc = "Diagnostics on quickfix" })
+
+        function add_sign(name, text)
+          vim.fn.sign_define(name, { text = text, texthl = name, numhl = name})
+        end
+
+        add_sign("DiagnosticSignError", "󰅚 ")
+        add_sign("DiagnosticSignWarn", " ")
+        add_sign("DiagnosticSignHint", "󰌶 ")
+        add_sign("DiagnosticSignInfo", " ")
       '';
     }
     {
@@ -63,16 +85,18 @@
           formatting = { format = require('lspkind').cmp_format() },
           -- Same keybinds as vim's vanilla completion
           mapping = {
-            ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-            ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+            ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+            ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
             ['<C-e>'] = cmp.mapping.close(),
-            ['<C-y>'] = cmp.mapping.confirm(),
+            ['<C-y>'] = cmp.mapping.confirm({ select = true }),
           },
           sources = {
             { name='buffer', option = { get_bufnrs = vim.api.nvim_list_bufs } },
             { name='nvim_lsp' },
           },
         }
+
+
       '';
     }
   ];

@@ -1,9 +1,6 @@
 { pkgs, ... }: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     # UI
-    vim-illuminate
-    vim-numbertoggle
-    # vim-markology
     {
       plugin = vim-fugitive;
       type = "viml";
@@ -12,41 +9,11 @@
       '';
     }
     {
-      plugin = nvim-bqf;
-      type = "lua";
-      config = /* lua * */ ''
-        require('bqf').setup{}
-      '';
-    }
-    {
-      plugin = alpha-nvim;
+      plugin = lualine-nvim;
       type = "lua";
       config = /* lua */ ''
-        local alpha = require("alpha")
-        local dashboard = require("alpha.themes.dashboard")
-
-        dashboard.section.header.val = {
-              "                                                     ",
-              "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-              "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-              "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-              "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-              "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-              "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-              "                                                     ",
+        require('lualine').setup {
         }
-        dashboard.section.header.opts.hl = "Title"
-
-        dashboard.section.buttons.val = {
-            dashboard.button( "n", "󰈔 New file" , ":enew<CR>"),
-            dashboard.button( "e", " Explore", ":Explore<CR>"),
-            dashboard.button( "g", " Git summary", ":Git | :only<CR>"),
-            dashboard.button( "c", "  Nix config flake" , ":cd ~/Documents/NixConfig | :e flake.nix<CR>"),
-            dashboard.button( "q", "󰅙  Quit nvim", ":qa<CR>"),
-        }
-
-        alpha.setup(dashboard.opts)
-        vim.keymap.set("n", "<space>a", ":Alpha<CR>", { desc = "Open alpha dashboard" })
       '';
     }
     {
@@ -61,20 +28,6 @@
       type = "lua";
       config = /* lua */ ''
         require('scope').setup{}
-      '';
-    }
-    {
-      plugin = which-key-nvim;
-      type = "lua";
-      config = /* lua */ ''
-        require('which-key').setup{}
-      '';
-    }
-    {
-      plugin = range-highlight-nvim;
-      type = "lua";
-      config = /* lua */ ''
-        require('range-highlight').setup{}
       '';
     }
     {
@@ -111,17 +64,6 @@
       type = "lua";
       config = /* lua */ ''
         require('colorizer').setup{}
-      '';
-    }
-    {
-      plugin = fidget-nvim;
-      type = "lua";
-      config = /* lua */ ''
-        require('fidget').setup{
-          text = {
-            spinner = "dots",
-          },
-        }
       '';
     }
   ];
