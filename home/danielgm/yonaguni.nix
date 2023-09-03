@@ -8,6 +8,7 @@
     ./programs/discord
     ./programs/deluge
     ./programs/starship
+    ./programs/slack
 
   ];
 }

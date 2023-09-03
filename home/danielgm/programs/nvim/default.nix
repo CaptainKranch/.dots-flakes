@@ -11,6 +11,11 @@
   home.sessionVariables.EDITOR = "nvim";
     programs.neovim = {
     enable = true;
+    vimAlias = true;
+    viAlias = true;
+    withPython3 = true;
+    withNodeJs = true;
+    defaultEditor = true;
 
     extraConfig = /* vim */ ''
       "Use system clipboard
@@ -81,28 +86,26 @@
       "Sudo save
       cmap w!! w !sudo tee > /dev/null %
 
-      "telescope
-      "Find files using Telescope command-line sugar.
-      nnoremap <leader>ff <cmd>Telescope find_files<cr>
-      nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-      nnoremap <leader>fb <cmd>Telescope buffers<cr>
-      nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-      " Using Lua functions
-      nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-      nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-      nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-      nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
     '';
     extraLuaConfig = /* lua */ ''
-      colorscheme tokyonight-moon
+      vim.g.mapleader = " "
+      vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+      vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+      vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+      -- greatest remap ever
+      vim.keymap.set("x", "<leader>p", [["_dP]])
+
+      -- next greatest remap ever : asbjornHaland
+      vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+      vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+      vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+      vim.cmd[[colorscheme tokyonight]]
     '';
 
     plugins = with pkgs.vimPlugins; [
-      vim-table-mode
-      editorconfig-nvim
-      vim-surround
-      lualine-nvim
       {
         plugin = nvim-autopairs;
         type = "lua";
