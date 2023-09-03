@@ -9,14 +9,6 @@
       '';
     }
     {
-      plugin = lualine-nvim;
-      type = "lua";
-      config = /* lua */ ''
-        require('lualine').setup {
-        }
-      '';
-    }
-    {
       plugin = bufferline-nvim;
       type = "lua";
       config = /* lua */ ''
