@@ -57,6 +57,7 @@
   boot.loader.grub.useOSProber = true;
 
   environment.systemPackages = with pkgs; [ 
+    (import ../../scripts/screenshotsel.nix { inherit pkgs; })
     git
     dmenu
     home-manager
