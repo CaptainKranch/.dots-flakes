@@ -5,7 +5,7 @@
     ./lsp.nix
     ./syntaxes.nix
     ./telescope.nix
-    ./lualine.nix
+    ./lua-line.nix
   ];
   home.sessionVariables.EDITOR = "nvim";
     programs.neovim = {
