@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Path to your wallpaper image
-wallpaper="../wallpapers/coclors.png"
+wallpaper="/home/danielgm/.dots-flakes/wallpapers/coclors.png"
 
 # Set the wallpaper using feh
 feh --bg-fill "$wallpaper"

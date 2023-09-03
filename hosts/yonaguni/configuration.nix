@@ -58,6 +58,7 @@
 
   environment.systemPackages = with pkgs; [ 
     (import ../../scripts/screenshotsel.nix { inherit pkgs; })
+    (import ../../scripts/fehbg.nix { inherit pkgs; })
     git
     dmenu
     home-manager
@@ -118,6 +119,7 @@
   services.blueman.enable = true;
 
   # Select internationalisation properties.
+  time.timeZone = "America/Bogota";
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
