@@ -7,7 +7,7 @@
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     #inputs.nix-colors.homeManagerModule
     ./alsa-utils.nix
-    ./feh.nix
+    ./dconf.nix
     ./gtk.nix
 
     # You can also split up your configuration and import pieces of it here:

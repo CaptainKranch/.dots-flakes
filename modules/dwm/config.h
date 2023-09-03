@@ -50,7 +50,7 @@ static const Rule rules[] = {
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-        { "steam",   NULL,     NULL,           1 << 8,    0,          0,           0,	     -1 },
+    { "steam",   NULL,     NULL,           1 << 8,    0,          0,           0,	     -1 },
 	{ "kitty",   NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
@@ -115,8 +115,8 @@ static Key keys[] = {
 	{ MODKEY,                            XK_F10, spawn,         SHCMD ("amixer sset Master 5%- unmute")},
 	{ MODKEY,                            XK_F11, spawn,         SHCMD ("amixer sset Master 5%+ unmute")},
 	{ MODKEY,                            XK_F12, spawn,         SHCMD ("amixer sset Master mute ")},
-    { MODKEY|ControlMask|ShiftMask,      XK_s,   spawn,         SHCMD("/home/danielgm/.dotfiles/scripts/screenshot.sh") },
-    { MODKEY|ShiftMask,                  XK_s,   spawn,         SHCMD("/home/danielgm/.dotfiles/scripts/screenshotsel.sh") },
+    { MODKEY|ControlMask|ShiftMask,      XK_s,   spawn,         SHCMD ("/home/danielgm/.dotfiles/scripts/screenshot.sh") },
+    { MODKEY|ShiftMask,                  XK_s,   spawn,         SHCMD ("screenshot-sel") },
 
 
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
