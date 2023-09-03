@@ -55,12 +55,34 @@
   };
 
   #Themes
-#  gtk = { 
-#    enanble = true;
-#    theme.name = "adw-gtk3";
-#    cursorTheme.name = "Bibata-Modern-Ice";
-#    iconTheme.name = "GruvboxPlus";
-#  };
+  gtk = { 
+    enanble = true;
+    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+    font = {
+      name = "Roboto";
+      package = pkgs.roboto;
+    };
+
+    cursorTheme = {
+      name = "apple_cursor";
+      package = pkg.apple_cursor;
+    };
+
+    iconTheme = {
+      name = GruvboxPlus;
+      package = pkgs.papirus-icon-theme;
+    };
+
+    theme = {
+      name = "Catppuccin-Macchiato-Compact-Pink-dark";
+      package = pkgs.catppuccin-gtk,override {
+        # https://github.com/NixOS/nixpkgs/blob/nixos-23.05/pkgs/data/themes/catppuccin-gtk/default.nix
+        accents = [ "pink" ];
+        size = "compact";
+        variant = "mocha";
+      };
+    };
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

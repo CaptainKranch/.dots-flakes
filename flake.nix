@@ -33,7 +33,7 @@
       nixosConfigurations = {
         # Main Desktop
         yonaguni = lib.nixosSystem {
-          extaSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
           # > Our main nixos configuration file <
           modules = [ ./hosts/yonaguni/configuration.nix ];
         };

@@ -61,7 +61,6 @@
     dmenu
     home-manager
     pavucontrol
-    kitty
     xorg.libX11
     xorg.libX11.dev
     xorg.libxcb
