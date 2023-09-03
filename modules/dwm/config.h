@@ -101,7 +101,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_l,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
@@ -115,8 +115,8 @@ static Key keys[] = {
 	{ MODKEY,                            XK_F10, spawn,         SHCMD ("amixer sset Master 5%- unmute")},
 	{ MODKEY,                            XK_F11, spawn,         SHCMD ("amixer sset Master 5%+ unmute")},
 	{ MODKEY,                            XK_F12, spawn,         SHCMD ("amixer sset Master mute ")},
-  { MODKEY|ControlMask|ShiftMask,      XK_s,   spawn,         SHCMD("/home/danielgm/.dotfiles/scripts/screenshot.sh") },
-  { MODKEY|ShiftMask,                  XK_s,   spawn,         SHCMD("/home/danielgm/.dotfiles/scripts/screenshotsel.sh") },
+    { MODKEY|ControlMask|ShiftMask,      XK_s,   spawn,         SHCMD("/home/danielgm/.dotfiles/scripts/screenshot.sh") },
+    { MODKEY|ShiftMask,                  XK_s,   spawn,         SHCMD("/home/danielgm/.dotfiles/scripts/screenshotsel.sh") },
 
 
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },

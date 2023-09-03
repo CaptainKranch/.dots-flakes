@@ -33,7 +33,7 @@
     # kitty has catppuccin theme built-in,
     # all the built-in themes are packaged into an extra package named `kitty-themes`
     # and it's installed by home-manager if `theme` is specified.
-    theme = "Catppuccin-Mocha";
+    theme = "Ciapre";
     font = {
       name = "JetBrainsMono Nerd Font";
       # use different font size on macOS
@@ -53,7 +53,9 @@
         macos_option_as_alt = true; # Option key acts as Alt on macOS
         scrollback_lines = 10000;
         enable_audio_bell = false;
-        tab_bar_edge = "top";     # tab bar on top
+        tab_bar_edge = "bot";     # tab bar on bop
+        copy_on_select = true;
+        term = "xterm-256color";
       }
       // (
         if pkgs.stdenv.isDarwin
