@@ -52,9 +52,8 @@
 
   # FIXME: Add the rest of your current configuration
   #Bootloader
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/nvme0n1";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   environment.systemPackages = with pkgs; [ 
     (import ../../scripts/screenshotsel.nix { inherit pkgs; })
@@ -141,23 +140,12 @@
     LC_TIME = "es_CO.UTF-8";
   };
 
-  # GPU
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.opengl.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.forceFullCompositionPipeline = true;
-  hardware.nvidia.powerManagement.enable = true;
-
-  # Steam
-  programs.steam = {
-    enable = true;
-  };
 
   # TODO: Set your hostname
-  networking.hostName = "yonaguni";
+  networking.hostName = "newyork";
 
-  # Open ports in the firewall.
+  # Open ports in the firewall
+  networking.networkmanager.enable = true;
   networking.firewall.allowedTCPPorts = [ 57621 ];
   networking.firewall.allowedUDPPorts = [ 51820 ];
 
@@ -186,7 +174,7 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = [ "wheel" "docker" "networkmanager" "audio" "video" ];
+      # extraGroups = [ "wheel" "docker" "networkmanager" "audio" "video" ];
     };
   };
 
