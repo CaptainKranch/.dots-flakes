@@ -59,6 +59,7 @@
     (import ../../scripts/screenshotsel.nix { inherit pkgs; })
     (import ../../scripts/fehbg.nix { inherit pkgs; })
     (import ../../scripts/lock-screen.nix { inherit pkgs; })
+    (import ./ink.nix { inherit pkgs; })
     git
     dmenu
     home-manager
@@ -83,6 +84,10 @@
 #    };
   };
 #  services.xserver.displayManager.autoLogin.enable = true;
+  #Gnome Key Ring
+  services.gnome.gnome-keyring.enable = true;
+
+  services.picom.vSync = true;
 
   #Wireguard
   networking.firewall.checkReversePath = false;
