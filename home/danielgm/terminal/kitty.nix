@@ -33,8 +33,8 @@
     # kitty has catppuccin theme built-in,
     # all the built-in themes are packaged into an extra package named `kitty-themes`
     # and it's installed by home-manager if `theme` is specified.
-    #theme = "Ciapre";
-    theme = "Rosé Pine Dawn";
+    theme = "Ciapre";
+    #theme = "Rosé Pine Dawn";
     font = {
       name = "JetBrainsMono Nerd Font";
       # use different font size on macOS

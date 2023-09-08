@@ -102,7 +102,7 @@
       vim.keymap.set("n", "<leader>Y", [["+Y]])
 
       vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-      vim.cmd[[colorscheme tokyonight-day]]
+      vim.cmd[[colorscheme tokyonight-moon]]
     '';
 
     plugins = with pkgs.vimPlugins; [
