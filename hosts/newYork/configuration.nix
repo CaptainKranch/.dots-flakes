@@ -86,7 +86,7 @@
 #  services.xserver.displayManager.autoLogin.enable = true;
   #Gnome Key Ring
   services.gnome.gnome-keyring.enable = true;
-
+  services.picom.enable = true;
   services.picom.vSync = true;
 
   #Wireguard

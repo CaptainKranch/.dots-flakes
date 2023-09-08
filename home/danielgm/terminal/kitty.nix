@@ -57,6 +57,26 @@
         tab_bar_edge = "bot";     # tab bar on bop
         copy_on_select = true;
         term = "xterm-256color";
+        foreground = "#ebe5d9";
+        background = "#100d13";
+        cursor = "#ebe5d9";
+
+        color0 = "#100d13";
+        color8 = "#a4a097";
+        color1 = "#7E8B7C";
+        color9 = "#7E8B7C";
+        color2 = "#8E8E77";
+        color10 = "#8E8E77";
+        color3 = "#CBAB77";
+        color11 = "#CBAB77";
+        color4 = "#A4A992";
+        color12 = "#A4A992";
+        color5 = "#C5BD9C";
+        color13 = "#C5BD9C";
+        color6 = "#DAD1B1";
+        color14 = "#DAD1B1";
+        color7 = "#ebe5d9";
+        color15 = "#ebe5d9";
       }
       // (
         if pkgs.stdenv.isDarwin

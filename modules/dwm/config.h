@@ -17,13 +17,13 @@ static const char *fonts[]          = { "MesloLGS Nerd Font Mono:size=12" };
 static const char dmenufont[]       = "MesloLGS Nerd Font Mono:size=12";
 
 /* COLORS */
-static const char norm_fg[] = "#e5e1e3";
-static const char norm_bg[] = "#050506";
-static const char norm_border[] = "#a09d9e";
+static const char norm_fg[] = "#ebe5d9";
+static const char norm_bg[] = "#100d13";
+static const char norm_border[] = "#a4a097";
 
-static const char sel_fg[] = "#e5e1e3";
-static const char sel_bg[] = "#BD8080";
-static const char sel_border[] = "#e5e1e3";
+static const char sel_fg[] = "#ebe5d9";
+static const char sel_bg[] = "#8E8E77";
+static const char sel_border[] = "#ebe5d9";
 
 
 static const char *colors[][3]      = {
