@@ -7,5 +7,6 @@
     ./programs/starship
     ./programs/slack
     ./programs/btop
+    ./programs/mupdf/
   ];
 }
