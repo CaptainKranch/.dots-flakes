@@ -6,6 +6,7 @@
     ./syntaxes.nix
     ./telescope.nix
     ./lua-line.nix
+    ./tree-lua.nix
 #    ./theme-tokyonight.nix
     ./theme-oxocarbon.nix
   ];
