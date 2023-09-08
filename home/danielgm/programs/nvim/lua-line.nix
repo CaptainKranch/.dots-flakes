@@ -7,7 +7,7 @@
       config = /* lua */ ''
       require('lualine').setup{
         options = {
-          theme = "tokyonight",
+          theme = "iceberg_dark",
         }
       }
       '';

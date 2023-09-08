@@ -6,7 +6,7 @@
     ./syntaxes.nix
     ./telescope.nix
     ./lua-line.nix
-    ./theme-tokyonight.nix
+#    ./theme-tokyonight.nix
     ./theme-oxocarbon.nix
   ];
   home.sessionVariables.EDITOR = "nvim";
