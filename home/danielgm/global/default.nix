@@ -10,6 +10,8 @@
     ./dconf.nix
     ./gtk.nix
     ./keyring.nix
+    ./spotifyd.nix
+    ./spotify-tui.nix
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
