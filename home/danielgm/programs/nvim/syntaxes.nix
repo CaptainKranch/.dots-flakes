@@ -6,6 +6,7 @@
       vim-toml
       pgsql-vim
       vim-jsx-typescript
+      vim-dadbod-completion
       # Tree sitter
       {
         plugin = nvim-treesitter.withAllGrammars;
