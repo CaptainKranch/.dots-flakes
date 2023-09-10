@@ -7,7 +7,7 @@
     ./telescope.nix
     ./lua-line.nix
     ./tree-lua.nix
-    ./fine-cmd-line.nix
+#    ./fine-cmd-line.nix
 #    ./dadbod.nix
     ./dadbod-ui.nix
 #    ./theme-tokyonight.nix

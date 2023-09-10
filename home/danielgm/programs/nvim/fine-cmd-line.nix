@@ -12,4 +12,5 @@ final: prev:
         sha256 = "1cx2bsn9lrcfafssd2bx0ldiaz7f76pda7y89rkqc69wcf15glwr";
       };
       meta.homepage = "https://github.com/VonHeikemen/fine-cmdline.nvim";
+    };
 }
