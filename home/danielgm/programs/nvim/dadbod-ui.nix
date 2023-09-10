@@ -1,9 +1,10 @@
 
 { pkgs, ... }: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
-    # tpope/vim-dadbod
+    vim-dadbod
     {
       plugin = vim-dadbod-ui;
+      type = "lua";
     }
   ];
 }

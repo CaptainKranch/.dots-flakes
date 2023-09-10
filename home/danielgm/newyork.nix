@@ -9,5 +9,6 @@
     ./programs/btop
     ./programs/mupdf
     ./programs/dbeaver
+    ./programs/mariadb
   ];
 }
