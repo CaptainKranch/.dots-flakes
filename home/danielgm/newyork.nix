@@ -10,5 +10,6 @@
     ./programs/mupdf
     ./programs/dbeaver
     ./programs/mariadb
+    ./programs/lollypop
   ];
 }
