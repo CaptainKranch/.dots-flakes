@@ -12,5 +12,6 @@
     ./programs/mariadb
     ./programs/lollypop
     ./programs/pcmanfm
+    ./programs/ncmpcpp
   ];
 }
