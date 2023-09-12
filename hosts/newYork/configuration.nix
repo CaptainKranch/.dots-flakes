@@ -89,6 +89,19 @@
   services.picom.enable = true;
   services.picom.vSync = true;
 
+  services.mpd = {
+    enable = true;
+    musicDirectory = "/home/danielgm/Music/"
+    extraConfig = ''
+      audio_output {
+        type "pipewire"
+        name "My PipeWire Output"
+    }
+    '';
+    network.listenAddress = "any"; # if you want to allow non-localhost connections
+    startWhenNeeded = true; # systemd feature: only start MPD service upon connection to its socket
+  };
+
   #Wireguard
   networking.firewall.checkReversePath = false;
 

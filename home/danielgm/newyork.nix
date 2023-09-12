@@ -11,5 +11,6 @@
     ./programs/dbeaver
     ./programs/mariadb
     ./programs/lollypop
+    ./programs/pcmanfm
   ];
 }
