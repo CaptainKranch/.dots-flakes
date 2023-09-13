@@ -13,5 +13,6 @@
     ./programs/lollypop
     ./programs/pcmanfm
     ./programs/ncmpcpp
+    ./programs/libreoffice
   ];
 }
