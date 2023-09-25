@@ -86,8 +86,13 @@
 #  services.xserver.displayManager.autoLogin.enable = true;
   #Gnome Key Ring
   services.gnome.gnome-keyring.enable = true;
+
+  #PICOM
   services.picom.enable = true;
   services.picom.vSync = true;
+
+  #docker
+  virtualisation.docker.enable = true;
 
   services.mpd = {
     enable = true;

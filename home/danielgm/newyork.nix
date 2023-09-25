@@ -14,5 +14,6 @@
     ./programs/pcmanfm
     ./programs/ncmpcpp
     ./programs/libreoffice
+    ./programs/filezilla
   ];
 }
