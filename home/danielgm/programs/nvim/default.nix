@@ -10,8 +10,8 @@
 #    ./fine-cmd-line.nix
 #    ./dadbod.nix
     ./dadbod-ui.nix
-#    ./theme-tokyonight.nix
-    ./theme-oxocarbon.nix
+    ./theme-tokyonight.nix
+#    ./theme-oxocarbon.nix
   ];
   home.sessionVariables.EDITOR = "nvim";
     programs.neovim = {

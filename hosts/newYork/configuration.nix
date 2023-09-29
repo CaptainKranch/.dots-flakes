@@ -54,7 +54,7 @@
   #Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  
   environment.systemPackages = with pkgs; [ 
     (import ../../scripts/screenshotsel.nix { inherit pkgs; })
     (import ../../scripts/fehbg.nix { inherit pkgs; })

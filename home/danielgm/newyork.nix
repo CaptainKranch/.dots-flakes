@@ -15,6 +15,5 @@
     ./programs/ncmpcpp
     ./programs/libreoffice
     ./programs/filezilla
-    ./programs/appflowy
   ];
 }
