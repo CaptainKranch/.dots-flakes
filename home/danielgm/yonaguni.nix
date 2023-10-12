@@ -10,6 +10,12 @@
     ./programs/starship
     ./programs/slack
     ./programs/btop
+    ./programs/pcmanfm
+    ./programs/dbeaver
+    ./programs/mariadb
+    ./programs/filezilla
+    ./programs/mupdf
+    ./programs/lollypop
   ];
 }
 

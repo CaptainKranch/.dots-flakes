@@ -168,7 +168,6 @@
     LC_TIME = "es_CO.UTF-8";
   };
 
-
   # TODO: Set your hostname
   networking.hostName = "newyork";
 

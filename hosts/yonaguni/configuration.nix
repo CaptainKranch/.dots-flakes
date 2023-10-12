@@ -52,14 +52,14 @@
 
   # FIXME: Add the rest of your current configuration
   #Bootloader
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/nvme0n1";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   environment.systemPackages = with pkgs; [ 
     (import ../../scripts/screenshotsel.nix { inherit pkgs; })
     (import ../../scripts/fehbg.nix { inherit pkgs; })
     (import ../../scripts/lock-screen.nix { inherit pkgs; })
+    (import ../newYork/ink.nix { inherit pkgs; })
     git
     dmenu
     home-manager
@@ -77,13 +77,17 @@
   services.xserver = {
     enable = true;
     windowManager.dwm.enable = true;
-#    displayManager = {
-#      lightDm.enable = true;
-#      sddm.theme = "${import ../../home/danielgm/global/sdd-theme.nix {inherit pkgs; }}";
-#
-#    };
+    displayManager.autoLogin.enable = true;
+    displayManager.autoLogin.user = "danielgm";
   };
-#  services.xserver.displayManager.autoLogin.enable = true;
+
+  services.gnome.gnome-keyring.enable = true;
+  #PICOM
+  services.picom.enable = true;
+  services.picom.vSync = true;
+
+  #docker
+  virtualisation.docker.enable = true;
 
   #Wireguard
   networking.firewall.checkReversePath = false;
@@ -156,6 +160,7 @@
 
   # TODO: Set your hostname
   networking.hostName = "yonaguni";
+  networking.networkmanager.enable = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 57621 ];
