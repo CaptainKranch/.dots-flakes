@@ -60,6 +60,7 @@
     (import ../../scripts/fehbg.nix { inherit pkgs; })
     (import ../../scripts/lock-screen.nix { inherit pkgs; })
     (import ../newYork/ink.nix { inherit pkgs; })
+    (import ../newYork/ollama.nix { inherit pkgs; })
     git
     dmenu
     home-manager
