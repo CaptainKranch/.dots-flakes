@@ -59,8 +59,7 @@
     (import ../../scripts/screenshotsel.nix { inherit pkgs; })
     (import ../../scripts/fehbg.nix { inherit pkgs; })
     (import ../../scripts/lock-screen.nix { inherit pkgs; })
-    (import ../newYork/ink.nix { inherit pkgs; })
-    (import ../newYork/ollama.nix { inherit pkgs; })
+    (import ../../modules/inkdrop/ink.nix { inherit pkgs; })
     git
     dmenu
     home-manager
