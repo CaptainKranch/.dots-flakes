@@ -16,6 +16,8 @@
     ./programs/filezilla
     ./programs/mupdf
     ./programs/lollypop
+    ./programs/obsidian
+    ./programs/via
   ];
 }
 

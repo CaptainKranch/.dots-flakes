@@ -33,7 +33,7 @@
 , gnome ? pkgs.gnome
 }:
 let
-  version = "5.5.3";
+  version = "5.6.0";
   deps = [
     libxkbcommon
     libuuid
@@ -83,7 +83,7 @@ stdenv.mkDerivation {
   allowUnfree = true;
   src = fetchurl {
     url = "https://d3ip0rje8grhnl.cloudfront.net/v${version}/inkdrop_${version}_amd64.deb";
-    hash = "sha256-HWaMNBJrMUbVlPZmpw224irYFM2/6owZrBUlAL23Z0E=";
+    hash = "sha256-a9NZ/NWM2n8x0XZXa712J4oIgrk8Fp+AkQq/t5ucjX4=";
   };
   dontBuild = true;
   buildInputs = [ dpkg makeWrapper ];
