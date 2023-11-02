@@ -1,8 +1,9 @@
-{ lib
-, buildGoModule
-, fetchFromGitHub
-, stdenv
-, darwin
+{ pkgs ? import <nixpkgs> { system = builtins.currentSystem; } 
+, lib ? pkgs.lib
+, buildGoModule ? pkgs.buildGoModule
+, fetchFromGitHub ? pkgs.fetchFromGitHub
+, stdenv ? pkgs.stdenv
+, darwin ? pkgs.darwin
 }:
 
 buildGoModule rec {
