@@ -3,7 +3,7 @@
 , fetchFromGitHub ? pkgs.fetchFromGitHub
 }
 
-buildVimPlugin {
+buildVimPlugin rec {
   pname = "gen.nvim";
   version = "2023-10-23";
   src = fetchFromGitHub {

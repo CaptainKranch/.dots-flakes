@@ -25,6 +25,14 @@
           src = /home/danielgm/.dots-flakes/modules/dwm;
           }
         );
+      }),
+      (final: prev: {
+        vimPlugins = prev.vimPlugins // {
+          plugin-gen-nvim = prev.vimUtils.buildVimPlugin {
+            name = "gen.nvim";
+            src = inputs.plugin-gen-nvim;
+          };
+        };
       })
     ];
     # Configure your nixpkgs instance

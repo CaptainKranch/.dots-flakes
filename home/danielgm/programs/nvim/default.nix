@@ -12,7 +12,7 @@
     ./dadbod-ui.nix
 #    ./theme-tokyonight.nix
     ./theme-oxocarbon.nix
-    ../../../../modules/gen/gen.nix
+    ./gen.nix
   ];
   home.sessionVariables.EDITOR = "nvim";
     programs.neovim = {
