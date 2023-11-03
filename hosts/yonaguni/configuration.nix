@@ -28,7 +28,7 @@
       }),
       (final: prev: {
         vimPlugins = prev.vimPlugins // {
-          plugin-gen-nvim = prev.vimUtils.buildVimPlugin {
+          own-plugin-gen-nvim = prev.vimUtils.buildVimPlugin {
             name = "gen.nvim";
             src = inputs.plugin-gen-nvim;
           };
@@ -183,6 +183,7 @@
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
       #initialPassword = "123";
+      shell = pkgs.nu;
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect

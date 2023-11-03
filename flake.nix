@@ -14,8 +14,9 @@
     #nvim-plugin
     plugin-gen-nvim = {
       url = "github:David-Kunz/gen.nvim";
-      plugin-onedark.flake = false;
+      flake = false;
     };
+
     #Firefox addons
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";

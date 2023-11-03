@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
-      plugin = plugin-gen-nvim;
+      plugin = own-plugin-gen-nvim;
       type = "lua";
     }
   ];
