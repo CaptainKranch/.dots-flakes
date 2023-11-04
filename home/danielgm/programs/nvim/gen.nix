@@ -16,8 +16,6 @@
       plugin = gen-nvim;
       type = "lua";
       config = ''
-        require('gen').model = 'llama2'
-        require('gen').command = 'docker exec -it ollama ollama run llama2'
         vim.keymap.set('v', '<leader>]', ':Gen<CR>')
         vim.keymap.set('n', '<leader>]', ':Gen<CR>')
       '';

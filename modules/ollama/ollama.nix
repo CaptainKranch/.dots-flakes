@@ -17,16 +17,20 @@ buildGoModule rec {
     hash = "sha256-rzcuRU2qcYTMo/GxiSHwJYnvA9samfWlztMEhOGzbRg=";
   };
 
-  buildInputs =  [];
+  buildInputs = lib.optionals stdenv.isDarwin (with darwin.apple_sdk_11_0.frameworks; [
+    Accelerate
+    MetalPerformanceShaders
+    MetalKit
+  ]);
 
   vendorHash = "sha256-Qt5QVqRkwK61BJPVhFWtox6b9E8BpAIseNB0yhh+/90=";
 
   ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
-    description = "Get up and running large language models locally";
+    description = "Get up and running with large language models locally";
     homepage = "https://github.com/jmorganca/ollama";
     license = licenses.mit;
-    maintainers = with maintainers; [ CaptainKranch ];
+    maintainers = with maintainers; [ dit7ya ];
   };
 }

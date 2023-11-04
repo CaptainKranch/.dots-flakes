@@ -29,11 +29,11 @@
         },
         popup = {
           position = {
-            row = '10%',
+            row = '50%',
             col = '50%',
           },
           size = {
-            width = '60%',
+            width = '30%',
           },
           border = {
             style = 'rounded',

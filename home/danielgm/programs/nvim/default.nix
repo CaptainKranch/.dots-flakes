@@ -15,6 +15,7 @@
     ./theme-kanagawa.nix
     ./gen.nix
     ./nvim-notify.nix
+    ./neorg.nix
   ];
   home.sessionVariables.EDITOR = "nvim";
     programs.neovim = {
