@@ -14,6 +14,7 @@
 #    ./theme-oxocarbon.nix
     ./theme-kanagawa.nix
     ./gen.nix
+    ./nvim-notify.nix
   ];
   home.sessionVariables.EDITOR = "nvim";
     programs.neovim = {

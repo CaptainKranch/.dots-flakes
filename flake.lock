@@ -40,9 +40,7 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
         "lastModified": 1692099905,
@@ -60,6 +58,22 @@
       }
     },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1698942558,
+        "narHash": "sha256-/UmnB+mEd6Eg3mJBrAgqRcyZX//RSjHphcCO7Ig9Bpk=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "621f51253edffa1d6f08d5fce4f08614c852d17e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-23.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1693087214,
         "narHash": "sha256-Kn1SSqRfPpqcI1MDy82JXrPT1WI8c03TA2F0xu6kS+4=",
@@ -111,7 +125,7 @@
       "inputs": {
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "plugin-fine-cmd-line-nvim": "plugin-fine-cmd-line-nvim",
         "plugin-gen-nvim": "plugin-gen-nvim"
       }
