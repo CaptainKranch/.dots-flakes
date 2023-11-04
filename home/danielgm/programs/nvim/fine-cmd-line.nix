@@ -1,16 +1,60 @@
-{ lib, buildVimPluginFrom2Nix, buildNeovimPluginFrom2Nix, fetchFromGitHub, fetchgit }:
-
-final: prev:
-{
-    fine-cmdline-nvim = buildVimPluginFrom2Nix {
-      pname = "fine-cmdline.nvim";
-      version = "2022-07-01";
-      src = fetchFromGitHub {
-        owner = "VonHeikemen";
-        repo = "fine-cmdline.nvim";
-        rev = "ead2b85e455eacde10469a8fcf1a717822d2bb9a";
-        sha256 = "1cx2bsn9lrcfafssd2bx0ldiaz7f76pda7y89rkqc69wcf15glwr";
-      };
-      meta.homepage = "https://github.com/VonHeikemen/fine-cmdline.nvim";
-    };
+{ inputs, pkgs, ... }: {
+  nixpkgs = {
+    overlays = [
+      (final: prev: {
+        vimPlugins = prev.vimPlugins // {
+          fine-cmd-line-nvim = prev.vimUtils.buildVimPlugin {
+            name = "fine-cmdline.nvim";
+            src = inputs.plugin-fine-cmd-line-nvim;
+          };
+        };
+      })
+    ];
+  };
+  programs.neovim.plugins = with pkgs.vimPlugins; [
+    {
+      plugin = nui-nvim;
+      type = "lua";
+    }
+    {
+      plugin = fine-cmd-line-nvim;
+      type = "lua";
+      config = ''
+        vim.keymap.set('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
+        require('fine-cmdline').setup({
+        cmdline = {
+          enable_keymaps = true,
+          smart_history = true,
+          prompt = ': '
+        },
+        popup = {
+          position = {
+            row = '10%',
+            col = '50%',
+          },
+          size = {
+            width = '60%',
+          },
+          border = {
+            style = 'rounded',
+          },
+          win_options = {
+            winhighlight = 'Normal:Normal,FloatBorder:FloatBorder',
+          },
+        },
+        hooks = {
+          before_mount = function(input)
+            -- code
+          end,
+          after_mount = function(input)
+            -- code
+          end,
+          set_keymaps = function(imap, feedkeys)
+            -- code
+          end
+        }
+      })
+    '';
+    }
+  ];
 }

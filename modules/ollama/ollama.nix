@@ -8,27 +8,23 @@
 
 buildGoModule rec {
   pname = "ollama";
-  version = "0.0.17";
+  version = "0.1.7";
 
   src = fetchFromGitHub {
     owner = "jmorganca";
     repo = "ollama";
     rev = "v${version}";
-    hash = "sha256-idsFcjsRD1zPmG742gnYQJcgSWDA2DLMHksCFNe2GiY=";
+    hash = "sha256-rzcuRU2qcYTMo/GxiSHwJYnvA9samfWlztMEhOGzbRg=";
   };
 
-  buildInputs = lib.optionals stdenv.isDarwin (with darwin.apple_sdk_11_0.frameworks; [
-    Accelerate
-    MetalPerformanceShaders
-    MetalKit
-  ]);
+  buildInputs =  [];
 
-  vendorHash = "sha256-IgEf/WOc1eNGCif1fViIFxbgZAd6mHBqfxcaqH/WvGg=";
+  vendorHash = "sha256-Qt5QVqRkwK61BJPVhFWtox6b9E8BpAIseNB0yhh+/90=";
 
   ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
-    description = "Get up and running with large language models locally";
+    description = "Get up and running large language models locally";
     homepage = "https://github.com/jmorganca/ollama";
     license = licenses.mit;
     maintainers = with maintainers; [ CaptainKranch ];

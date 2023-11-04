@@ -25,14 +25,6 @@
           src = /home/danielgm/.dots-flakes/modules/dwm;
           }
         );
-      }),
-      (final: prev: {
-        vimPlugins = prev.vimPlugins // {
-          own-plugin-gen-nvim = prev.vimUtils.buildVimPlugin {
-            name = "gen.nvim";
-            src = inputs.plugin-gen-nvim;
-          };
-        };
       })
     ];
     # Configure your nixpkgs instance
@@ -68,7 +60,6 @@
     (import ../../scripts/fehbg.nix { inherit pkgs; })
     (import ../../scripts/lock-screen.nix { inherit pkgs; })
     (import ../../modules/inkdrop/ink.nix { inherit pkgs; })
-    (import ../../modules/ollama/ollama.nix { inherit pkgs; })
     git
     dmenu
     home-manager
@@ -183,7 +174,7 @@
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
       #initialPassword = "123";
-      shell = pkgs.nu;
+      #shell = pkgs.nushell;
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect

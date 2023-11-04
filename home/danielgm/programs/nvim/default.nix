@@ -7,11 +7,13 @@
     ./telescope.nix
     ./lua-line.nix
     ./tree-lua.nix
-#    ./fine-cmd-line.nix
+    ./fine-cmd-line.nix
 #    ./dadbod.nix
     ./dadbod-ui.nix
 #    ./theme-tokyonight.nix
-    ./theme-oxocarbon.nix
+#    ./theme-oxocarbon.nix
+    ./theme-kanagawa.nix
+    ./gen.nix
   ];
   home.sessionVariables.EDITOR = "nvim";
     programs.neovim = {
@@ -47,10 +49,6 @@
 
       "Line numbers
       set number relativenumber
-
-      "Scroll up and down
-      nmap <C-h> <C-e>
-      nmap <C-l> <C-y>
 
       "Buffers
       nmap <C-k> :bnext<CR>
@@ -98,6 +96,11 @@
 
       vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
       vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+      --Jump between windows in current buffer
+      vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+
 
       -- greatest remap ever
       vim.keymap.set("x", "<leader>p", [["_dP]])

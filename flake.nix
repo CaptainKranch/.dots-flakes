@@ -11,9 +11,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #nvim-plugin
+    #nvim-plugins
     plugin-gen-nvim = {
       url = "github:David-Kunz/gen.nvim";
+      flake = false;
+    };
+
+    plugin-fine-cmd-line-nvim = {
+      url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
     };
 

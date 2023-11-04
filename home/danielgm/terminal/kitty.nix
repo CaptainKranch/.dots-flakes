@@ -34,7 +34,7 @@
     # all the built-in themes are packaged into an extra package named `kitty-themes`
     # and it's installed by home-manager if `theme` is specified.
     #theme = "Ciapre";
-    theme = "Rosé Pine Dawn";
+    #theme = "Rosé Pine Dawn";
     font = {
       name = "JetBrainsMono Nerd Font";
       # use different font size on macOS
@@ -62,6 +62,12 @@
         foreground = "#ebe5d9";
         background = "#100d13";
         cursor = "#ebe5d9";
+
+        active_tab_foreground   = "#a4a097";
+        active_tab_background   = "#7E8B7C";
+        inactive_tab_foreground = "#a4a097";
+        inactive_tab_background = "#DAD1B1";
+        tab_bar_background      = "#11111B";
 
         color0 = "#100d13";
         color8 = "#a4a097";

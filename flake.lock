@@ -75,6 +75,22 @@
         "type": "github"
       }
     },
+    "plugin-fine-cmd-line-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1656698978,
+        "narHash": "sha256-0aYHz6uRMVjctrDo8JKlTIUP2Oj+MrhBvgXRIwo/ueU=",
+        "owner": "VonHeikemen",
+        "repo": "fine-cmdline.nvim",
+        "rev": "ead2b85e455eacde10469a8fcf1a717822d2bb9a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "VonHeikemen",
+        "repo": "fine-cmdline.nvim",
+        "type": "github"
+      }
+    },
     "plugin-gen-nvim": {
       "flake": false,
       "locked": {
@@ -96,6 +112,7 @@
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "plugin-fine-cmd-line-nvim": "plugin-fine-cmd-line-nvim",
         "plugin-gen-nvim": "plugin-gen-nvim"
       }
     }

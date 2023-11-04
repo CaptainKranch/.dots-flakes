@@ -5,68 +5,59 @@
 # let's define some colors
 
 # https://github.com/catppuccin/i3/blob/main/themes/catppuccin-mocha
-let rosewater = "#f5e0dc"
-let flamingo  = "#f2cdcd"
-let pink      = "#f5c2e7"
-let mauve     = "#cba6f7"
-let red       = "#f38ba8"
-let maroon    = "#eba0ac"
-let peach     = "#fab387"
-let green     = "#a6e3a1"
-let teal      = "#94e2d5"
-let sky       = "#89dceb"
-let sapphire  = "#74c7ec"
-let blue      = "#89b4fa"
-let lavender  = "#b4befe"
-let text      = "#cdd6f4"
-let subtext1  = "#bac2de"
-let subtext0  = "#a6adc8"
-let overlay2  = "#9399b2"
-let overlay1  = "#7f849c"
-let overlay0  = "#6c7086"
-let surface2  = "#585b70"
-let surface1  = "#45475a"
-let surface0  = "#313244"
-let base      = "#1e1e2e"
-let mantle    = "#181825"
-let crust     = "#11111b"
+let strong    = "#7E8B7C"
+let light     = "#D8DCD6"
+let variable = "#C5C592"
+
+let text      = "#4A5249"
+let subtext1  = "#424941"
+let subtext0  = "#3B413A"
+let overlay2  = "#343933"
+let overlay1  = "#2C312C"
+let overlay0  = "#252924"
+let surface2  = "#1D211D"
+let surface1  = "#161816"
+let surface0  = "#161816"
+let base      = "#0F100F"
+let mantle    = "#0F100F"
+let crust     = "#070807"
 
 # we're creating a theme here that uses the colors we defined above.
 
 let catppuccin_theme = {
     separator: $overlay2
     leading_trailing_space_bg: $surface2
-    header: $red
-    date: $pink
-    filesize: $green
+    header: $strong
+    date: $variable
+    filesize: $variable
     row_index: $text
-    bool: $peach
-    int: $red
-    duration: $sky
-    range: $sapphire
-    float: $lavender
+    bool: $variable
+    int: $strong
+    duration: $light
+    range: $light
+    float: $strong
     string: $text
     nothing: $overlay1
     binary: $subtext1
     cellpath: $subtext0
     hints: dark_gray
 
-    shape_garbage: { fg: $overlay2 bg: $red attr: b}
-    shape_bool: $maroon
-    shape_int: { fg: $pink attr: b}
-    shape_float: { fg: $pink attr: b}
+    shape_garbage: { fg: $overlay2 bg: $strong attr: b}
+    shape_bool: $strong
+    shape_int: { fg: $light attr: b}
+    shape_float: { fg: $light attr: b}
     shape_range: { fg: $overlay0 attr: b}
-    shape_internalcall: { fg: $maroon attr: b}
-    shape_external: $mauve
-    shape_externalarg: { fg: $red attr: b}
-    shape_literal: $flamingo
-    shape_operator: $rosewater
-    shape_signature: { fg: $red attr: b}
-    shape_string: $red
-    shape_filepath: $peach
-    shape_globpattern: { fg: $teal attr: b}
-    shape_variable: $pink
-    shape_flag: { fg: $mauve attr: b}
+    shape_internalcall: { fg: $strong attr: b}
+    shape_external: $light
+    shape_externalarg: { fg: $strong attr: b}
+    shape_literal: $strong
+    shape_operator: $variable
+    shape_signature: { fg: $strong attr: b}
+    shape_string: $strong
+    shape_filepath: $light
+    shape_globpattern: { fg: $light attr: b}
+    shape_variable: $light
+    shape_flag: { fg: $light attr: b}
     shape_custom: {attr: b}
 }
 
