@@ -12,7 +12,7 @@
 
     #nvim-plugins
     plugin-gen-nvim = {
-      url = "github:David-Kunz/gen.nvim";
+      url = "github:CaptainKranch/gen-docker.nvim";
       flake = false;
     };
 
