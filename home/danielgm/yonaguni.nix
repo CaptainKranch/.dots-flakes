@@ -15,6 +15,7 @@
     ./programs/filezilla
     ./programs/mupdf
     ./programs/lollypop
+    ./programs/direnv
   ];
 }
 

@@ -51,6 +51,7 @@
     settings =
       {
         background_opacity = "0.93";
+        shell = " ${pkgs.nushell}/bin/nu ";
         macos_option_as_alt = true; # Option key acts as Alt on macOS
         scrollback_lines = 10000;
         enable_audio_bell = false;
@@ -85,17 +86,6 @@
         color14 = "#DAD1B1";
         color7 = "#ebe5d9";
         color15 = "#ebe5d9";
-      }
-      // (
-        if pkgs.stdenv.isDarwin
-        then {
-          # macOS specific settings, force kitty to use nushell as default shell
-          shell = "/run/current-system/sw/bin/nu";
-        }
-        else {}
-      );
-
-    # macOS specific settings
-    darwinLaunchOptions = ["--start-as=maximized"];
+      };
   };
 }

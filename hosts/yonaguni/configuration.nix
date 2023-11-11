@@ -147,11 +147,14 @@
 
   # GPU
   services.xserver.videoDrivers = ["nvidia"];
+  nixpkgs.config.cudaSupport = true;
   hardware.opengl.enable = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.forceFullCompositionPipeline = true;
   hardware.nvidia.powerManagement.enable = true;
+  virtualisation.docker.enableNvidia = true;
+  virtualisation.docker.extraOptions = "--add-runtime nvidia=/run/current-system/sw/bin/nvidia-container-runtime";
 
   # Steam
   programs.steam = {
