@@ -4,10 +4,9 @@
 
 # let's define some colors
 
-# https://github.com/catppuccin/i3/blob/main/themes/catppuccin-mocha
 let strong    = "#7E8B7C"
 let light     = "#D8DCD6"
-let variable = "#C5C592"
+let variable  = "#C5C592"
 
 let text      = "#4A5249"
 let subtext1  = "#424941"
