@@ -77,13 +77,9 @@
   services.xserver = {
     enable = true;
     windowManager.dwm.enable = true;
-#    displayManager = {
-#      lightDm.enable = true;
-#      sddm.theme = "${import ../../home/danielgm/global/sdd-theme.nix {inherit pkgs; }}";
-#
-#    };
+    displayManager.autoLogin.enable = true;
+    displayManager.autoLogin.user = "danielgm";
   };
-#  services.xserver.displayManager.autoLogin.enable = true;
   #Gnome Key Ring
   services.gnome.gnome-keyring.enable = true;
 
@@ -93,24 +89,6 @@
 
   #docker
   virtualisation.docker.enable = true;
-
-  services.mpd = {
-    enable = true;
-    musicDirectory = "/home/danielgm/Music/";
-    extraConfig = ''
-      audio_output {
-        type "pipewire"
-        name "My PipeWire Output"
-    }
-    '';
-    network.listenAddress = "any"; # if you want to allow non-localhost connections
-#    startWhenNeeded = true; # systemd feature: only start MPD service upon connection to its socket
-  };
-  services.mpd.user = "userRunningPipeWire";
-  systemd.services.mpd.environment = {
-      # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
-      XDG_RUNTIME_DIR = "/run/user/1000"; # User-id 1000 must match above user. MPD will look inside this directory for the PipeWire socket.
-  };
 
   #Wireguard
   networking.firewall.checkReversePath = false;
@@ -173,8 +151,6 @@
 
   # Open ports in the firewall
   networking.networkmanager.enable = true;
-  networking.firewall.allowedTCPPorts = [ 57621 ];
-  networking.firewall.allowedUDPPorts = [ 51820 ];
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
