@@ -1,6 +1,6 @@
-!#/bin/bash
+!#bin/bash
 
-/home/danielgm/.dotfiles/old/scripts/dwmblocks &
-/home/danielgm/.dotfiles/old/scripts/fehbg
+/home/danielgm/.dots-flakes/scripts/dwmblocks &
+wallpaper-set
 
 exec dwm
