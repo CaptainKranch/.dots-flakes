@@ -62,7 +62,7 @@ let catppuccin_theme = {
 
 # The default config record. This is where much of your global configuration is setup.
 
-let-env config = {
+$env.config = {
   hooks: {
     pre_prompt: [{ ||
       if (which direnv | is-empty) {

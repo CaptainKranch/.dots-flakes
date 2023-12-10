@@ -26,7 +26,7 @@
       plugin = indent-blankline-nvim;
       type = "lua";
       config = /* lua */ ''
-        require('indent_blankline').setup{char_highlight_list={'IndentBlankLine'}}
+        require("ibl").setup()
       '';
     }
     {

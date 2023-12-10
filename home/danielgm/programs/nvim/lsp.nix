@@ -26,23 +26,44 @@
         local lsp = require("lsp-zero")
         lsp.preset("recommended")
 
-        lsp.ensure_installed({
-          'pyright',
-          'gopls'
+        require('mason').setup({})
+        require('mason-lspconfig').setup({
+          ensure_installed = {
+            'pyright', 
+            'rust_analyzer',
+            'dockerls',
+            'docker_compose_language_service',
+            'gopls',
+            'jsonls',
+            'lua_ls',
+            'marksman',
+            'taplo',
+            'sqlls'
+          },
+          handlers = {
+            lsp.default_setup,
+            lua_ls = function()
+              local lua_opts = lsp.nvim_lua_ls()
+              require('lspconfig').lua_ls.setup(lua_opts)
+            end,
+          }
         })
+
         local cmp = require('cmp')
         local cmp_select = {behavior = cmp.SelectBehavior.Select}
-        local cmp_mappings = lsp.defaults.cmp_mappings({
-          ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-          ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-          ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-          ["<C-Space>"] = cmp.mapping.complete(),
-        })
-        cmp_mappings['<Tab>'] = nil
-        cmp_mappings['<S-Tab>'] = nil
-
-        lsp.setup_nvim_cmp({
-          mapping = cmp_mappings
+        cmp.setup({
+          sources = {
+            {name = 'path'},
+            {name = 'nvim_lsp'},
+            {name = 'nvim_lua'},
+          },
+          formatting = lsp.cmp_format(),
+          mapping = cmp.mapping.preset.insert({
+            ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+            ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+            ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+            ['<C-Space>'] = cmp.mapping.complete(),
+          }),
         })
 
         lsp.set_preferences({

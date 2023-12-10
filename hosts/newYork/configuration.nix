@@ -63,6 +63,7 @@
     git
     dmenu
     home-manager
+    dunst
     pavucontrol
     xorg.libX11
     xorg.libX11.dev
