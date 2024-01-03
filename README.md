@@ -4,9 +4,9 @@
 
 <p align="center">
 	<a href="https://github.com/CaptainKranch/.dots-flakes/stargazers">
-		<img alt="Stargazers" src="https://img.shields.io/github/stars/ryan4yin/nix-config?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41"></a>
+		<img alt="Stargazers" src="https://img.shields.io/github/stars/CaptainKranch/.dots-flakes?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41"></a>
     <a href="https://nixos.org/">
-        <img src="https://img.shields.io/badge/NixOS-23.05-informational.svg?style=for-the-badge&logo=nixos&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"></a>
+        <img src="https://img.shields.io/badge/NixOS-23.11-informational.svg?style=for-the-badge&logo=nixos&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"></a>
     <a href="https://github.com/ryan4yin/nixos-and-flakes-book">
         <img src="https://img.shields.io/static/v1?label=Nix Flakes&message=learning&style=for-the-badge&logo=nixos&color=DDB6F2&logoColor=D9E0EE&labelColor=302D41"></a>
   </a>
@@ -38,7 +38,6 @@ Nix allows for easy-to-manage, collaborative, reproducible deployments. This mea
 | WM / Compositor |                       [dwm](https://dwm.suckless.org/)                       |
 |    Terminal     |                      [kitty](https://github.com/kovidgoyal/kitty)                      |
 |     Editor      |                      [Neovim](https://github.com/neovim/neovim)  |
-|  File Manager   |                          [Pcmanfm](https://github.com/lxde/pcmanfm)                           |
 
 
 ## :snowflake: <samp>Information</samp>
@@ -118,26 +117,42 @@ But anyway… let's move on to the installation process!
    $ mount /dev/disk/by-label/boot /mnt/boot
    $ swapon /dev/sda2
    ```
+5. Connect to the internet
 
-5. Enable git
+```bash
+   $ sudo systemctl start wpa_supplicant
+   $ wpa_cli
+```
+```bash
+> add_network
+0
+> set_network 0 ssid "myhomenetwork"
+OK
+> set_network 0 psk "mypassword"
+OK
+> set_network 0 key_mgmt WPA-PSK
+OK
+> enable_network 0
+OK
+```
+6. Generate the basic nixos files and add git and vim
+
+```bash
+   $ nixos-generate-config --root /mnt
+   $ vim /mnt/etc/nixos/configuration.nix
+   $ nixos-install
+```
+
+7. After reboot: Clone the repo
 
    ```bash
-   $ nix-env -iA nixos.git
-   ```
-
-6. Clone the repo
-
-   ```bash
-   $ cd
-   $ git clone https://github.com/CaptainKranch/.dotfiles.git
-   $ cd dotfiles
-   $ cp NicheOS/* /etc/nixos/
-   $ nixos-rebuild switch
+   $ git clone https://github.com/CaptainKranch/.dots-flakes.git
+   $ cd .dots-flakes
+   $ sudo nixos-rebuild switch --impure --flake .#yonaguni --show-trace
+   $ home-manager switch --show-trace --flake .#captainkranch@yonaguni
    ```
 
 8. Post install
-
-   - After install check / match hardware-configuration.nix. Make sure or edit the disk/by-uuid to disk/by-label/ like it is in this repo for reproductable build.
    - passwd danielgm(`your username, must edit it in the repo for using your own name`)
 
 <br>
