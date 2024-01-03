@@ -8,23 +8,33 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" "tcp_bbr" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [ "nohibernate" ];
+
+  # Enable BBR congestion control
+  boot.kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
+  boot.kernel.sysctl."net.core.default_qdisc" = "fq"; # see https://news.ycombinator.com/item?id=14814530
+
+  boot.kernel.sysctl."net.core.wmem_max" = 1073741824; # 1 GiB
+  boot.kernel.sysctl."net.core.rmem_max" = 1073741824; # 1 GiB
+  boot.kernel.sysctl."net.ipv4.tcp_rmem" = "4096 87380 1073741824"; # 1 GiB max
+  boot.kernel.sysctl."net.ipv4.tcp_wmem" = "4096 87380 1073741824"; # 1 GiB max
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/3586bfb7-fc03-4044-b55c-b2c886e53ac4";
-      fsType = "ext4";
+    { device = "/dev/disk/by-uuid/396896d2-9dae-4e5c-818d-c7077687521b";
+      fsType = "btrfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3C61-1581";
+    { device = "/dev/disk/by-uuid/9087-490C";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/a2ad5cbf-0f30-4ad0-84be-007f54e11bbf"; }
+    [ { device = "/dev/disk/by-uuid/f571587a-c705-4508-b240-4cd52b0d5634"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -32,10 +42,8 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
