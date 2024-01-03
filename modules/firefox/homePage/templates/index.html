@@ -1,0 +1,39 @@
+<script src="https://unpkg.com/htmx.org@1.6.0/dist/htmx.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="styles.css">
+      <title>Start Page</title>
+  </head>
+  <body>
+      <!-- Search Bar -->
+      <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Search Google...">
+          <button id="search-button" hx-get="/search?q={{encodeURIComponent(value)}}" hx-trigger="click">Search</button>
+      </div>
+
+      <!-- Most Visited Websites -->
+      <div class="most-visited">
+          <!-- Add your most visited website links here -->
+          <a href="https://chat.openai.com/">Chat GPT</a>
+          <a href="https://www.youtube.com/">YouTube</a>
+          <a href="https://web.whatsapp.com/">WhatsApp</a>
+          <a href="https://mail.google.com/mail/u/0/">Gmail</a>
+          <a href="https://leetcode.com/">LeetCode</a>
+          <!-- Add more links as needed -->
+      </div>
+
+      <!-- GIF Background -->
+      <div class="background">
+          <img src="https://media3.giphy.com/media/YqhIK6Gbor6CLeloBq/giphy.gif?cid=ecf05e474dafvwhro0g0bbpwuuy3mw1la1vnxtci1kmd0abe&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Background GIF">
+      </div>
+
+      <!-- Include htmx library -->
+      <script src="https://unpkg.com/htmx.org@1.6.0/dist/htmx.js"></script>
+      <!-- Include your JavaScript file for custom logic -->
+      <script src="script.js"></script>
+  </body>
+</html>
+
