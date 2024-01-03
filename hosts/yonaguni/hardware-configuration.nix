@@ -10,8 +10,17 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "tcp_bbr" ];
   boot.extraModulePackages = [ ];
+
+  # Enable BBR congestion control
+  boot.kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
+  boot.kernel.sysctl."net.core.default_qdisc" = "fq"; # see https://news.ycombinator.com/item?id=14814530
+
+  boot.kernel.sysctl."net.core.wmem_max" = 1073741824; # 1 GiB
+  boot.kernel.sysctl."net.core.rmem_max" = 1073741824; # 1 GiB
+  boot.kernel.sysctl."net.ipv4.tcp_rmem" = "4096 87380 1073741824"; # 1 GiB max
+  boot.kernel.sysctl."net.ipv4.tcp_wmem" = "4096 87380 1073741824"; # 1 GiB max
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/3586bfb7-fc03-4044-b55c-b2c886e53ac4";
