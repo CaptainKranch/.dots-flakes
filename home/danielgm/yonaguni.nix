@@ -13,9 +13,7 @@
     ./programs/dbeaver
     ./programs/mariadb
     ./programs/filezilla
-    ./programs/mupdf
-    ./programs/lollypop
-#    ./programs/direnv
+    ./services/sunshine
   ];
 }
 

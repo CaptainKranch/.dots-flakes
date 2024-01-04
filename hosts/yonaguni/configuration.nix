@@ -95,7 +95,7 @@
 
   # Fonst
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
@@ -205,9 +205,11 @@
   services.openssh = {
     enable = true;
     # Forbid root login through SSH.
-    permitRootLogin = "no";
+    settings = { 
+      PermitRootLogin = "no"; 
+      PasswordAuthentication = false;
+    };
     # Use keys only. Remove if you want to SSH using password (not recommended)
-    passwordAuthentication = false;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
