@@ -10,7 +10,8 @@
 
     # You can also split up your configuration and import pieces of it here:
     # Like services that you want to run in the background, like airflow, grafana, prometeus, etc.
-    ../../services/sunshine/default.nix
+    #../../services/sunshine/default.nix
+    ../../services/airflow/default.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -78,6 +79,7 @@
     home-manager
     dunst
     pavucontrol
+    sunshine
     xorg.libX11
     xorg.libX11.dev
     xorg.libxcb
