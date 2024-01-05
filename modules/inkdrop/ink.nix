@@ -33,7 +33,7 @@
 , gnome ? pkgs.gnome
 }:
 let
-  version = "5.6.0";
+  version = "5.6.2";
   deps = [
     libxkbcommon
     libuuid

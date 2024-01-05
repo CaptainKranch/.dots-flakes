@@ -13,7 +13,6 @@
     ./programs/dbeaver
     ./programs/mariadb
     ./programs/filezilla
-    ./services/sunshine
   ];
 }
 

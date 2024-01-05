@@ -13,6 +13,7 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+    # ../../services/sunshine/default.nix
   ];
 
   nixpkgs = {
@@ -49,6 +50,18 @@
       auto-optimise-store = true;
     };
   };
+  
+#  systemd.services.sunshine = {
+#    description = "Sunshine Game Streaming Service";
+#    after = [ "network.target" ];
+#    wantedBy = [ "multi-user.target" ];
+#    serviceConfig = {
+#      ExecStart = "${pkgs.sunshine}/bin/sunshine";
+#      User = "danielgm"; # replace with your user
+#      Group = "danielgm"; # replace with your group
+#      Restart = "always";
+#    };
+#  };
 
   # FIXME: Add the rest of your current configuration
   #Bootloader
@@ -60,7 +73,6 @@
     (import ../../scripts/fehbg.nix { inherit pkgs; })
     (import ../../scripts/lock-screen.nix { inherit pkgs; })
     (import ../../modules/inkdrop/ink.nix { inherit pkgs; })
-    (import ../../services/sunshine/default.nix { inherit pkgs; })
     git
     dmenu
     home-manager
@@ -214,5 +226,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }
