@@ -83,7 +83,7 @@ stdenv.mkDerivation {
   allowUnfree = true;
   src = fetchurl {
     url = "https://d3ip0rje8grhnl.cloudfront.net/v${version}/inkdrop_${version}_amd64.deb";
-    hash = "sha256-a9NZ/NWM2n8x0XZXa712J4oIgrk8Fp+AkQq/t5ucjX4=";
+    hash = "sha256-S68h4FM2+Npz4ihQR06GauMiX3PC1rNLaLq/DdmvL6g=";
   };
   dontBuild = true;
   buildInputs = [ dpkg makeWrapper ];

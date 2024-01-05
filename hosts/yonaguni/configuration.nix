@@ -9,11 +9,11 @@
     # inputs.hardware.nixosModules.common-ssd
 
     # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
+    # Like services that you want to run in the background, like airflow, grafana, prometeus, etc.
+    ../../services/sunshine/default.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
-    # ../../services/sunshine/default.nix
   ];
 
   nixpkgs = {
@@ -180,8 +180,8 @@
   networking.networkmanager.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 57621 ];
-  networking.firewall.allowedUDPPorts = [ 51820 ];
+  networking.firewall.allowedTCPPorts = [ 47989 47984  48010 47998 47999 47989 ];
+  networking.firewall.allowedUDPPorts = [ 47989 47984  48000 48010 47999 47998 ];
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
