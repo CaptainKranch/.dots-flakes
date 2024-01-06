@@ -1,25 +1,23 @@
-{ config, pkgs, ... }:
-
+{ inputs, cell }:
+let
+  nixpkgs = inputs.nixpkgs.appendOverlays [
+    (final: prev: {
+      # Add your overlays here
+      airflow-sources = prev.callPackage ./packages/_sources/generated.nix { };
+    })
+  ];
+in
 {
-  services.apache-airflow = {
-    enable = true;
-    package = pkgs.apache-airflow;
-
-    webserver = {
-      enable = true;
-      port = 8080;
-    };
-
-    scheduler = {
-      enable = true;
-    };
-
-    dags = {
-      path = "/home/danielgm/Documents/analytics/apps/airflow/dags/";
-    };
-
-    environment = {
-      AIRFLOW__CORE__LOAD_EXAMPLES = "False";
-    };
-  };
+  apache-airflow = nixpkgs.apache-airflow;
+  apache-airflow-latest = nixpkgs.apache-airflow.overrideAttrs (
+    old: {
+      inherit (nixpkgs.airflow-sources.airflow-latest) src version pname;
+      postPatch =
+        old.postPatch
+        + ''
+          substituteInPlace setup.cfg \
+            --replace "flask-appbuilder==4.1.4" "flask-appbuilder"
+        '';
+    }
+  );
 }

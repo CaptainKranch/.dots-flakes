@@ -11,7 +11,7 @@
     # You can also split up your configuration and import pieces of it here:
     # Like services that you want to run in the background, like airflow, grafana, prometeus, etc.
     #../../services/sunshine/default.nix
-    # ../../services/airflow/default.nix
+    ../../services/airflow/default.nix
     ../../services/httpd/default.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
@@ -64,7 +64,12 @@
 #      Restart = "always";
 #    };
 #  };
-
+  services.airflow = {
+    enable = true;
+    port = 8080;
+    ip = "0.0.0.0";
+    postgresql = false;
+  };
   # FIXME: Add the rest of your current configuration
   #Bootloader
   boot.loader.systemd-boot.enable = true;
@@ -80,7 +85,6 @@
     home-manager
     dunst
     pavucontrol
-    sunshine
     xorg.libX11
     xorg.libX11.dev
     xorg.libxcb
