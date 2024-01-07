@@ -13,6 +13,7 @@
     ./programs/dbeaver
     ./programs/mariadb
     ./programs/filezilla
+    ./programs/libreoffice
   ];
 }
 

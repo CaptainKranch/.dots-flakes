@@ -10,15 +10,29 @@
 
     # You can also split up your configuration and import pieces of it here:
     # Like services that you want to run in the background, like airflow, grafana, prometeus, etc.
-    #../../services/sunshine/default.nix
+    ../../services/sunshine/default.nix
     #../../services/airflow/default.nix
-    ../../services/httpd/default.nix
-    ../../services/trillium/default.nix
+    #../../services/httpd/default.nix
+    #../../services/trillium/default.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
+  
 
+  systemd.user.services.sunshine-temp-v5 = {
+    enable = true;
+    description = "Starts Sunshine";
+    wantedBy = ["graphical-session.target"];
+    startLimitIntervalSec = 500;
+    startLimitBurst = 5;
+    serviceConfig = {
+       Restart = "on-failure";
+       RestartSec = 5;
+       ExecStart = "${pkgs.sunshine}/bin/sunshine";
+     };
+  };
+  
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -53,25 +67,9 @@
       auto-optimise-store = true;
     };
   };
-  
-#  systemd.services.sunshine = {
-#    description = "Sunshine Game Streaming Service";
-#    after = [ "network.target" ];
-#    wantedBy = [ "multi-user.target" ];
-#    serviceConfig = {
-#      ExecStart = "${pkgs.sunshine}/bin/sunshine";
-#      User = "danielgm"; # replace with your user
-#      Group = "danielgm"; # replace with your group
-#      Restart = "always";
-#    };
-#  };
-  services.airflow = {
-    enable = true;
-    port = 8080;
-    ip = "0.0.0.0";
-    postgresql = false;
-  };
-  # FIXME: Add the rest of your current configuration
+
+
+# FIXME: Add the rest of your current configuration
   #Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

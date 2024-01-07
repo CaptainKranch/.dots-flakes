@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  services.httpd = {
+  services.trilium = {
     enable = true;
   };
 }
