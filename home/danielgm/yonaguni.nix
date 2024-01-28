@@ -14,7 +14,7 @@
     ./programs/mariadb
     ./programs/filezilla
     ./programs/libreoffice
-    ./programs/obsidian
+
   ];
 }
 
