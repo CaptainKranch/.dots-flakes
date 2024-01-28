@@ -7,12 +7,7 @@
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
-
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "tcp_bbr" ];
-  boot.extraModulePackages = [ ];
-
+  
   # Enable BBR congestion control
   boot.kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
   boot.kernel.sysctl."net.core.default_qdisc" = "fq"; # see https://news.ycombinator.com/item?id=14814530
@@ -22,18 +17,23 @@
   boot.kernel.sysctl."net.ipv4.tcp_rmem" = "4096 87380 1073741824"; # 1 GiB max
   boot.kernel.sysctl."net.ipv4.tcp_wmem" = "4096 87380 1073741824"; # 1 GiB max
 
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
+
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/3586bfb7-fc03-4044-b55c-b2c886e53ac4";
-      fsType = "ext4";
+    { device = "/dev/disk/by-uuid/ebf40ec4-604c-4d6f-a5fc-0bc68c917f0e";
+      fsType = "btrfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3C61-1581";
+    { device = "/dev/disk/by-uuid/C790-929C";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/a2ad5cbf-0f30-4ad0-84be-007f54e11bbf"; }
+    [ { device = "/dev/disk/by-uuid/65574f17-25ff-4f3c-99ee-4caae8d5c14f"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -41,8 +41,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp7s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

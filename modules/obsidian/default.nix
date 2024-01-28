@@ -1,18 +1,19 @@
-{ stdenv
-, fetchurl
-, lib
-, makeWrapper
-, electron
-, makeDesktopItem
-, imagemagick
-, writeScript
-, undmg
-, unzip
+{ pkgs ? import <nixpkgs>
+, stdenv ? pkgs.stdenv
+, fetchurl ? pkgs.fetchurl
+, lib ? pkgs.lib
+, makeWrapper ? pkgs.makeWrapper
+, electron ? pkgs.electron
+, makeDesktopItem ? pkgs.makeDesktopItem
+, imagemagick ? pkgs.imagemagick
+, writeScript ? pkgs.writeScript
+, undmg ? pkgs.undmg
+, unzip ? pkgs.unzip
 }:
 let
   inherit (stdenv.hostPlatform) system;
   pname = "obsidian";
-  version = "1.5.3";
+  version = "1.4.16";
   appname = "Obsidian";
   meta = with lib; {
     description = "A powerful knowledge base that works on top of a local folder of plain text Markdown files";
