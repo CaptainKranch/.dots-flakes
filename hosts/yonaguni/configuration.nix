@@ -99,10 +99,15 @@
   };
 
   services.gnome.gnome-keyring.enable = true;
+  
   #PICOM
   services.picom = {
     enable = true;
     vSync = true;
+    serviceConfig = {
+      ExecStart = "${pkgs.picom}/bin/picom --animations --animation-for-open-window fly-in -b";
+      Restart = "always";
+    };
   };
 
   #docker

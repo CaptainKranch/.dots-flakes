@@ -10,9 +10,8 @@
     ./xclip.nix
     ./dconf.nix
     ./gtk.nix
+    ./qt.nix
     ./keyring.nix
-    ./spotifyd.nix
-    ./spotify-tui.nix
     ./wormhole.nix
 
     # You can also split up your configuration and import pieces of it here:
