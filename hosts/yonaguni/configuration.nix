@@ -30,6 +30,16 @@
           }
         );
       })
+      (final: prev: {
+        picom = prev.picom.overrideAttrs (old: {
+          src = prev.fetchFromGitHub {
+            owner = "pijulius"; # This is a fork of picom with animations
+            repo = "picom";
+            rev = "982bb43e5d4116f1a37a0bde01c9bda0b88705b9";
+            sha256 = "YiuLScDV9UfgI1MiYRtjgRkJ0VuA1TExATA2nJSJMhM=";
+          };
+        });
+      })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -90,8 +100,10 @@
 
   services.gnome.gnome-keyring.enable = true;
   #PICOM
-  services.picom.enable = true;
-  services.picom.vSync = true;
+  services.picom = {
+    enable = true;
+    vSync = true;
+  };
 
   #docker
   virtualisation.docker.enable = true;
