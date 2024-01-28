@@ -77,6 +77,7 @@
     (import ../../modules/inkdrop/ink.nix { inherit pkgs; })
     (import ../../modules/obsidian/default.nix { inherit pkgs; })
     git
+    picom
     dmenu
     home-manager
     dunst
@@ -101,15 +102,12 @@
   services.gnome.gnome-keyring.enable = true;
   
   #PICOM
-  services.picom = {
-    enable = true;
-    vSync = true;
-    serviceConfig = {
-      ExecStart = "${pkgs.picom}/bin/picom --animations --animation-for-open-window fly-in -b";
-      Restart = "always";
-    };
-  };
-
+#  services.picom-jonaburg = {
+#    enable = true;
+#    vSync = true;
+#    extraArgs = [ ];
+#  };
+#
   #docker
   virtualisation.docker.enable = true;
 
