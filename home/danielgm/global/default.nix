@@ -48,7 +48,13 @@
 
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
-  home.packages = with pkgs; [ spotify ];
+  home.packages = with pkgs; [ apple-cursor ];
+  home.pointerCursor = {
+    package = pkgs.apple-cursor;
+    name = "macOS-BigSur";
+    size = 23;
+    gtk.enable = true;
+  };
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
@@ -59,36 +65,6 @@
     userName = "danielgm";
     userEmail = "daniel.garcia@ezlo.com";
   };
-
-  #Themes
-#  gtk = { 
-#    enanble = true;
-#    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
-#    font = {
-#      name = "Roboto";
-#      package = pkgs.roboto;
-#    };
-#
-#    cursorTheme = {
-#      name = "apple_cursor";
-#      package = pkgs.apple_cursor;
-#    };
-#
-#    iconTheme = {
-#      name = "Papirus-theme";
-#      package = pkgs.papirus-icon-theme;
-#    };
-#
-#    theme = {
-#      name = "Catppuccin-Macchiato-Compact-Pink-dark";
-#      package = pkgs.catppuccin-gtk.override {
-#        # https://github.com/NixOS/nixpkgs/blob/nixos-23.05/pkgs/data/themes/catppuccin-gtk/default.nix
-#        accents = [ "pink" ];
-#        size = "compact";
-#        variant = "mocha";
-#      };
-#    };
-#  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

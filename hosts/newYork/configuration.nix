@@ -15,6 +15,7 @@
     ./hardware-configuration.nix
   ];
 
+
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -26,8 +27,18 @@
           }
         );
       })
+      (final: prev: {
+        picom = prev.picom.overrideAttrs (old: {
+          src = prev.fetchFromGitHub {
+            owner = "pijulius"; # This is a fork of picom with animations
+            repo = "picom";
+            rev = "982bb43e5d4116f1a37a0bde01c9bda0b88705b9";
+            sha256 = "YiuLScDV9UfgI1MiYRtjgRkJ0VuA1TExATA2nJSJMhM=";
+          };
+        });
+      })
     ];
-    # Configure your nixpkgs instance
+   # Configure your nixpkgs instance
     config = {
       allowUnfree = true;
     };
@@ -60,8 +71,10 @@
     (import ../../scripts/fehbg.nix { inherit pkgs; })
     (import ../../scripts/lock-screen.nix { inherit pkgs; })
     (import ../../modules/inkdrop/ink.nix { inherit pkgs; })
+    (import ../../modules/obsidian/default.nix { inherit pkgs; })
     git
     dmenu
+    picom
     home-manager
     dunst
     pavucontrol
@@ -85,8 +98,8 @@
   services.gnome.gnome-keyring.enable = true;
 
   #PICOM
-  services.picom.enable = true;
-  services.picom.vSync = true;
+#  services.picom.enable = true;
+#  services.picom.vSync = true;
 
   #docker
   virtualisation.docker.enable = true;
@@ -161,7 +174,7 @@
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
       initialPassword = "123";
-      shell = pkgs.nushell;
+      #shell = pkgs.nushell;
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
