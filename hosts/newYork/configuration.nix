@@ -96,6 +96,7 @@
   };
   #Gnome Key Ring
   services.gnome.gnome-keyring.enable = true;
+  services.gvfs.enable = true;
 
   #PICOM
 #  services.picom.enable = true;
