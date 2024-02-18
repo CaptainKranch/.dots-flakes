@@ -102,6 +102,7 @@
   };
 
   services.gnome.gnome-keyring.enable = true;
+  services.gvfs.enable = true;
   
   #docker
   virtualisation.docker.enable = true;
