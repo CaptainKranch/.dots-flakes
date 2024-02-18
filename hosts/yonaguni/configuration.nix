@@ -82,6 +82,8 @@
     home-manager
     dunst
     pavucontrol
+    wineWowPackages.stable
+    winetricks
     xorg.libX11
     xorg.libX11.dev
     xorg.libxcb
@@ -101,13 +103,6 @@
 
   services.gnome.gnome-keyring.enable = true;
   
-  #PICOM
-#  services.picom-jonaburg = {
-#    enable = true;
-#    vSync = true;
-#    extraArgs = [ ];
-#  };
-#
   #docker
   virtualisation.docker.enable = true;
 

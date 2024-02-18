@@ -15,6 +15,7 @@
     ./programs/filezilla
     ./programs/libreoffice
     ./programs/obsidian
+    ./programs/lutris
 
   ];
 }
