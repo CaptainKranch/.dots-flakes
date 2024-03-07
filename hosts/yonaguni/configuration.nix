@@ -74,14 +74,13 @@
     (import ../../scripts/screenshotsel.nix { inherit pkgs; })
     (import ../../scripts/fehbg.nix { inherit pkgs; })
     (import ../../scripts/lock-screen.nix { inherit pkgs; })
-    (import ../../modules/inkdrop/ink.nix { inherit pkgs; })
-    (import ../../modules/obsidian/default.nix { inherit pkgs; })
     git
     picom
     dmenu
     home-manager
     dunst
     pavucontrol
+    eww
     wineWowPackages.stable
     winetricks
     xorg.libX11
