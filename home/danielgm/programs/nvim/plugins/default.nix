@@ -20,5 +20,6 @@
     ./ident-blankline-nvim.nix
     ./noice.nix
     ./nvim-autopairs.nix
+#    ./neogit.nix
   ];
 }
