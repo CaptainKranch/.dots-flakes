@@ -19,5 +19,6 @@
     ./nvim-colorizer-lua.nix
     ./ident-blankline-nvim.nix
     ./noice.nix
+    ./nvim-autopairs.nix
   ];
 }

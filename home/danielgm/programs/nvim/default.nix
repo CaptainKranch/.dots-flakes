@@ -40,9 +40,9 @@
       set number relativenumber
 
       "Buffers
-      nmap <C-k> :bnext<CR>
-      nmap <C-j> :bprev<CR>
-      nmap <C-q> :bdel<CR>
+      nmap <M-k> :bnext<CR>
+      nmap <M-j> :bprev<CR>
+      nmap <M-q> :bdel<CR>
 
       "Loclist
       nmap <space>l :lwindow<cr>
@@ -90,7 +90,6 @@
       vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
       vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
 
-
       -- greatest remap ever
       vim.keymap.set("x", "<leader>p", [["_dP]])
 
@@ -98,18 +97,7 @@
       vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
       vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-      vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
     '';
-
-    plugins = with pkgs.vimPlugins; [
-      {
-        plugin = nvim-autopairs;
-        type = "lua";
-        config = /* lua */ ''
-          require('nvim-autopairs').setup{}
-        '';
-      }
-    ];
   };
 
   xdg.configFile."nvim/init.lua".onChange = ''
