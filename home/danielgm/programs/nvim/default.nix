@@ -1,21 +1,8 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./ui.nix
-    ./lsp.nix
-    ./syntaxes.nix
-    ./telescope.nix
-    ./lua-line.nix
-    ./tree-lua.nix
-    ./fine-cmd-line.nix
-    ./dadbod.nix
-#    ./dadbod-ui.nix
-#    ./theme-tokyonight.nix
-#    ./theme-oxocarbon.nix
-    ./theme-kanagawa.nix
-    ./gen.nix
-    ./nvim-notify.nix
-    ./neorg.nix
+    ./themes/theme-kanagawa.nix
+    ./plugins/default.nix
   ];
   home.sessionVariables.EDITOR = "nvim";
     programs.neovim = {
