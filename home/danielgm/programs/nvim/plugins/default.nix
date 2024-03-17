@@ -13,10 +13,11 @@
     ./telescope.nix
     ./scope-nvim.nix
     ./nvim-notify.nix
-    ./fine-cmd-line.nix
+    #./fine-cmd-line.nix
     ./gitsings-nvim.nix
     ./nvim-web-devicons.nix
     ./nvim-colorizer-lua.nix
     ./ident-blankline-nvim.nix
+    ./noice.nix
   ];
 }
