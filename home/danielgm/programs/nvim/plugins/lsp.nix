@@ -37,7 +37,7 @@
             'marksman',
             'taplo',
             'sqlls',
-            'golsp',
+            'gopls',
           },
           handlers = {
             lsp.default_setup,

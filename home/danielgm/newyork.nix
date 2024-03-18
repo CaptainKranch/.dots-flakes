@@ -12,5 +12,6 @@
     ./programs/pcmanfm
     ./programs/libreoffice
     ./programs/filezilla
+    ./programs/obsidian
   ];
 }
