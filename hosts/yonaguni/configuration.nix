@@ -81,6 +81,8 @@
     dunst
     pavucontrol
     eww
+    go
+    cargo
     wineWowPackages.stable
     winetricks
     xorg.libX11

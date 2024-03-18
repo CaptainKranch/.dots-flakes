@@ -1,4 +1,3 @@
-
 { pkgs, ... }: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     #LSP Support
@@ -37,7 +36,8 @@
             'lua_ls',
             'marksman',
             'taplo',
-            'sqlls'
+            'sqlls',
+            'golsp',
           },
           handlers = {
             lsp.default_setup,
@@ -58,15 +58,15 @@
           },
           formatting = lsp.cmp_format(),
           mapping = cmp.mapping.preset.insert({
-            ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-            ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-            ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<M-p>'] = cmp.mapping.select_prev_item(cmp_select),
+            ['<M-n>'] = cmp.mapping.select_next_item(cmp_select),
+            ['<M-y>'] = cmp.mapping.confirm({ select = true }),
+            ['<M-Space>'] = cmp.mapping.complete(),
           }),
         })
 
         lsp.set_preferences({
-        suggest_lsp_servers = false,
+        suggest_lsp_servers = true,
         sign_icons = {
             error = '󰅚 ',
             warn = ' ',

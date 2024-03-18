@@ -6,98 +6,90 @@
   ];
   home.sessionVariables.EDITOR = "nvim";
     programs.neovim = {
-    enable = true;
-    vimAlias = true;
-    viAlias = true;
-    withPython3 = true;
-    withNodeJs = true;
-    defaultEditor = true;
+      enable = true;
+      vimAlias = true;
+      viAlias = true;
+      withPython3 = true;
+      withNodeJs = true;
+      defaultEditor = true;
 
-    extraConfig = /* vim */ ''
-      "Use system clipboard
-      set clipboard=unnamedplus
+      extraConfig = /* vim */ ''
+        "Use system clipboard
+        set clipboard=unnamedplus
 
-      "Set fold level to highest in file
-      "so everything starts out unfolded at just the right level
-      augroup initial_fold
-        autocmd!
-        autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
-      augroup END
+        "Set fold level to highest in file
+        "so everything starts out unfolded at just the right level
+        augroup initial_fold
+          autocmd!
+          autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
+        augroup END
 
-      "Tabs
-      set tabstop=4 "4 char-wide tab
-      set expandtab "Use spaces
-      set softtabstop=0 "Use same length as 'tabstop'
-      set shiftwidth=0 "Use same length as 'tabstop'
-      
-      "Fix nvim size according to terminal
-      "(https://github.com/neovim/neovim/issues/11330)
-      augroup fix_size
-        autocmd VimEnter * silent exec "!kill -s SIGWINCH" getpid()
-      augroup END
+        "Tabs
+        set tabstop=4 "4 char-wide tab
+        set expandtab "Use spaces
+        set softtabstop=0 "Use same length as 'tabstop'
+        set shiftwidth=0 "Use same length as 'tabstop'
+        
+        "Fix nvim size according to terminal
+        "(https://github.com/neovim/neovim/issues/11330)
+        augroup fix_size
+          autocmd VimEnter * silent exec "!kill -s SIGWINCH" getpid()
+        augroup END
 
-      "Line numbers
-      set number relativenumber
+        "Line numbers
+        set number relativenumber
 
-      "Buffers
-      nmap <M-k> :bnext<CR>
-      nmap <M-j> :bprev<CR>
-      nmap <M-q> :bdel<CR>
+        "Buffers
+        nmap <M-k> :bnext<CR>
+        nmap <M-j> :bprev<CR>
+        nmap <M-q> :bdel<CR>
 
-      "Loclist
-      nmap <space>l :lwindow<cr>
-      nmap [l :lprev<cr>
-      nmap ]l :lnext<cr>
+        "Loclist
+        nmap <space>l :lwindow<cr>
+        nmap [l :lprev<cr>
+        nmap ]l :lnext<cr>
 
-      nmap <space>L :lhistory<cr>
-      nmap [L :lolder<cr>
-      nmap ]L :lnewer<cr>
+        nmap <space>L :lhistory<cr>
+        nmap [L :lolder<cr>
+        nmap ]L :lnewer<cr>
 
-      "Quickfix
-      nmap <space>q :cwindow<cr>
-      nmap [q :cprev<cr>
-      nmap ]q :cnext<cr>
+        "Quickfix
+        nmap <space>q :cwindow<cr>
+        nmap [q :cprev<cr>
+        nmap ]q :cnext<cr>
 
-      nmap <space>Q :chistory<cr>
-      nmap [Q :colder<cr>
-      nmap ]Q :cnewer<cr>
+        nmap <space>Q :chistory<cr>
+        nmap [Q :colder<cr>
+        nmap ]Q :cnewer<cr>
 
-      "Make
-      nmap <space>m :make<cr>
+        "Make
+        nmap <space>m :make<cr>
 
-      "Grep (replace with ripgrep)
-      nmap <space>g :grep<space>
-      if executable('rg')
-          set grepprg=rg\ --vimgrep
-          set grepformat=%f:%l:%c:%m
-      endif
+        "Close other splits
+        nmap <space>o :only<cr>
 
-      "Close other splits
-      nmap <space>o :only<cr>
+        "Sudo save
+        cmap w!! w !sudo tee > /dev/null %
+      '';
 
-      "Sudo save
-      cmap w!! w !sudo tee > /dev/null %
+      extraLuaConfig = /* lua */ ''
+        vim.g.mapleader = " "
+        vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
-    '';
-    extraLuaConfig = /* lua */ ''
-      vim.g.mapleader = " "
-      vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+        vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+        vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-      vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-      vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+        --Jump between windows in current buffer
+        vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
 
-      --Jump between windows in current buffer
-      vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+        -- greatest remap ever
+        vim.keymap.set("x", "<leader>p", [["_dP]])
 
-      -- greatest remap ever
-      vim.keymap.set("x", "<leader>p", [["_dP]])
-
-      -- next greatest remap ever : asbjornHaland
-      vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-      vim.keymap.set("n", "<leader>Y", [["+Y]])
-
-    '';
+        -- next greatest remap ever : asbjornHaland
+        vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+        vim.keymap.set("n", "<leader>Y", [["+Y]])
+      '';
   };
 
   xdg.configFile."nvim/init.lua".onChange = ''

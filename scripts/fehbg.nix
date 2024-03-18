@@ -4,8 +4,9 @@ pkgs.writeShellScriptBin "wallpaper-set" ''
   
   if [ -z "$wallpaper" ]; then
     # Default wallpaper if no argument is provided
-    wallpaper="/home/danielgm/.dots-flakes/wallpapers/yes.webp"
+    wallpaper="/home/danielgm/.dots-flakes/wallpapers/f1_rain.jpg"
   fi
 
-  ${pkgs.feh}/bin/feh --bg-fill "$wallpaper"
+  ${pkgs.pywal}/bin/wal -i "$wallpaper"
+  
 ''
