@@ -104,6 +104,7 @@
 
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
+  services.tailscale.enable = true;
   
   #docker
   virtualisation.docker.enable = true;

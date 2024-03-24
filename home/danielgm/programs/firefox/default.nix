@@ -71,7 +71,7 @@
           overflow: var(--is-bar-visible);
           left: 0;
           right: 0;
-          bottom: 0;
+          top: 0;
           background-color: transparent !important;
         }
 
