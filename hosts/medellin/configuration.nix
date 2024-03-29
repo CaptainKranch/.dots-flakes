@@ -165,18 +165,29 @@
     LC_TIME = "es_CO.UTF-8";
   };
 
-  #GPU
-  services.xserver.videoDrivers = [ "intel" ];
-  services.picom.vSync = true;
-  services.xserver.deviceSection = ''
-    Option "DRI" "2"
-    Option "TearFree" "true"
-  '';
+  # GPU
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.opengl.enable = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.forceFullCompositionPipeline = true;
+  hardware.nvidia.powerManagement.enable = false;
+  nixpkgs.config.cudaSupport = true;
+  virtualisation.docker.enableNvidia = true;
+  virtualisation.docker.extraOptions = "--add-runtime nvidia=/run/current-system/sw/bin/nvidia-container-runtime";
+
+  # Steam
+  programs.steam = {
+    enable = true;
+  };
 
   # TODO: Set your hostname
   networking.hostName = "yonaguni";
   networking.networkmanager.enable = true;
 
+  # Open ports in the firewall.
+  networking.firewall.allowedTCPPorts = [ 47989 47984  48010 47998 47999 47989 ];
+  networking.firewall.allowedUDPPorts = [ 47989 47984  48000 48010 47999 47998 ];
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {

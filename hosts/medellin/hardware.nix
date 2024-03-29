@@ -7,12 +7,6 @@
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
-    
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "tcp_bbr" ];
-  boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "nohibernate" "i915.enable_psr=0" ];
   
   # Enable BBR congestion control
   boot.kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
@@ -23,6 +17,10 @@
   boot.kernel.sysctl."net.ipv4.tcp_rmem" = "4096 87380 1073741824"; # 1 GiB max
   boot.kernel.sysctl."net.ipv4.tcp_wmem" = "4096 87380 1073741824"; # 1 GiB max
 
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/ebf40ec4-604c-4d6f-a5fc-0bc68c917f0e";
@@ -46,5 +44,5 @@
   # networking.interfaces.enp7s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
