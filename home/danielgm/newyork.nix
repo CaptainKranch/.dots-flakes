@@ -13,5 +13,6 @@
     ./programs/libreoffice
     ./programs/filezilla
     ./programs/obsidian
+    ./programs/mpv
   ];
 }

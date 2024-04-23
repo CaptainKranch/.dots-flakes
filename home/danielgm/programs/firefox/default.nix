@@ -27,16 +27,6 @@
             background: #1E1E24;
         }
 
-        .browserContainer {
-          background-color: var(
-            --lwt-accent-color-inactive,
-            var(--lwt-accent-color)
-          ) !important;
-          background-image: var(--lwt-header-image), var(--lwt-additional-images) !important;
-          background-repeat: no-repeat, var(--lwt-background-tiling) !important;
-          background-position: right top, var(--lwt-background-alignment) !important;
-        }
-
         #titlebar {
           display: none !important;
         }
@@ -88,6 +78,54 @@
           --is-bar-visible: visible;
         }
 
+        /* search */
+        @media (-moz-bool-pref: "uc.tweak.popup-search") {
+        #urlbar:is([breakout][breakout-extend]){
+          #urlbar-input {
+            font-size: 18px !important;
+            text-align: left !important;
+            padding-block: 12px !important;
+            padding-inline: 6px !important;
+          }
+          
+          position: fixed !important;
+        /*  padding-top: 12px !important; */
+        /*  --urlbar-height: auto !important; */
+          margin-bottom: 25vh !important;
+        /*  margin-top: 85vh !important; */
+          background-color: #toolbar-bgcolor !important;
+          
+          left: 20vw !important;
+          right: 20vw !important;
+          width: 60vw !important;
+        /*  padding-inline-start: 8px !important; */
+        /*  padding-inline-end: 40vw !important; */
+          --urlbar-width: auto !important;
+          
+          & .urlbarView-results {
+            margin-top: 0px !important;
+            padding-block-start: 0px !important;
+          }
+
+          
+          /* background */
+          &:before{
+            content: "";
+            position: fixed;
+            pointer-events: none;
+            
+            width: 100vw;
+            height: 100vh;
+            
+            top: 0px;
+            left: 0px;
+            
+            background-color: #000000;
+            opacity: 0.5;
+            backdrop-filter: blur(300px);
+          }
+        }
+        }
       '';
     };
   };

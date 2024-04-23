@@ -58,8 +58,8 @@
         tab_bar_edge = "bot";     # tab bar on bop
         copy_on_select = true;
         term = "xterm-256color";
-        #enabled_layouts = "tall:bias=50;full_size=1;mirrored=false";
-        enabled_layouts = "fat:bias=50;full_size=1;mirrored=false";
+        enabled_layouts = "tall:bias=50;full_size=1;mirrored=false";
+        #enabled_layouts = "fat:bias=50;full_size=1;mirrored=false";
 
         foreground = "#ebe5d9";
         background = "#100d13";
