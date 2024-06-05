@@ -30,16 +30,16 @@
           }
         );
       })
-      (final: prev: {
-        picom = prev.picom.overrideAttrs (old: {
-          src = prev.fetchFromGitHub {
-            owner = "pijulius"; # This is a fork of picom with animations
-            repo = "picom";
-            rev = "982bb43e5d4116f1a37a0bde01c9bda0b88705b9";
-            sha256 = "YiuLScDV9UfgI1MiYRtjgRkJ0VuA1TExATA2nJSJMhM=";
-          };
-        });
-      })
+#      (final: prev: {
+#        picom = prev.picom.overrideAttrs (old: {
+#          src = prev.fetchFromGitHub {
+#            owner = "pijulius"; # This is a fork of picom with animations
+#            repo = "picom";
+#            rev = "982bb43e5d4116f1a37a0bde01c9bda0b88705b9";
+#            sha256 = "YiuLScDV9UfgI1MiYRtjgRkJ0VuA1TExATA2nJSJMhM=";
+#          };
+#        });
+#      })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -105,12 +105,11 @@
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
   services.tailscale.enable = true;
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
   
   #docker
   virtualisation.docker.enable = true;
-
-  #Wireguard
-  networking.firewall.checkReversePath = false;
 
   # Fonst
   fonts = {
@@ -176,6 +175,10 @@
   # TODO: Set your hostname
   networking.hostName = "yonaguni";
   networking.networkmanager.enable = true;
+  
+  networking.hosts = {
+    "medellin:8094" = ["http://m3dia.com"];
+  };
 
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.

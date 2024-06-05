@@ -5,7 +5,6 @@
     ./programs/firefox
     ./programs/nvim
     ./programs/discord
-    ./programs/deluge
     ./programs/starship
     ./programs/slack
     ./programs/btop
@@ -15,7 +14,7 @@
     ./programs/filezilla
     ./programs/libreoffice
     ./programs/obsidian
-    ./programs/lutris
+    ./programs/moonlight
 
   ];
 }
