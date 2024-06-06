@@ -10,6 +10,8 @@
         bitwarden
         ublock-origin
         darkreader
+        youtube-shorts-block
+        gesturefy
       ];
       userChrome = ''
         #appcontent
