@@ -1,64 +1,5 @@
 # Nushell Config File
 #
-# version = 0.81.1
-
-# let's define some colors
-
-let strong    = "#7E8B7C"
-let light     = "#D8DCD6"
-let variable  = "#C5C592"
-
-let text      = "#4A5249"
-let subtext1  = "#424941"
-let subtext0  = "#3B413A"
-let overlay2  = "#343933"
-let overlay1  = "#2C312C"
-let overlay0  = "#252924"
-let surface2  = "#1D211D"
-let surface1  = "#161816"
-let surface0  = "#161816"
-let base      = "#0F100F"
-let mantle    = "#0F100F"
-let crust     = "#070807"
-
-# we're creating a theme here that uses the colors we defined above.
-
-let catppuccin_theme = {
-    separator: $overlay2
-    leading_trailing_space_bg: $surface2
-    header: $strong
-    date: $variable
-    filesize: $variable
-    row_index: $text
-    bool: $variable
-    int: $strong
-    duration: $light
-    range: $light
-    float: $strong
-    string: $text
-    nothing: $overlay1
-    binary: $subtext1
-    cellpath: $subtext0
-    hints: dark_gray
-
-    shape_garbage: { fg: $overlay2 bg: $strong attr: b}
-    shape_bool: $strong
-    shape_int: { fg: $light attr: b}
-    shape_float: { fg: $light attr: b}
-    shape_range: { fg: $overlay0 attr: b}
-    shape_internalcall: { fg: $strong attr: b}
-    shape_external: $light
-    shape_externalarg: { fg: $strong attr: b}
-    shape_literal: $strong
-    shape_operator: $variable
-    shape_signature: { fg: $strong attr: b}
-    shape_string: $strong
-    shape_filepath: $light
-    shape_globpattern: { fg: $light attr: b}
-    shape_variable: $light
-    shape_flag: { fg: $light attr: b}
-    shape_custom: {attr: b}
-}
 
 # The default config record. This is where much of your global configuration is setup.
 
@@ -72,7 +13,6 @@ $env.config = {
       direnv export json | from json | default {} | load-env
     }]
   }
-  color_config: $catppuccin_theme  # <-- this is the theme
   use_ansi_coloring: true
 
   # true or false to enable or disable the welcome banner at startup

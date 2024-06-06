@@ -51,15 +51,15 @@
     settings =
       {
         background_opacity = "0.93";
-        # shell = " ${pkgs.nushell}/bin/nu ";
+
         macos_option_as_alt = true; # Option key acts as Alt on macOS
         scrollback_lines = 10000;
         enable_audio_bell = false;
         tab_bar_edge = "bot";     # tab bar on bop
         copy_on_select = true;
+        allow_remote_control = true;
         term = "xterm-256color";
-        #enabled_layouts = "tall:bias=50;full_size=1;mirrored=false";
-        enabled_layouts = "fat:bias=50;full_size=1;mirrored=false";
+        enabled_layouts = "tall:bias=50;full_size=1;mirrored=false";
 
         foreground = "#ebe5d9";
         background = "#100d13";

@@ -9,12 +9,9 @@
     ./programs/slack
     ./programs/btop
     ./programs/pcmanfm
-    ./programs/dbeaver
-    ./programs/mariadb
     ./programs/filezilla
     ./programs/libreoffice
     ./programs/obsidian
-    ./programs/moonlight
 
   ];
 }
