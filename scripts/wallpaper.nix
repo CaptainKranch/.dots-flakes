@@ -11,13 +11,17 @@ pkgs.writeShellScriptBin "wallpaper-set" ''
 
   # Apply the colorscheme to Kitty
   kitty @ set-colors --all ~/.cache/wal/colors-kitty.conf
-  
-  # Generate Nushell color configuration
-  cat ~/.cache/wal/colors.sh | grep -E 'export COLOR_\d+' | sed 's/export /let /' | sed 's/=/: /' > ~/.cache/wal/colors.nu
 
-  # Ensure the Nushell color configuration is sourced in config.nu
-  if ! grep -q 'source ~/.cache/wal/colors.nu' ~/.config/nushell/config.nu; then
-      echo 'source ~/.cache/wal/colors.nu' >> ~/.config/nushell/config.nu
+  # Ensure Kitty uses the new colorscheme for new instances
+  kitty_conf="$HOME/.config/kitty/kitty.conf"
+  temp_conf=$(mktemp)
+
+  # Check if the include line already exists
+  if ! grep -q "include ~/.cache/wal/colors-kitty.conf" "$kitty_conf"; then
+    echo "include ~/.cache/wal/colors-kitty.conf" >> "$temp_conf"
   fi
-  
+
+  # Append the rest of the original kitty.conf
+  cat "$kitty_conf" >> "$temp_conf"
+  mv "$temp_conf" "$kitty_conf"
 ''
