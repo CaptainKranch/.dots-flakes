@@ -92,6 +92,8 @@
     displayManager.autoLogin.enable = true;
     displayManager.autoLogin.user = "danielgm";
   };
+
+  services.tailscale.enable = true;
   #Gnome Key Ring
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
