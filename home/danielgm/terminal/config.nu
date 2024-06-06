@@ -72,7 +72,6 @@ $env.config = {
       direnv export json | from json | default {} | load-env
     }]
   }
-  color_config: $catppuccin_theme  # <-- this is the theme
   use_ansi_coloring: true
 
   # true or false to enable or disable the welcome banner at startup
