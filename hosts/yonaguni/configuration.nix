@@ -97,7 +97,8 @@
     containers.enable = true;
     cri-o.enable = true;
     podman.enable = true;
-    dockerCompat = true;
+    podman.dockerCompat = true;
+    podman.defaultNetwork.settings.dns_enabled = true;
   };
 
   #Wireguard
