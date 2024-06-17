@@ -91,6 +91,7 @@
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
   services.tailscale.enable = true;
+  services.kubernetes.kubelet.enable = true;
   
   #Containers
   virtualisation = {
@@ -168,6 +169,9 @@
   # TODO: Set your hostname
   networking.hostName = "yonaguni";
   networking.networkmanager.enable = true;
+
+  networking.sysctl."net.ipv4.ip_forward" = 1;
+
 
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.

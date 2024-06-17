@@ -9,5 +9,8 @@
     podman-desktop
     cri-o
     kubernetes
+    conntrack-tools
+    ethtool
+    socat
   ];
 }
