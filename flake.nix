@@ -63,13 +63,13 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs outputs; }; # Pass flake inputs to our config
           # > Our main home-manager configuration file <
-          modules = [ ./home/danielgm/yonaguni.nix ];
+          modules = [ ./home/yonaguni/yonaguni.nix ];
         };
         "danielgm@newyork" = lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs outputs; }; # Pass flake inputs to our config
           # > Our main home-manager configuration file <
-          modules = [ ./home/danielgm/newyork.nix ];
+          modules = [ ./home/newyork/newyork.nix ];
         };
       };
     };

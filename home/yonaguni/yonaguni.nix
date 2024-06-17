@@ -4,13 +4,10 @@
     ./terminal
     ./programs/firefox
     ./programs/nvim
-    ./programs/discord
-    ./programs/deluge
     ./programs/starship
     ./programs/slack
     ./programs/btop
     ./programs/pcmanfm
-    ./programs/filezilla
     ./programs/libreoffice
     ./programs/obsidian
 
