@@ -4,8 +4,15 @@ pkgs.writeShellScriptBin "wallpaper-set" ''
   # Directory containing your wallpapers
   wallpaper_dir="/home/danielgm/.dots-flakes/wallpapers"
 
-  # Select a random wallpaper
-  wallpaper=$(find "$wallpaper_dir" -type f | shuf -n 1)
+  # Check for argument
+  if [ "$1" = "light" ]; then
+    wallpaper="$wallpaper_dir/topograpghy_white.webp "
+  elif [ "$1" = "dark" ]; then
+    wallpaper="$wallpaper_dir/emo-aesthetic-girl-red-desktop-wallpaper.jpg"
+  else
+    # Select a random wallpaper if no argument is provided
+    wallpaper=$(find "$wallpaper_dir" -type f | shuf -n 1)
+  fi
 
   ${pkgs.pywal}/bin/wal -i "$wallpaper"
 

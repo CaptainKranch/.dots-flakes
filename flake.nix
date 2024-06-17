@@ -39,7 +39,7 @@
     {
       inherit lib;
       # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
+      # Available through 'sudo nixos-rebuild switch --flake .#your-hostname'
       nixosConfigurations = {
         # Main Desktop
         yonaguni = lib.nixosSystem {
@@ -56,7 +56,7 @@
       };
 
       # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#your-username@your-hostname'
+      # Available through 'home-manager switch --flake .#your-username@your-hostname'
       homeConfigurations = {
         # FIXME replace with your username@hostname
         "captainkranch@yonaguni" = lib.homeManagerConfiguration {
