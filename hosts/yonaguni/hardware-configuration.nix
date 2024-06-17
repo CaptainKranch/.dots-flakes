@@ -7,35 +7,25 @@
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
-    
+
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "tcp_bbr" ];
+  boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "nohibernate" "i915.enable_psr=0" ];
-  
-  # Enable BBR congestion control
-  boot.kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
-  boot.kernel.sysctl."net.core.default_qdisc" = "fq"; # see https://news.ycombinator.com/item?id=14814530
-
-  boot.kernel.sysctl."net.core.wmem_max" = 1073741824; # 1 GiB
-  boot.kernel.sysctl."net.core.rmem_max" = 1073741824; # 1 GiB
-  boot.kernel.sysctl."net.ipv4.tcp_rmem" = "4096 87380 1073741824"; # 1 GiB max
-  boot.kernel.sysctl."net.ipv4.tcp_wmem" = "4096 87380 1073741824"; # 1 GiB max
-
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/ebf40ec4-604c-4d6f-a5fc-0bc68c917f0e";
+    { device = "/dev/disk/by-uuid/bca7053a-4503-4ebd-9c9b-a6c8b00018a5";
       fsType = "btrfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/C790-929C";
+    { device = "/dev/disk/by-uuid/73A1-3ED7";
       fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/65574f17-25ff-4f3c-99ee-4caae8d5c14f"; }
+    [ { device = "/dev/disk/by-uuid/62a4b880-c857-4e7f-b10b-366d462bc7e0"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -43,7 +33,8 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp7s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
