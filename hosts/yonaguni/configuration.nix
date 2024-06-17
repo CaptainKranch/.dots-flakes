@@ -84,10 +84,10 @@
   services.xserver = {
     enable = true;
     windowManager.dwm.enable = true;
+    displayManager.autoLogin.enable = true;
     displayManager.autoLogin.user = "danielgm";
   };
 
-  services.displayManager.autoLogin = true;
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
   services.tailscale.enable = true;
