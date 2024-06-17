@@ -92,8 +92,14 @@
   services.gvfs.enable = true;
   services.tailscale.enable = true;
   
-  #docker
-  virtualisation.docker.enable = true;
+  #Containers
+  virtualisation = {
+    containers.enable = true;
+    cri-o.enable = true;
+    podman.enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
 
   #Wireguard
   networking.firewall.checkReversePath = false;
