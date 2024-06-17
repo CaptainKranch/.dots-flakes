@@ -72,7 +72,7 @@
 
   environment.systemPackages = with pkgs; [ 
     (import ../../scripts/screenshotsel.nix { inherit pkgs; })
-    (import ../../scripts/fehbg.nix { inherit pkgs; })
+    (import ../../scripts/wallpaper.nix { inherit pkgs; })
     (import ../../scripts/lock-screen.nix { inherit pkgs; })
     git
     picom
