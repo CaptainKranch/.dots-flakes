@@ -2,6 +2,7 @@
   imports = [
     ./global
     ./terminal
+    ./services/kubernetes
     ./programs/firefox
     ./programs/nvim
     ./programs/starship
