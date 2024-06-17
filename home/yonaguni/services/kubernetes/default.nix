@@ -6,6 +6,5 @@
     podman-desktop
     cri-o
     kubernetes
-    kubeadm
   ];
 }
