@@ -30,16 +30,6 @@
           }
         );
       })
-      (final: prev: {
-        picom = prev.picom.overrideAttrs (old: {
-          src = prev.fetchFromGitHub {
-            owner = "pijulius"; # This is a fork of picom with animations
-            repo = "picom";
-            rev = "982bb43e5d4116f1a37a0bde01c9bda0b88705b9";
-            sha256 = "YiuLScDV9UfgI1MiYRtjgRkJ0VuA1TExATA2nJSJMhM=";
-          };
-        });
-      })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -75,16 +65,12 @@
     (import ../../scripts/wallpaper.nix { inherit pkgs; })
     (import ../../scripts/lock-screen.nix { inherit pkgs; })
     git
-    picom
     dmenu
     home-manager
-    dunst
     pavucontrol
-    eww
+    rofi
     go
     cargo
-    wineWowPackages.stable
-    winetricks
     xorg.libX11
     xorg.libX11.dev
     xorg.libxcb
