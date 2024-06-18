@@ -7,7 +7,7 @@
       config = /* lua */ ''
       require('lualine').setup{
         options = {
-          theme = "iceberg_dark",
+          theme = "gruvbox_light",
         }
       }
       '';

@@ -53,6 +53,12 @@
           # > Our main nixos configuration file <
           modules = [ ./hosts/newYork/configuration.nix ];
         };
+        # Testing Kubernetes server
+        medellin = lib.nixosSystem {
+          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          # > Our main nixos configuration file <
+          modules = [ ./hosts/medellin/configuration.nix ];
+        };
       };
 
       # Standalone home-manager configuration entrypoint
@@ -70,6 +76,12 @@
           extraSpecialArgs = { inherit inputs outputs; }; # Pass flake inputs to our config
           # > Our main home-manager configuration file <
           modules = [ ./home/newyork/newyork.nix ];
+        };
+        "captainkranch@medellin" = lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs outputs; }; # Pass flake inputs to our config
+          # > Our main home-manager configuration file <
+          modules = [ ./home/medellin/medellin.nix ];
         };
       };
     };

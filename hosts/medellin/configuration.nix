@@ -30,16 +30,6 @@
           }
         );
       })
-      (final: prev: {
-        picom = prev.picom.overrideAttrs (old: {
-          src = prev.fetchFromGitHub {
-            owner = "pijulius"; # This is a fork of picom with animations
-            repo = "picom";
-            rev = "982bb43e5d4116f1a37a0bde01c9bda0b88705b9";
-            sha256 = "YiuLScDV9UfgI1MiYRtjgRkJ0VuA1TExATA2nJSJMhM=";
-          };
-        });
-      })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -72,82 +62,31 @@
 
   environment.systemPackages = with pkgs; [ 
     (import ../../scripts/screenshotsel.nix { inherit pkgs; })
-    (import ../../scripts/fehbg.nix { inherit pkgs; })
+    (import ../../scripts/wallpaper.nix { inherit pkgs; })
     (import ../../scripts/lock-screen.nix { inherit pkgs; })
     git
-    picom
     dmenu
     home-manager
-    dunst
     pavucontrol
-    eww
+    rofi
     go
     cargo
-    wineWowPackages.stable
-    winetricks
-    xorg.libX11
-    xorg.libX11.dev
-    xorg.libxcb
-    xorg.libXft
-    xorg.libXinerama
-    xorg.xinit
-    xorg.xinput
   ];
 
-  #XORG
-  services.xserver = {
-    enable = true;
-    windowManager.dwm.enable = true;
-    displayManager.autoLogin.enable = true;
-    displayManager.autoLogin.user = "danielgm";
-  };
 
-  services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
   services.tailscale.enable = true;
+  services.kubernetes.kubelet.enable = true;
   
-  #docker
-  virtualisation.docker.enable = true;
-
-  #Wireguard
-  networking.firewall.checkReversePath = false;
-
-  # Fonst
-  fonts = {
-    packages = with pkgs; [
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-      font-awesome
-      source-han-sans
-      source-han-sans-japanese
-      source-han-serif-japanese
-      (nerdfonts.override { fonts = [ "Meslo" ]; })
-    ];
-    fontconfig = {
-      enable = true;
-      defaultFonts = {
-	      monospace = [ "Meslo LG M Regular Nerd Font Complete Mono" ];
-	      serif = [ "Noto Serif" "Source Han Serif" ];
-	      sansSerif = [ "Noto Sans" "Source Han Sans" ];
-      };
-    };
+  #Containers
+  virtualisation = {
+    containers.enable = true;
+    cri-o.enable = true;
+    podman.enable = true;
+    podman.dockerCompat = true;
+    podman.defaultNetwork.settings.dns_enabled = true;
   };
 
-  #Audio
-  sound.enable = false;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-    services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  # Bluethooth
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 
   # Select internationalisation properties.
   time.timeZone = "America/Bogota";
@@ -165,29 +104,11 @@
     LC_TIME = "es_CO.UTF-8";
   };
 
-  # GPU
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.opengl.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.forceFullCompositionPipeline = true;
-  hardware.nvidia.powerManagement.enable = false;
-  nixpkgs.config.cudaSupport = true;
-  virtualisation.docker.enableNvidia = true;
-  virtualisation.docker.extraOptions = "--add-runtime nvidia=/run/current-system/sw/bin/nvidia-container-runtime";
-
-  # Steam
-  programs.steam = {
-    enable = true;
-  };
 
   # TODO: Set your hostname
-  networking.hostName = "yonaguni";
+  networking.hostName = "medellin";
   networking.networkmanager.enable = true;
 
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 47989 47984  48010 47998 47999 47989 ];
-  networking.firewall.allowedUDPPorts = [ 47989 47984  48000 48010 47999 47998 ];
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
@@ -232,5 +153,6 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }
+
