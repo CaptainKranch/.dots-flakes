@@ -21,6 +21,6 @@
     ./noice.nix
     ./nvim-autopairs.nix
 #    ./neogit.nix
-#    ./lazygit-nvim.nix
+    ./lazygit-nvim.nix
   ];
 }

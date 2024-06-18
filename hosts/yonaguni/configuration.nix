@@ -91,7 +91,7 @@
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
   services.tailscale.enable = true;
-  services.kubernetes.kubelet.enable = true;
+  #services.kubernetes.kubelet.enable = true;
   
   #Containers
   virtualisation = {

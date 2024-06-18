@@ -4,8 +4,7 @@
       plugin = lazygit-nvim;
       type = "lua";
       config = /* lua */ ''
-        " setup mapping to call :LazyGit
-        nnoremap <silent> <leader>gg :LazyGit<CR>
+        vim.api.nvim_set_keymap('n', '<leader>gg', ':LazyGit<CR>', { noremap = true, silent = true })
       '';
     }
   ];
