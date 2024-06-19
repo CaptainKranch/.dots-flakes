@@ -14,6 +14,7 @@
     #../../services/airflow/default.nix
     #../../services/httpd/default.nix
     #../../services/trillium/default.nix
+    ../../services/nginx/default.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -93,15 +94,6 @@
   services.tailscale.enable = true;
   #services.kubernetes.kubelet.enable = true;
   
-  #Containers
-  virtualisation = {
-    containers.enable = true;
-    cri-o.enable = true;
-    podman.enable = true;
-    podman.dockerCompat = true;
-    podman.defaultNetwork.settings.dns_enabled = true;
-  };
-
   # Fonst
   fonts = {
     packages = with pkgs; [
