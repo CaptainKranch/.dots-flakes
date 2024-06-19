@@ -14,13 +14,9 @@
         ports = [ "0.0.0.0:8080:80" ]; # Make available to the network
       };
       airflow = {
-        image = "apache/airflow:latest";
+        image = "docker.io/library/jellyfin:latest";
         autoStart = true;
-        ports = [ "0.0.0.0:8081:8080" ]; # Expose Airflow web server
-        environment = {
-          AIRFLOW__CORE__EXECUTOR = "LocalExecutor";
-          AIRFLOW__CORE__SQL_ALCHEMY_CONN = "sqlite:////usr/local/airflow/airflow.db";
-        };
+        ports = [ "0.0.0.0:8096:8096" ]; # Expose Airflow web server
       };
     };
   };
