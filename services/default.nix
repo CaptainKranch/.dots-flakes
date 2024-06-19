@@ -20,7 +20,7 @@
         labels = {
           "io.containers.autoupdate" = "registry";
         };
-        devices = [
+        device = [
           "/dev/dri:/dev/dri"
         ];
         environment = {
@@ -31,8 +31,6 @@
           "/home/danielgm/Documents/Services/jellyfin/config:/config:Z"
           "/home/danielgm/Documents/Services/jellyfin/media:/media:Z"
         ];
-        user = "${toString (getent passwd danielgm).uid}:${toString (getent group danielgm).gid}";
-        userns = "keep-id";
       };
     };
   };
