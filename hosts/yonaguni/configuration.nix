@@ -15,6 +15,7 @@
     #../../services/httpd/default.nix
     #../../services/trillium/default.nix
     #../../services/default.nix
+    ../../services/immich.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
