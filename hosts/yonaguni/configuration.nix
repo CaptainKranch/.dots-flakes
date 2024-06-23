@@ -16,6 +16,7 @@
     #../../services/trillium/default.nix
     #../../services/default.nix
     ../../services/immich.nix
+    ../../services/ollama.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -73,6 +74,7 @@
     rofi
     go
     cargo
+    cockpit
     xorg.libX11
     xorg.libX11.dev
     xorg.libxcb
@@ -155,9 +157,26 @@
     Option "TearFree" "true"
   '';
 
+  #Cockpit
+  services.cockpit = {
+    enable = true;
+    port = 9090;
+    settings = {
+      WebService = {
+        AllowUnencrypted = true;
+      };
+    };
+  };
+
   # TODO: Set your hostname
   networking.hostName = "yonaguni";
   networking.networkmanager.enable = true;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ 2283 5432 6379 ];
+  # networking.firewall.allowedUDPPorts = [ ];
+  # Or disable the firewall altogether.
+  networking.firewall.enable = false;
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
