@@ -3,6 +3,7 @@
     ./global
     ./terminal
     #./services/podman/nginx
+    ./services/immich
     ./programs/firefox
     ./programs/nvim
     ./programs/starship
