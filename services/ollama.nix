@@ -53,6 +53,9 @@
     volumes = [
       "ollama:/root/.ollama:rw"
     ];
+    ports = [
+      "11343:11434/tcp"
+    ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=ollama"
