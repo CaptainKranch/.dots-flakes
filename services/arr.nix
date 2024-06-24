@@ -23,8 +23,8 @@
       TZ = "America/Bogota";
     };
     volumes = [
-      "/media/downloads/watch:/downloads:rw"
-      "/media/prowlarr:/config:rw"
+      "/home/danielgm/Documents/Services/nixarr/media/downloads/watch:/downloads:rw"
+      "/home/danielgm/Documents/Services/nixarr/media/prowlarr:/config:rw"
     ];
     ports = [
       "9696:9696/tcp"
@@ -61,9 +61,9 @@
       TZ = "America/Bogota";
     };
     volumes = [
-      "/media/downloads/completed:/downloads:rw"
-      "/media/movies:/movies:rw"
-      "/media/radarr:/config:rw"
+      "/home/danielgm/Documents/Services/nixarr/media/downloads/completed:/downloads:rw"
+      "/home/danielgm/Documents/Services/nixarr/media/movies:/movies:rw"
+      "/home/danielgm/Documents/Services/nixarr/media/radarr:/config:rw"
     ];
     ports = [
       "7878:7878/tcp"
@@ -91,45 +91,6 @@
       "podman-compose-nixarr-root.target"
     ];
   };
-  virtualisation.oci-containers.containers."samba" = {
-    image = "dperson/samba:latest";
-    environment = {
-      GROUPID = "1000";
-      SHARE = "Media;/media";
-      TZ = "Europe/Amsterdam";
-      USERID = "1000";
-    };
-    volumes = [
-      "/media:/media:rw"
-    ];
-    ports = [
-      "139:139/tcp"
-      "445:445/tcp"
-    ];
-    log-driver = "journald";
-    extraOptions = [
-      "--memory=536870912b"
-      "--network-alias=samba"
-      "--network=nixarr_default"
-    ];
-  };
-  systemd.services."podman-samba" = {
-    serviceConfig = {
-      Restart = lib.mkOverride 500 "always";
-    };
-    after = [
-      "podman-network-nixarr_default.service"
-    ];
-    requires = [
-      "podman-network-nixarr_default.service"
-    ];
-    partOf = [
-      "podman-compose-nixarr-root.target"
-    ];
-    wantedBy = [
-      "podman-compose-nixarr-root.target"
-    ];
-  };
   virtualisation.oci-containers.containers."sonarr" = {
     image = "linuxserver/sonarr:latest";
     environment = {
@@ -138,10 +99,10 @@
       TZ = "America/Bogota";
     };
     volumes = [
-      "/media/anime:/anime:rw"
-      "/media/downloads/completed:/downloads:rw"
-      "/media/sonarr:/config:rw"
-      "/media/tv:/tv:rw"
+      "/home/danielgm/Documents/Services/nixarr/media/anime:/anime:rw"
+      "/home/danielgm/Documents/Services/nixarr/media/downloads/completed:/downloads:rw"
+      "/home/danielgm/Documents/Services/nixarr/media/sonarr:/config:rw"
+      "/home/danielgm/Documents/Services/nixarr/media/tv:/tv:rw"
     ];
     ports = [
       "8989:8989/tcp"
