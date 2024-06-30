@@ -11,12 +11,12 @@
     ../../programs/terminal/btop
     ../../programs/terminal/starship
     # Desktop prgroams
-    ../../programs/firefox
-    ../../programs/slack
-    ../../programs/pcmanfm
-    ../../programs/libreoffice
-    ../../programs/obsidian
-    ../../programs/zoom
+    ../../programs/desktop/firefox
+    ../../programs/desktop/slack
+    ../../programs/desktop/pcmanfm
+    ../../programs/desktop/libreoffice
+    ../../programs/desktop/obsidian
+    ../../programs/desktop/zoom
 
   ];
 }
