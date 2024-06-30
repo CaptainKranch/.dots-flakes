@@ -10,11 +10,6 @@
 
     # You can also split up your configuration and import pieces of it here:
     # Like services that you want to run in the background, like airflow, grafana, prometeus, etc.
-    #../../services/sunshine/default.nix
-    #../../services/airflow/default.nix
-    #../../services/httpd/default.nix
-    #../../services/trillium/default.nix
-    #../../services/default.nix
     ../../services/default.nix
     
 
@@ -95,7 +90,6 @@
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
   services.tailscale.enable = true;
-  #services.kubernetes.kubelet.enable = true;
   
   # Fonst
   fonts = {
