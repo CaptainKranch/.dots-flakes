@@ -7,12 +7,12 @@
     ../../programs/terminal/lazygit
     ../../programs/terminal/wormhole
     ../../programs/terminal/unzip
+    ../../programs/terminal/nvim
+    ../../programs/terminal/btop
+    ../../programs/terminal/starship
     # Desktop prgroams
     ../../programs/firefox
-    ../../programs/nvim
-    ../../programs/starship
     ../../programs/slack
-    ../../programs/btop
     ../../programs/pcmanfm
     ../../programs/libreoffice
     ../../programs/obsidian
