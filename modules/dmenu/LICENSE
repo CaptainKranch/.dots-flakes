@@ -1,23 +1,15 @@
 MIT/X Consortium License
 
 © 2006-2019 Anselm R Garbe <anselm@garbe.ca>
-© 2006-2009 Jukka Salmi <jukka at salmi dot ch>
-© 2006-2007 Sander van Dijk <a dot h dot vandijk at gmail dot com>
-© 2007-2011 Peter Hartlich <sgkkr at hartlich dot com>
-© 2007-2009 Szabolcs Nagy <nszabolcs at gmail dot com>
-© 2007-2009 Christof Musik <christof at sendfax dot de>
-© 2007-2009 Premysl Hruby <dfenze at gmail dot com>
-© 2007-2008 Enno Gottox Boland <gottox at s01 dot de>
-© 2008 Martin Hurton <martin dot hurton at gmail dot com>
-© 2008 Neale Pickett <neale dot woozle dot org>
-© 2009 Mate Nagy <mnagy at port70 dot net>
-© 2010-2016 Hiltjo Posthuma <hiltjo@codemadness.org>
+© 2006-2008 Sander van Dijk <a.h.vandijk@gmail.com>
+© 2006-2007 Michał Janeczek <janeczek@gmail.com>
+© 2007 Kris Maglione <jg@suckless.org>
+© 2009 Gottox <gottox@s01.de>
+© 2009 Markus Schnalke <meillo@marmaro.de>
+© 2009 Evan Gates <evan.gates@gmail.com>
 © 2010-2012 Connor Lane Smith <cls@lubutu.com>
-© 2011 Christoph Lohmann <20h@r-36.net>
-© 2015-2016 Quentin Rameau <quinq@fifth.space>
-© 2015-2016 Eric Pruitt <eric.pruitt@gmail.com>
-© 2016-2017 Markus Teich <markus.teich@stusta.mhn.de>
-© 2020-2022 Chris Down <chris@chrisdown.name>
+© 2014-2022 Hiltjo Posthuma <hiltjo@codemadness.org>
+© 2015-2019 Quentin Rameau <quinq@fifth.space>
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
