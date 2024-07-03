@@ -240,7 +240,7 @@
   };
   systemd.services."podman-superset_init" = {
     serviceConfig = {
-      Restart = lib.mkOverride 500 "\"no\"";
+      Restart = lib.mkOverride 500 "no";
     };
     after = [
       "podman-network-analytics_default.service"
@@ -342,7 +342,7 @@
   };
   systemd.services."podman-superset_node" = {
     serviceConfig = {
-      Restart = lib.mkOverride 500 "\"no\"";
+      Restart = lib.mkOverride 500 "no";
     };
     after = [
       "podman-network-analytics_default.service"
@@ -387,7 +387,7 @@
   };
   systemd.services."podman-superset_websocket" = {
     serviceConfig = {
-      Restart = lib.mkOverride 500 "\"no\"";
+      Restart = lib.mkOverride 500 "no";
     };
     after = [
       "podman-network-analytics_default.service"
