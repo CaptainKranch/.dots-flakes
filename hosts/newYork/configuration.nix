@@ -27,6 +27,12 @@
           }
         );
       })
+      (final: prev: {
+        dmenu = prev.dmenu.overrideAttrs (old: { 
+          src = /home/danielgm/.dots-flakes/modules/dmenu;
+          }
+        );
+      })
     ];
    # Configure your nixpkgs instance
     config = {

@@ -11,6 +11,8 @@
     ../../programs/terminal/btop
     ../../programs/terminal/starship
     ../../programs/terminal/awscli
+    ../../programs/terminal/nmpcpp
+    ../../programs/terminal/mopidy
     # Desktop prgroams
     ../../programs/desktop/firefox
     ../../programs/desktop/slack
