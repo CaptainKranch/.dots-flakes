@@ -1,32 +1,41 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const int showbar            = 0;        /* 0 means no bar */
+static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 
 /* COLORS */
-static const char norm_fg[] = "#ebe5d9";
-static const char norm_bg[] = "#100d13";
-static const char norm_border[] = "#a4a097";
+static const char norm_fg[] = "#a9abaa";
+static const char norm_bg[] = "#0E1011";
+static const char norm_border[] = "#767776";
 
-static const char sel_fg[] = "#ebe5d9";
-static const char sel_bg[] = "#8E8E77";
-static const char sel_border[] = "#ebe5d9";
+static const char sel_fg[] = "#a9abaa";
+static const char sel_bg[] = "#3E4142";
+static const char sel_border[] = "#a9abaa";
+
+static const char urg_fg[] = "#a9abaa";
+static const char urg_bg[] = "#3B3E41";
+static const char urg_border[] = "#3B3E41";
 
 static const char *colors[][3]      = {
-	/*                      fg         bg         border   */
-    [SchemeNorm]      = { norm_fg, norm_bg, norm_border },
-    [SchemeSel]       = { sel_fg,  norm_bg,  sel_border  },
+    /*               fg           bg         border                         */
+    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
+    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
+    [SchemeUrg] =  { urg_fg,      urg_bg,    urg_border },
 };
+
+static const char ptagf[] = "[%s %s]";	/* format of a tag label */
+static const char etagf[] = "[%s]";	/* format of an empty tag */
+static const int lcaselbl = 0;		/* 1 means make tag label lowercase */	
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -45,7 +54,7 @@ static const Rule rules[] = {
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
@@ -130,7 +139,7 @@ static const Key keys[] = {
 	{ MODKEY|Mod4Mask,              XK_0,      togglegaps,     {0} },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -142,6 +151,15 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+
+	{ MODKEY,                            XK_F10, spawn,         SHCMD ("amixer sset Master 5%- unmute")},
+	{ MODKEY,                            XK_F11, spawn,         SHCMD ("amixer sset Master 5%+ unmute")},
+	{ MODKEY,                            XK_F12, spawn,         SHCMD ("amixer sset Master mute ")},
+    { MODKEY|ShiftMask,                  XK_s,   spawn,         SHCMD ("screenshot-sel") },
+    { MODKEY,                            XK_o,   spawn,         SHCMD ("screen-lock") },
+	{ MODKEY|ControlMask|ShiftMask,      XK_r,      spawn,          SHCMD("reboot")},
+	{ MODKEY|ControlMask|ShiftMask,      XK_p,      spawn,          SHCMD("shutdown now")},
+
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -152,6 +170,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
 };
 
 /* button definitions */

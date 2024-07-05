@@ -10,7 +10,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # Like services that you want to run in the background, like airflow, grafana, prometeus, etc.
-    ../../services/default.nix
+    #../../services/default.nix
     
 
     # Import your generated (nixos-generate-config) hardware configuration
@@ -69,6 +69,7 @@
     (import ../../scripts/wallpaper.nix { inherit pkgs; })
     (import ../../scripts/lock-screen.nix { inherit pkgs; })
     git
+    picom-pijulius
     dmenu
     home-manager
     pavucontrol

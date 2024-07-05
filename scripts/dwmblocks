@@ -7,6 +7,6 @@ get_datetime() {
 
 while true
 do
-    xsetroot -name "$(get_datetime)";
-    sleep 15;
+    xsetroot -name "Gamba >:) | $(get_datetime)";
+    sleep 3;
 done
