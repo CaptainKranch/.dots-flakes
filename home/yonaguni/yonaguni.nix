@@ -10,6 +10,7 @@
     ../../programs/terminal/nvim
     ../../programs/terminal/btop
     ../../programs/terminal/starship
+    ../../programs/terminal/ncmpcpp
     # Desktop prgroams
     ../../programs/desktop/firefox
     ../../programs/desktop/slack
