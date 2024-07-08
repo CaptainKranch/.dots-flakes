@@ -20,6 +20,11 @@
       url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
     };
+    
+    plugin-github-theme = {
+      url = "github:projekt0n/github-nvim-theme";
+      flake = false;
+    };
 
     #Firefox addons
     firefox-addons = {
