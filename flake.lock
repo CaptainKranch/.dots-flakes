@@ -9,11 +9,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1720167363,
-        "narHash": "sha256-GIQZdHXLC2u7QyXAtb9WsOqwmRpeCqcqX/AR7INiiXY=",
+        "lastModified": 1720411406,
+        "narHash": "sha256-Z3tMBbMeYQKz1YYmSnbLglG9lm1l/EU+h3CFPJCli4I=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "cea36a02a4619e009d7fac7df1bc2acba825c5a4",
+        "rev": "a2a2d880d5ec199ee333c9bf929865d65f92a1d4",
         "type": "gitlab"
       },
       "original": {
@@ -75,11 +75,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1719956923,
-        "narHash": "sha256-nNJHJ9kfPdzYsCOlHOnbiiyKjZUW5sWbwx3cakg3/C4=",
+        "lastModified": 1720386169,
+        "narHash": "sha256-NGKVY4PjzwAa4upkGtAMz1npHGoRzWotlSnVlqI40mo=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "706eef542dec88cc0ed25b9075d3037564b2d164",
+        "rev": "194846768975b7ad2c4988bdb82572c00222c0d7",
         "type": "github"
       },
       "original": {
@@ -121,13 +121,30 @@
         "type": "github"
       }
     },
+    "plugin-github-nvim-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719300467,
+        "narHash": "sha256-nnzVQNdvmiTPjpW5XkFpZjDYvWlALfSpQ7yZR/JaQNE=",
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "rev": "4f44a5c930372c85483d02700f332d34417e50b2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
         "plugin-fine-cmd-line-nvim": "plugin-fine-cmd-line-nvim",
-        "plugin-gen-nvim": "plugin-gen-nvim"
+        "plugin-gen-nvim": "plugin-gen-nvim",
+        "plugin-github-nvim-theme": "plugin-github-nvim-theme"
       }
     }
   },

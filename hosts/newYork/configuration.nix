@@ -1,4 +1,4 @@
-# This is your system's configuration file.
+#This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 
 { inputs, lib, config, pkgs, ... }: {
@@ -97,6 +97,39 @@
   #PICOM
 #  services.picom.enable = true;
 #  services.picom.vSync = true;
+
+  #Mopidy
+  services.mopidy = {
+    enable = true;
+    extensionPackages = with pkgs; [
+      mopidy
+      mopidy-jellyfin
+      mopidy-spotify
+      mopidy-ytmusic
+      mopidy-mpd
+      mopidy-moped
+    ];
+    configuration = ''
+      [jellyfin]
+      hostname = "medellin:8096"
+      username = "beem4aster"
+      password = "bErserk.324#"
+      libraries = "Music"
+      max_bitrate = 320
+
+      [spotify]
+      enabled = true
+      username = your_username
+      password = your_pw
+      client_id = your_client_id
+      client_secret = your_client_secret
+      bitrate = 320
+
+      [mpd]
+      hostname = "0.0.0.0"
+      port = 6600
+    '';
+  };
 
   #docker
   virtualisation.docker.enable = true;

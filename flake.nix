@@ -21,7 +21,7 @@
       flake = false;
     };
     
-    plugin-github-theme = {
+    plugin-github-nvim-theme = {
       url = "github:projekt0n/github-nvim-theme";
       flake = false;
     };
