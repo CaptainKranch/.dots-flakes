@@ -59,6 +59,10 @@
           # > Our main nixos configuration file <
           modules = [ ./hosts/medellin/configuration.nix ];
         };
+        iso = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          modules = [ ./hosts/medellin/configuration.nix ];
+        };
       };
 
       # Standalone home-manager configuration entrypoint

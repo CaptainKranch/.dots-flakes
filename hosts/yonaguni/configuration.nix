@@ -158,16 +158,7 @@
     Option "TearFree" "true"
   '';
 
-  #Cockpit
-  services.cockpit = {
-    enable = true;
-    port = 9090;
-    settings = {
-      WebService = {
-        AllowUnencrypted = true;
-      };
-    };
-  };
+
 
   # TODO: Set your hostname
   networking.hostName = "yonaguni";

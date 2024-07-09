@@ -1,22 +1,20 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, lib, config, modulesPath, pkgs, ... }: {
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules from other flakes (such as nixos-hardware):
+    "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
 
     # You can also split up your configuration and import pieces of it here:
     # Like services that you want to run in the background, like airflow, grafana, prometeus, etc.
-    #../../services/sunshine/default.nix
-    #../../services/airflow/default.nix
-    #../../services/httpd/default.nix
-    #../../services/trillium/default.nix
+    ../../services/default.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
-    ./hardware-configuration.nix
+    #./hardware-configuration.nix
   ];
   
   nixpkgs = {
@@ -30,11 +28,19 @@
           }
         );
       })
+      (final: prev: {
+        dmenu = prev.dmenu.overrideAttrs (old: { 
+          src = /home/danielgm/.dots-flakes/modules/dmenu;
+          }
+        );
+      })
     ];
     # Configure your nixpkgs instance
     config = {
       allowUnfree = true;
     };
+    # Host plataform
+    hostPlatform = "x86_64-linux";
   };
 
   nix = {
@@ -68,15 +74,24 @@
     dmenu
     home-manager
     pavucontrol
-    rofi
-    go
-    cargo
+    kitty
+    firefox-devedition
+    pcmanfm
+    floorp
+    cockpit
+    xorg.libX11
+    xorg.libX11.dev
+    xorg.libxcb
+    xorg.libXft
+    xorg.libXinerama
+    xorg.xinit
+    xorg.xinput
   ];
 
 
   services.gvfs.enable = true;
   services.tailscale.enable = true;
-  services.kubernetes.kubelet.enable = true;
+  #services.kubernetes.kubelet.enable = true;
   
   #Containers
   virtualisation = {
@@ -85,6 +100,17 @@
     podman.enable = true;
     podman.dockerCompat = true;
     podman.defaultNetwork.settings.dns_enabled = true;
+  };
+
+  #Cockpit
+  services.cockpit = {
+    enable = true;
+    port = 9090;
+    settings = {
+      WebService = {
+        AllowUnencrypted = true;
+      };
+    };
   };
 
 
@@ -107,7 +133,7 @@
 
   # TODO: Set your hostname
   networking.hostName = "medellin";
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = false;
 
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
@@ -117,20 +143,8 @@
       # TODO: You can set an initial password for your user.
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
-      #initialPassword = "123";
-      #shell = pkgs.nushell;
-      isNormalUser = true;
-      openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
-      ];
-      # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = [ "wheel" "docker" "networkmanager" "audio" "video" ];
-    };
-    testing = {
-      # TODO: You can set an initial password for your user.
-      # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
-      # Be sure to change it (using passwd) after rebooting!
       initialPassword = "123";
+      shell = pkgs.nushell;
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
@@ -146,7 +160,7 @@
     enable = true;
     # Forbid root login through SSH.
     settings = { 
-      PermitRootLogin = "no"; 
+      PermitRootLogin = "yes"; 
       PasswordAuthentication = false;
     };
     # Use keys only. Remove if you want to SSH using password (not recommended)
