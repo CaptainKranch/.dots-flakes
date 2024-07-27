@@ -85,18 +85,51 @@
     xorg.xinit
     xorg.xinput
   ];
+  
+  services = {
+    xserver = {
+      enable = true;
+      windowManager.dwm.enable = true;
+      displayManager.autoLogin.enable = true;
+      displayManager.autoLogin.user = "danielgm";
+      videoDrivers = [ "intel" ];
+      deviceSection = ''
+        Option "DRI" "2"
+        Option "TearFree" "true"
+      '';
+    };
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+    tlp = {
+      enable = true;
+      settings = {
+        CPU_SCALING_GOVERNOR_ON_BAT="powersave";
+        CPU_SCALING_GOVERNOR_ON_AC="performance";
 
-  #XORG
-  services.xserver = {
-    enable = true;
-    windowManager.dwm.enable = true;
-    displayManager.autoLogin.enable = true;
-    displayManager.autoLogin.user = "danielgm";
+        # The following prevents the battery from charging fully to
+        # preserve lifetime. Run `tlp fullcharge` to temporarily force
+        # full charge.
+        # https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
+        START_CHARGE_THRESH_BAT0=40;
+        STOP_CHARGE_THRESH_BAT0=50;
+
+        # 100 being the maximum, limit the speed of my CPU to reduce
+        # heat and increase battery usage:
+        CPU_MAX_PERF_ON_AC=100;
+        CPU_MAX_PERF_ON_BAT=60;
+      };
+    };
+    # Varios
+    blueman.enable = true;
+    gnome.gnome-keyring.enable = true;
+    gvfs.enable = true;
+    tailscale.enable = true;
   };
 
-  services.gnome.gnome-keyring.enable = true;
-  services.gvfs.enable = true;
-  services.tailscale.enable = true;
   
   # Fonst
   fonts = {
@@ -124,16 +157,9 @@
   sound.enable = false;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-    services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   # Bluethooth
   hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 
   # Select internationalisation properties.
   time.timeZone = "America/Bogota";
@@ -150,13 +176,6 @@
     LC_TELEPHONE = "es_CO.UTF-8";
     LC_TIME = "es_CO.UTF-8";
   };
-
-  #GPU
-  services.xserver.videoDrivers = [ "intel" ];
-  services.xserver.deviceSection = ''
-    Option "DRI" "2"
-    Option "TearFree" "true"
-  '';
 
   #docker
   virtualisation.docker.enable = true;
