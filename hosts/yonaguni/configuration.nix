@@ -158,6 +158,8 @@
     Option "TearFree" "true"
   '';
 
+  #docker
+  virtualisation.docker.enable = true;
 
 
   # TODO: Set your hostname
