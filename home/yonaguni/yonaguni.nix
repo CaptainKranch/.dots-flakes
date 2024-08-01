@@ -11,6 +11,7 @@
     ../../programs/terminal/btop
     ../../programs/terminal/starship
     ../../programs/terminal/ncmpcpp
+    ../../programs/desktop/joplin
     # Desktop prgroams
     ../../programs/desktop/firefox
     ../../programs/desktop/slack
@@ -18,6 +19,7 @@
     ../../programs/desktop/libreoffice
     ../../programs/desktop/obsidian
     ../../programs/desktop/zoom
+    ../../programs/desktop/moonlight
 
   ];
 }
