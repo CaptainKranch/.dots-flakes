@@ -22,7 +22,7 @@
     ../../programs/desktop/moonlight
     ../../programs/desktop/discord
     ../../programs/desktop/chromium
-    ../../programs/desktop/teams
+    ../../programs/desktop/solaar
 
 
   ];
