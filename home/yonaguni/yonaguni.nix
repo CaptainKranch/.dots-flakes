@@ -20,6 +20,10 @@
     ../../programs/desktop/obsidian
     ../../programs/desktop/zoom
     ../../programs/desktop/moonlight
+    ../../programs/desktop/discord
+    ../../programs/desktop/chromium
+    ../../programs/desktop/teams
+
 
   ];
 }

@@ -38,6 +38,11 @@
     # Configure your nixpkgs instance
     config = {
       allowUnfree = true;
+      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "steam"
+        "steam-original"
+        "steam-run"
+      ];
     };
   };
 
@@ -93,11 +98,11 @@
       windowManager.dwm.enable = true;
       displayManager.autoLogin.enable = true;
       displayManager.autoLogin.user = "danielgm";
-      videoDrivers = [ "intel" ];
-      deviceSection = ''
-        Option "DRI" "2"
-        Option "TearFree" "true"
-      '';
+      videoDrivers = [ "nvidia" ];
+#      deviceSection = ''
+#        Option "DRI" "2"
+#        Option "TearFree" "true"
+#      '';
     };
     pipewire = {
       enable = true;
@@ -105,25 +110,25 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-    tlp = {
-      enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_BAT="powersave";
-        CPU_SCALING_GOVERNOR_ON_AC="performance";
-
-        # The following prevents the battery from charging fully to
-        # preserve lifetime. Run `tlp fullcharge` to temporarily force
-        # full charge.
-        # https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
-        START_CHARGE_THRESH_BAT0=40;
-        STOP_CHARGE_THRESH_BAT0=50;
-
-        # 100 being the maximum, limit the speed of my CPU to reduce
-        # heat and increase battery usage:
-        CPU_MAX_PERF_ON_AC=100;
-        CPU_MAX_PERF_ON_BAT=60;
-      };
-    };
+#    tlp = {
+#      enable = true;
+#      settings = {
+#        CPU_SCALING_GOVERNOR_ON_BAT="powersave";
+#        CPU_SCALING_GOVERNOR_ON_AC="performance";
+#
+#        # The following prevents the battery from charging fully to
+#        # preserve lifetime. Run `tlp fullcharge` to temporarily force
+#        # full charge.
+#        # https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
+#        START_CHARGE_THRESH_BAT0=40;
+#        STOP_CHARGE_THRESH_BAT0=50;
+#
+#        # 100 being the maximum, limit the speed of my CPU to reduce
+#        # heat and increase battery usage:
+#        CPU_MAX_PERF_ON_AC=100;
+#        CPU_MAX_PERF_ON_BAT=60;
+#      };
+#    };
     # Varios
     blueman.enable = true;
     gnome.gnome-keyring.enable = true;
@@ -153,6 +158,13 @@
       };
     };
   };
+  
+  # Steam
+  programs.gamemode.enable = true;
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+  };
 
   #Audio
   sound.enable = false;
@@ -178,9 +190,15 @@
     LC_TIME = "es_CO.UTF-8";
   };
 
-  #docker
-  virtualisation.docker.enable = true;
-
+  #GPU
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
 
   # TODO: Set your hostname
   networking.hostName = "yonaguni";

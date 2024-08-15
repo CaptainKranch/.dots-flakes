@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
 
 {
-  home.packages = with pkgs; [ discord discocss ];
+  home.packages = with pkgs; [ discord ];
 }
