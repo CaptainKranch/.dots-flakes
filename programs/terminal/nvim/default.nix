@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./themes/theme-github.nix
+    ./themes/theme-rose-pine.nix
     ./plugins/default.nix
   ];
   home.sessionVariables.EDITOR = "nvim";

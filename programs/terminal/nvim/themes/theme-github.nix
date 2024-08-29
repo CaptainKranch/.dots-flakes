@@ -48,7 +48,7 @@
             darken = {                 -- Darken floating windows and sidebar-like windows
               floats = false,
               sidebars = {
-                enabled = true,
+                enabled = false,
                 list = {},             -- Apply dark background to specific windows
               },
             },
@@ -61,7 +61,7 @@
           groups = {},
         })
         -- setup must be called before loading
-        vim.cmd("colorscheme github_light_default")
+        vim.cmd("colorscheme github_dark_default")
       '';
     }
   ];
