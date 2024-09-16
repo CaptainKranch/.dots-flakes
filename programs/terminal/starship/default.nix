@@ -24,7 +24,7 @@
       };
 
       nix_shell = {
-        format = "[$python$golang $symbol]($style) ";
+        format = "[$python $golang $symbol]($style) ";
         impure_msg = "";
         symbol = " ";
       };

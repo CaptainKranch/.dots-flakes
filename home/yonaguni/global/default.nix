@@ -38,7 +38,7 @@
       allowUnfreePredicate = (_: true);
       #Obsidian
       permittedInsecurePackages = [
-        "electron-25.9.0"
+        "electron-29.4.6"
       ];
     };
   };
@@ -65,8 +65,8 @@
   #GIT
   programs.git = {
     enable = true;
-    userName = "danielgm";
-    userEmail = "daniel.garcia@ezlo.com";
+    userName = "Daniel García M";
+    userEmail = "dgarcia1.c@aes.com";
   };
 
   # Nicely reload system units when changing configs

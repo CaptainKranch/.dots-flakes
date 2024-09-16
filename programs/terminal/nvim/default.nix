@@ -2,6 +2,7 @@
 {
   imports = [
     ./themes/theme-rose-pine.nix
+    #./themes/theme-github.nix
     ./plugins/default.nix
   ];
   home.sessionVariables.EDITOR = "nvim";

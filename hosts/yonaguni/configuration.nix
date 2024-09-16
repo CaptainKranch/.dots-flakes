@@ -93,16 +93,15 @@
   ];
   
   services = {
+#    displayManager.sddm.enable = true;
+#    displayManager.sddm.wayland.enable = true;
+#    desktopManager.plasma6.enable = true;
     xserver = {
       enable = true;
       windowManager.dwm.enable = true;
       displayManager.autoLogin.enable = true;
       displayManager.autoLogin.user = "danielgm";
       videoDrivers = [ "nvidia" ];
-#      deviceSection = ''
-#        Option "DRI" "2"
-#        Option "TearFree" "true"
-#      '';
     };
     pipewire = {
       enable = true;
@@ -110,30 +109,22 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-#    tlp = {
-#      enable = true;
-#      settings = {
-#        CPU_SCALING_GOVERNOR_ON_BAT="powersave";
-#        CPU_SCALING_GOVERNOR_ON_AC="performance";
-#
-#        # The following prevents the battery from charging fully to
-#        # preserve lifetime. Run `tlp fullcharge` to temporarily force
-#        # full charge.
-#        # https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
-#        START_CHARGE_THRESH_BAT0=40;
-#        STOP_CHARGE_THRESH_BAT0=50;
-#
-#        # 100 being the maximum, limit the speed of my CPU to reduce
-#        # heat and increase battery usage:
-#        CPU_MAX_PERF_ON_AC=100;
-#        CPU_MAX_PERF_ON_BAT=60;
-#      };
-#    };
+    # Ollama
+    ollama = {
+      enable = true;
+      port = 11434;
+      host = "0.0.0.0";
+      acceleration = "cuda";
+      environmentVariables = { 
+        OLLAMA_ORIGINS = "*";
+      };
+    };
     # Varios
     blueman.enable = true;
     gnome.gnome-keyring.enable = true;
     gvfs.enable = true;
     tailscale.enable = true;
+    ratbagd.enable = true;
   };
 
   
@@ -167,12 +158,14 @@
   };
 
   #Audio
-  sound.enable = false;
+  #sound.enable = false;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
   # Bluethooth
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  hardware.logitech.wireless.enable = true;
 
   # Select internationalisation properties.
   time.timeZone = "America/Bogota";
@@ -200,6 +193,8 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  virtualisation.docker.storageDriver = "btrfs";
+  virtualisation.docker.enable = true;
   # TODO: Set your hostname
   networking.hostName = "yonaguni";
   networking.networkmanager.enable = true;
@@ -235,7 +230,7 @@
     # Forbid root login through SSH.
     settings = { 
       PermitRootLogin = "no"; 
-      PasswordAuthentication = false;
+      PasswordAuthentication = true;
     };
     # Use keys only. Remove if you want to SSH using password (not recommended)
   };

@@ -33,8 +33,8 @@
     # kitty has catppuccin theme built-in,
     # all the built-in themes are packaged into an extra package named `kitty-themes`
     # and it's installed by home-manager if `theme` is specified.
-    #theme = "Ciapre";
-    #theme = "Rosé Pine Dawn";
+    #theme = "Cyberpunk";
+    theme = "Rosé Pine Dawn";
     font = {
       name = "JetBrainsMono Nerd Font";
       # use different font size on macOS
@@ -50,7 +50,7 @@
 
     settings =
       {
-        background_opacity = "0.93";
+        #background_opacity = "1";
         # shell = " ${pkgs.nushell}/bin/nu ";
         macos_option_as_alt = true; # Option key acts as Alt on macOS
         scrollback_lines = 10000;
