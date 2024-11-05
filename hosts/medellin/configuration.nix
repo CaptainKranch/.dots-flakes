@@ -10,7 +10,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # Like services that you want to run in the background, like airflow, grafana, prometeus, etc.
-    #../../services/default.nix
+    ../../services/default.nix
     
 
     # Import your generated (nixos-generate-config) hardware configuration
@@ -89,13 +89,142 @@
     windowManager.dwm.enable = true;
     displayManager.autoLogin.enable = true;
     displayManager.autoLogin.user = "danielgm";
-    videoDrivers = ["nvidia"];
+    videoDrivers = ["intel"];
   };
-
+  #services.displayManager.autoLogin = true;
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
   services.tailscale.enable = true;
+
+  systemd.services.promtail = {
+    description = "Promtail service for Loki";
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      ExecStart = ''
+        ${pkgs.grafana-loki}/bin/promtail --config.file ${../../services/promtail.yaml}
+      '';
+    };
+  };
   
+  services.loki = {
+    enable = true;
+    configuration = {
+      server.http_listen_port = 3100;
+      auth_enabled = false;
+
+      ingester = {
+        lifecycler = {
+          address = "0.0.0.0";
+          ring = {
+            kvstore = {
+              store = "inmemory";
+            };
+            replication_factor = 1;
+          };
+        };
+        chunk_idle_period = "1h";
+        max_chunk_age = "1h";
+        chunk_target_size = 999999;
+        chunk_retain_period = "30s";
+  #      max_transfer_retries = 0;
+      };
+
+      schema_config = {
+        configs = [{
+          from = "2024-07-26";
+          store = "boltdb-shipper";
+          object_store = "filesystem";
+          schema = "v11";  # Use a valid schema version
+          index = {
+            prefix = "index_";
+            period = "24h";
+          };
+        }];
+      };
+
+      storage_config = {
+        boltdb_shipper = {
+          active_index_directory = "/var/lib/loki/boltdb-shipper-active";
+          cache_location = "/var/lib/loki/boltdb-shipper-cache";
+          cache_ttl = "24h";
+  #        shared_store = "filesystem";
+        };
+
+        filesystem = {
+          directory = "/var/lib/loki/chunks";
+        };
+      };
+
+      limits_config = {
+        reject_old_samples = true;
+        reject_old_samples_max_age = "168h";
+        allow_structured_metadata = false;  # Disable structured metadata
+      };
+
+  #    chunk_store_config = {
+  #      max_look_back_period = "0s";
+  #    };
+
+      table_manager = {
+        retention_deletes_enabled = false;
+        retention_period = "0s";
+      };
+
+      compactor = {
+        working_directory = "/var/lib/loki";
+  #      shared_store = "filesystem";
+        compactor_ring = {
+          kvstore = {
+            store = "inmemory";
+          };
+        };
+      };
+    };
+  };
+
+  # Services 
+  services = {
+    grafana = {
+      enable = true;
+      settings.server = {
+        http_port = 2342;
+        http_addr = "0.0.0.0";
+      };
+    };
+    prometheus = {
+      enable = true;
+      port = 9001;
+      exporters = {
+        node = {
+          enable = true;
+          enabledCollectors = [ "systemd" ];
+          port = 9002;
+        };
+      };
+      scrapeConfigs = [{
+        job_name = "TeleAntioquia";
+        static_configs = [{
+          targets = [ "0.0.0.0:${toString config.services.prometheus.exporters.node.port}" ];
+        }];
+      }];
+    };
+    cockpit = {
+      enable = true;
+      port = 9090;
+      settings = {
+        WebService = {
+          AllowUnencrypted = true;
+        };
+      };
+    };
+    jellyfin = {
+      enable = true;
+      openFirewall = true;
+      user = "danielgm";
+    };
+  };
+
   # Fonst
   fonts = {
     packages = with pkgs; [
@@ -111,9 +240,9 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-	      monospace = [ "Meslo LG M Regular Nerd Font Complete Mono" ];
-	      serif = [ "Noto Serif" "Source Han Serif" ];
-	      sansSerif = [ "Noto Sans" "Source Han Sans" ];
+	     monospace = [ "Meslo LG M Regular Nerd Font Complete Mono" ];
+	     serif = [ "Noto Serif" "Source Han Serif" ];
+	     sansSerif = [ "Noto Sans" "Source Han Sans" ];
       };
     };
   };
@@ -149,40 +278,6 @@
     LC_TIME = "es_CO.UTF-8";
   };
 
-  #GPU
-  hardware.nvidia = {
-
-    # Modesetting is required.
-    modesetting.enable = true;
-
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
-    # of just the bare essentials.
-    powerManagement.enable = false;
-
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
-
-    # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-
-
   # TODO: Set your hostname
   networking.hostName = "medellin";
   networking.networkmanager.enable = true;
@@ -191,7 +286,7 @@
   # networking.firewall.allowedTCPPorts = [ 2283 5432 6379 ];
   # networking.firewall.allowedUDPPorts = [ ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = true;
+  networking.firewall.enable = false;
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
@@ -201,7 +296,7 @@
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
       initialPassword = "123";
-      #shell = pkgs.nushell;
+      shell = pkgs.nushell;
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
@@ -218,7 +313,7 @@
     # Forbid root login through SSH.
     settings = { 
       PermitRootLogin = "no"; 
-      PasswordAuthentication = false;
+      PasswordAuthentication = true;
     };
     # Use keys only. Remove if you want to SSH using password (not recommended)
   };

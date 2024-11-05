@@ -16,7 +16,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."prowlarr" = {
-    image = "linuxserver/prowlarr:develop";
+    image = "linuxserver/prowlarr:1.20.1";
     environment = {
       PGID = "1000";
       PUID = "1000";
@@ -54,7 +54,7 @@
     ];
   };
   virtualisation.oci-containers.containers."radarr" = {
-    image = "linuxserver/radarr:latest";
+    image = "linuxserver/radarr:5.8.3";
     environment = {
       PGID = "1000";
       PUID = "1000";
@@ -92,7 +92,7 @@
     ];
   };
   virtualisation.oci-containers.containers."sonarr" = {
-    image = "linuxserver/sonarr:latest";
+    image = "linuxserver/sonarr:4.0.8";
     environment = {
       PGID = "1000";
       PUID = "1000";
@@ -130,7 +130,45 @@
       "podman-compose-nixarr-root.target"
     ];
   };
-
+  
+  virtualisation.oci-containers.containers."qbittorrent" = {
+    image = "linuxserver/qbittorrent:4.6.5";
+    environment = {
+      PGID = "1000";
+      PUID = "1000";
+      TZ = "America/Bogota";
+    };
+    volumes = [
+      "/home/danielgm/Documents/Services/nixarr/media/downloads:/downloads:rw,z"
+      "/home/danielgm/Documents/Services/qbittorrent:/config:rw,Z"
+    ];
+    ports = [
+      "8080:8080/tcp"
+      "65535:65535/udp"
+    ];
+    log-driver = "journald";
+    extraOptions = [
+      "--network-alias=qbittorrent"
+      "--network=nixarr_default"
+    ];
+  };
+  systemd.services."podman-qbittorrent" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 500 "always";
+    };
+    after = [
+      "podman-network-nixarr_default.service"
+    ];
+    requires = [
+      "podman-network-nixarr_default.service"
+    ];
+    partOf = [
+      "podman-compose-nixarr-root.target"
+    ];
+    wantedBy = [
+      "podman-compose-nixarr-root.target"
+    ];
+  };
   # Networks
   systemd.services."podman-network-nixarr_default" = {
     path = [ pkgs.podman ];

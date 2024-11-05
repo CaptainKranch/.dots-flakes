@@ -16,13 +16,13 @@
 
   # Containers
   virtualisation.oci-containers.containers."immich_machine_learning" = {
-    image = "ghcr.io/immich-app/immich-machine-learning:release";
+    image = "ghcr.io/immich-app/immich-machine-learning:v1.111.0";
     environment = {
       DB_DATABASE_NAME = "immich";
       DB_DATA_LOCATION = "./postgres";
       DB_PASSWORD = "postgres";
       DB_USERNAME = "postgres";
-      IMMICH_VERSION = "release";
+      IMMICH_VERSION = "v1.111.0";
       UPLOAD_LOCATION = "./library";
     };
     volumes = [
@@ -54,13 +54,13 @@
     ];
   };
   virtualisation.oci-containers.containers."immich_microservices" = {
-    image = "ghcr.io/immich-app/immich-server:release";
+    image = "ghcr.io/immich-app/immich-server:v1.111.0";
     environment = {
       DB_DATABASE_NAME = "immich";
       DB_DATA_LOCATION = "./postgres";
       DB_PASSWORD = "postgres";
       DB_USERNAME = "postgres";
-      IMMICH_VERSION = "release";
+      IMMICH_VERSION = "v1.111.0";
       UPLOAD_LOCATION = "./library";
     };
     volumes = [
@@ -156,13 +156,13 @@
     ];
   };
   virtualisation.oci-containers.containers."immich_server" = {
-    image = "ghcr.io/immich-app/immich-server:release";
+    image = "ghcr.io/immich-app/immich-server:v1.111.0";
     environment = {
       DB_DATABASE_NAME = "immich";
       DB_DATA_LOCATION = "./postgres";
       DB_PASSWORD = "postgres";
       DB_USERNAME = "postgres";
-      IMMICH_VERSION = "release";
+      IMMICH_VERSION = "v1.111.0";
       UPLOAD_LOCATION = "./library";
     };
     volumes = [
