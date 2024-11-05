@@ -22,6 +22,7 @@
     ../../programs/desktop/thunderbird
     ../../programs/desktop/chromium
     ../../programs/desktop/teams
+    ../../programs/desktop/zoom
 
   ];
 }

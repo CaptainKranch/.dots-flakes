@@ -35,6 +35,7 @@
     # and it's installed by home-manager if `theme` is specified.
     #theme = "Cyberpunk";
     theme = "Rosé Pine Dawn";
+    #theme = "Nova";
     font = {
       name = "JetBrainsMono Nerd Font";
       # use different font size on macOS
@@ -50,7 +51,7 @@
 
     settings =
       {
-        #background_opacity = "1";
+        background_opacity = "0.5";
         # shell = " ${pkgs.nushell}/bin/nu ";
         macos_option_as_alt = true; # Option key acts as Alt on macOS
         scrollback_lines = 10000;

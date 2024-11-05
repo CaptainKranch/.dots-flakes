@@ -38,11 +38,6 @@
     # Configure your nixpkgs instance
     config = {
       allowUnfree = true;
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "steam"
-        "steam-original"
-        "steam-run"
-      ];
     };
   };
 
@@ -75,14 +70,14 @@
     (import ../../scripts/liveWall.nix { inherit pkgs; })
     (import ../../scripts/lock-screen.nix { inherit pkgs; })
     git
-    picom-pijulius
+    picom
     dmenu
     home-manager
     pavucontrol
-    rofi
     go
     cargo
-    cockpit
+    ffmpeg
+    mpv
     xorg.libX11
     xorg.libX11.dev
     xorg.libxcb
@@ -93,9 +88,6 @@
   ];
   
   services = {
-#    displayManager.sddm.enable = true;
-#    displayManager.sddm.wayland.enable = true;
-#    desktopManager.plasma6.enable = true;
     xserver = {
       enable = true;
       windowManager.dwm.enable = true;
@@ -132,7 +124,7 @@
   fonts = {
     packages = with pkgs; [
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
       font-awesome
       source-han-sans
@@ -151,10 +143,8 @@
   };
   
   # Steam
-  programs.gamemode.enable = true;
   programs.steam = {
     enable = true;
-    gamescopeSession.enable = true;
   };
 
   #Audio

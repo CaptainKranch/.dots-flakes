@@ -58,6 +58,17 @@
     size = 23;
     gtk.enable = true;
   };
+  programs = {
+    direnv = {
+      enable = true;
+      enableBashIntegration = true; # see note on other shells below
+      enableNushellIntegration = true;
+      nix-direnv.enable = true;
+    };
+
+    bash.enable = true;
+    nushell.enable = true;
+  };
 
   # Enable home-manager and git
   programs.home-manager.enable = true;

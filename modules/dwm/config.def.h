@@ -12,6 +12,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
+static const double defaultopacity  = 0.75;
 
 /* COLORS */
 static const char norm_fg[] = "#a9abaa";
@@ -152,6 +153,9 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
+	{ MODKEY|ShiftMask,		XK_s,	   spawn,	   SHCMD("transset-df -a --dec .1") },
+	{ MODKEY|ShiftMask,		XK_d,	   spawn,	   SHCMD("transset-df -a --inc .1") },
+	{ MODKEY|ShiftMask,		XK_f,	   spawn,	   SHCMD("transset-df -a .75") },
 	{ MODKEY,                            XK_F10, spawn,         SHCMD ("amixer sset Master 5%- unmute")},
 	{ MODKEY,                            XK_F11, spawn,         SHCMD ("amixer sset Master 5%+ unmute")},
 	{ MODKEY,                            XK_F12, spawn,         SHCMD ("amixer sset Master mute ")},
