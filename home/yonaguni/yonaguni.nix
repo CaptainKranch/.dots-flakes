@@ -24,6 +24,7 @@
     ../../programs/desktop/teams
     ../../programs/desktop/zoom
     ../../programs/desktop/printunl
+    ../../programs/desktop/blender
 
   ];
 }
