@@ -23,6 +23,7 @@
     ../../programs/desktop/chromium
     ../../programs/desktop/teams
     ../../programs/desktop/zoom
+    ../../programs/desktop/printunl
 
   ];
 }
