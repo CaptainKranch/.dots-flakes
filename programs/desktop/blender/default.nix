@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.blender ];
+  home.packages = [ pkgs.blender-hip ];
 }
