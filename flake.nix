@@ -81,7 +81,20 @@
           specialArgs = { inherit inputs; }; # Pass flake inputs to our config
           #inherit system specialArgs;
           modules = [
-            ./hosts/neaYork/configuration.nix
+            #./hosts/neaYork/configuration.nix
+            ./hosts/neaYork/modules/nix-core.nix
+            ./hosts/neaYork/modules/system.nix
+            ./hosts/neaYork/modules/apps.nix
+            ./hosts/neaYork/modules/host-users.nix
+
+            # home manager
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              #home-manager.extraSpecialArgs = specialArgs;
+              home-manager.users.dgm = import ./home;
+            }
           ];
         };
       };
