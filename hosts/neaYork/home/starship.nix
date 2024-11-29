@@ -34,15 +34,6 @@
         symbol = " ";
         python_binary = "['./venv/bin/python', 'python', 'python3', 'python2']";
         format = "[$symbol ($version)]";
-        detect_files = "[
-          '.python-version',
-          'Pipfile', '__init__.py',
-          'pyproject.toml',
-          'requirements.txt',
-          'setup.py',
-          'tox.ini',
-          'pixi.toml'
-        ]";
       };
 
       nix_shell = {
