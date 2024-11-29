@@ -8,6 +8,15 @@
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
+
+    # MacOS
+    # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
 
     #nvim-plugins
@@ -33,11 +42,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs: 
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
-      systems = ["x86_64-linux"];
+      systems = [ "x86_64-linux" "aarch64-darwin" ];
       forEachSystem = f: lib.genAttre systems (sys: f pkgsFor.${sys});
       pkgsFor = nixpkgs.legacyPackages;
     in
@@ -52,12 +61,6 @@
           # > Our main nixos configuration file <
           modules = [ ./hosts/yonaguni/configuration.nix ];
         };
-        # Main Workstation
-        newyork = lib.nixosSystem {
-          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          # > Our main nixos configuration file <
-          modules = [ ./hosts/newYork/configuration.nix ];
-        };
         # Testing Kubernetes server
         medellin = lib.nixosSystem {
           specialArgs = { inherit inputs; }; # Pass flake inputs to our config
@@ -70,6 +73,19 @@
         };
       };
 
+      # Nix-Darwin configuration entrypoint
+      # Available through 'darwin-rebuild switch --flake .#your-hostname'
+      darwinConfigurations = {
+        # Main Workstation(Mac-mini aarch64-darwin)
+        neayork = darwin.lib.darwinSystem {
+          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          #inherit system specialArgs;
+          modules = [
+            ./hosts/neaYork/configuration.nix
+          ];
+        };
+      };
+
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager switch --flake .#your-username@your-hostname'
       homeConfigurations = {
@@ -79,12 +95,6 @@
           extraSpecialArgs = { inherit inputs outputs; }; # Pass flake inputs to our config
           # > Our main home-manager configuration file <
           modules = [ ./home/yonaguni/yonaguni.nix ];
-        };
-        "danielgm@newyork" = lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; }; # Pass flake inputs to our config
-          # > Our main home-manager configuration file <
-          modules = [ ./home/newyork/newyork.nix ];
         };
         "captainkranch@medellin" = lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
