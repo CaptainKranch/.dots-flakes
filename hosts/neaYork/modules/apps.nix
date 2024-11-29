@@ -15,8 +15,8 @@
   #
   # Related Discussion: https://discourse.nixos.org/t/darwin-again/29331
   environment.systemPackages = with pkgs; [
-#    neovim
-#    git
+    neovim
+    git
     just # use Justfile to simplify nix-darwin's commands 
   ];
   environment.variables.EDITOR = "nvim";
@@ -60,8 +60,6 @@
     brews = [
       "wget" # download tool
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
-      "aria2" # download tool
-      "httpie" # http client
       "openvpn"
     ];
 

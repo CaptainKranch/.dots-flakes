@@ -8,15 +8,15 @@
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # MacOS
-    # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
+    #nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    #nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
     darwin = {
       url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     #nvim-plugins
@@ -49,6 +49,12 @@
       systems = [ "x86_64-linux" "aarch64-darwin" ];
       forEachSystem = f: lib.genAttre systems (sys: f pkgsFor.${sys});
       pkgsFor = nixpkgs.legacyPackages;
+      username = "dgm";
+      specialArgs =
+        inputs
+        // {
+          inherit username;
+        };
     in
     {
       inherit lib;
@@ -92,8 +98,9 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              #home-manager.extraSpecialArgs = specialArgs;
-              home-manager.users.dgm = import ./home;
+              home-manager.extraSpecialArgs = specialArgs;
+              home-manager.users.${username} = import ./hosts/neaYork/home;
+#              home-manager.users.dgm = import ./hosts/neaYork/home;
             }
           ];
         };
