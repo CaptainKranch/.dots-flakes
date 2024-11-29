@@ -2,16 +2,28 @@
 {
   programs.starship = {
     enable = true;
+    enableNushellIntegration = true;
+
     settings = {
 
+      # Basic config
       format = "$directory$character";
       right_format = "$nix_shell$python$go$git_branch$git_status";
+      
       directory = {
         truncation_length = 2;
         truncation_symbol = "…/";
+        style = "bold #04a5e5";
       };
 
       add_newline = false;
+
+      git_branch = {
+        style = "#dc8a78";
+      };
+      git_status = {
+        style = "#e64553";
+      };
 
       golang = {
         symbol = " ";
@@ -43,12 +55,12 @@
       };
 
       character = {
-        error_symbol = "[~~>](bold red)";
-        success_symbol = "[->>](bold green)";
-        vimcmd_symbol = "[<<-](bold yellow)";
-        vimcmd_visual_symbol = "[<<-](bold cyan)";
-        vimcmd_replace_symbol = "[<<-](bold purple)";
-        vimcmd_replace_one_symbol = "[<<-](bold purple)";
+        error_symbol = "[󰨈 ~~>](bold red)";
+        success_symbol = "[󰨈 ](bold #fe640b)";
+        vimcmd_symbol = "[󰨈 <<-](bold yellow)";
+        vimcmd_visual_symbol = "[󰨈 <<-](bold #1e66f5)";
+        vimcmd_replace_symbol = "[󰨈 <<-](bold #04a5e5)";
+        vimcmd_replace_one_symbol = "[󰨈 <<-](bold purple)";
       };
 
 
