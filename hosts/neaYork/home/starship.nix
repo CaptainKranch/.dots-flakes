@@ -4,8 +4,8 @@
     enable = true;
     settings = {
 
-      format = "$directory$character";
-      right_format = "$nix_shell$git_branch$git_status";
+      format = "$directory$character$gcloud";
+      right_format = "$nix_shell$python$go$git_branch$git_status";
       directory = {
         truncation_length = 2;
         truncation_symbol = "…/";
@@ -14,19 +14,32 @@
       add_newline = false;
 
       golang = {
-        format = "[ $version] ";
+        symbol = " ";
+        format = "[$symbol($version )]($style)"
       };
 
       python = {
         symbol = " ";
         python_binary = "['./venv/bin/python', 'python', 'python3', 'python2']";
         format = "[$symbol ($version)]";
+        detect_files = "[
+          '.python-version',
+          'Pipfile', '__init__.py',
+          'pyproject.toml',
+          'requirements.txt',
+          'setup.py',
+          'tox.ini',
+          'pixi.toml'
+        ]";
       };
 
       nix_shell = {
-        format = "[$python $golang $symbol]($style) ";
-        impure_msg = "";
+        format = "[$symbol$state( \($name\))]($style)";
         symbol = " ";
+      };
+
+      gcloud = {
+        format = 'on [$symbol$account(@$domain)(\($project\))]($style) ';
       };
 
       character = {
