@@ -115,3 +115,6 @@ $env.config = {
   bracketed_paste: true # enable bracketed paste, currently useless on windows
   edit_mode: emacs # emacs, vi
 }
+
+# Alliases
+alias ll = ls -l
