@@ -4,7 +4,7 @@
     enable = true;
     settings = {
 
-      format = "$directory$character$gcloud";
+      format = "$directory$character";
       right_format = "$nix_shell$python$go$git_branch$git_status";
       directory = {
         truncation_length = 2;
@@ -15,7 +15,7 @@
 
       golang = {
         symbol = " ";
-        format = "[$symbol($version )]($style)"
+        format = "[$symbol($version )]($style)";
       };
 
       python = {
@@ -39,7 +39,7 @@
       };
 
       gcloud = {
-        format = 'on [$symbol$account(@$domain)(\($project\))]($style) ';
+        format = "on [$symbol$account(@$domain)(\($project\))]($style) ";
       };
 
       character = {
