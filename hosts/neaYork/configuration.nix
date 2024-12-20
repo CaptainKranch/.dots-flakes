@@ -10,11 +10,11 @@
 
     # You can also split up your configuration and import pieces of it here:
     #./modules/nix-core.nix
-    ../../modules/arm-darwin/nix-core.nix
-    ../../modules/arm-darwin/system.nix
-    ../../modules/arm-darwin/apps.nix
-    ../../modules/arm-darwin/host-users.nix
-    ../../modules/arm-darwin/nix-to-mac.nix
+    ./modules/arm-darwin/nix-core.nix
+    ./modules/arm-darwin/system.nix
+    ./modules/arm-darwin/apps.nix
+    ./modules/arm-darwin/host-users.nix
+    ./modules/arm-darwin/nix-to-mac.nix
 
 
     # home manager
