@@ -14,6 +14,8 @@
     ../../modules/arm-darwin/system.nix
     ../../modules/arm-darwin/apps.nix
     ../../modules/arm-darwin/host-users.nix
+    ../../modules/arm-darwin/nix-to-mac.nix
+
 
     # home manager
     home-manager.darwinModules.home-manager
