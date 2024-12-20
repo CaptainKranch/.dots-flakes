@@ -1,7 +1,7 @@
 #This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 
-{ inputs, lib, config, pkgs, home-manager, ... }: {
+{ inputs, lib, config, pkgs, home-manager, self, ... }: {
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules from other flakes (such as nixos-hardware):
@@ -10,7 +10,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     #./modules/nix-core.nix
-    ./modules/arm-darwin/nix-core.nix
+    ../../modules/arm-darwin/nix-core.nix
     ./modules/arm-darwin/system.nix
     ./modules/arm-darwin/apps.nix
     ./modules/arm-darwin/host-users.nix
