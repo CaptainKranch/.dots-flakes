@@ -9,18 +9,17 @@
     # inputs.hardware.nixosModules.common-ssd
 
     # You can also split up your configuration and import pieces of it here:
-    ./modules/nix-core.nix
-    ./modules/system.nix
-    ./modules/apps.nix
-    ./modules/host-users.nix
+    ../../modules/arm-darwin/nix-core.nix
+    ../../modules/arm-darwin/system.nix
+    ../../modules/arm-darwin/apps.nix
+    ../../modules/arm-darwin/host-users.nix
 
     # home manager
     home-manager.darwinModules.home-manager
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      #home-manager.extraSpecialArgs = specialArgs;
-      home-manager.users.dgm = import ./home;
+      home-manager.users.dgm = import  ../../home/neaYork;
     }
   ];
   

@@ -18,6 +18,8 @@
     neovim
     git
     just # use Justfile to simplify nix-darwin's commands 
+    azure-cli
+    google-cloud-sdk
   ];
   environment.variables.EDITOR = "nvim";
 
@@ -61,6 +63,8 @@
       "wget" # download tool
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
       "openvpn"
+      "docker"
+      "docker-compose"
     ];
 
     # `brew install --cask`
@@ -73,6 +77,8 @@
       "openvpn-connect"
       "plex"
       "zen-browser"
+      "steam"
+      "docker"
     ];
   };
 }

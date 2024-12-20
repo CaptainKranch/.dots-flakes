@@ -30,8 +30,8 @@
 
         # customize Hot Corners(触发角, 鼠标移动到屏幕角落时触发的动作)
         wvous-tl-corner = 2;  # top-left - Mission Control
-        wvous-tr-corner = 13;  # top-right - Lock Screen
-        wvous-bl-corner = 3;  # bottom-left - Application Windows
+        #wvous-tr-corner = 13;  # top-right - Lock Screen
+        wvous-bl-corner = 13;  # bottom-left - Application Windows
         wvous-br-corner = 4;  # bottom-right - Desktop
       };
 
@@ -89,25 +89,25 @@
     pkgs.zsh
   ];
 
-  # Fonts
-  fonts = {
-    packages = with pkgs; [
-      # icon fonts
-      material-design-icons
-      font-awesome
-
-      # nerdfonts
-      # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/nerdfonts/shas.nix
-      (nerdfonts.override {
-        fonts = [
-          # symbols icon only
-          "NerdFontsSymbolsOnly"
-          # Characters
-          "FiraCode"
-          "JetBrainsMono"
-          "Iosevka"
-        ];
-      })
-    ];
-  };
+#  # Fonts
+#  fonts = {
+#    packages = with pkgs; [
+#      # icon fonts
+#      material-design-icons
+#      font-awesome
+#
+#      # nerdfonts
+#      # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/nerdfonts/shas.nix
+#      (nerdfonts.override {
+#        fonts = [
+#          # symbols icon only
+#          "NerdFontsSymbolsOnly"
+#          # Characters
+#          "FiraCode"
+#          "JetBrainsMono"
+#          "Iosevka"
+#        ];
+#      })
+#    ];
+#  };
 }

@@ -118,3 +118,4 @@ $env.config = {
 
 # Alliases
 alias ll = ls -l
+

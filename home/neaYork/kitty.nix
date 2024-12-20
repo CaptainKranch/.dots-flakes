@@ -19,7 +19,7 @@
     # kitty has catppuccin theme built-in,
     # all the built-in themes are packaged into an extra package named `kitty-themes`
     # and it's installed by home-manager if `theme` is specified.
-    #themeFile = "Catppuccin-Mocha";
+    themeFile = "Catppuccin-Mocha";
     font = {
       name = "JetBrainsMono Nerd Font";
       # use different font size on macOS
@@ -39,16 +39,20 @@
       background_opacity = "0.93";
       macos_option_as_alt = true; # Option key acts as Alt on macOS
       enable_audio_bell = false;
-      tab_bar_edge = "top"; # tab bar on top
+      tab_bar_edge = "bot"; # tab bar on top
       #  To resolve issues:
       #    1. https://github.com/ryan4yin/nix-config/issues/26
       #    2. https://github.com/ryan4yin/nix-config/issues/8
       #  Spawn a nushell in login mode via `bash`
       shell = "${pkgs.bash}/bin/bash --login -c 'nu --login --interactive'";
-      enabled_layouts = "tall:bias=50;full_size=1;mirrored=false";
+      #enabled_layouts = "tall:bias=50;full_size=1;mirrored=false";
+      enabled_layouts = "fat:bias=50;full_size=1;mirrored=false";
+      copy_on_select = true;
+      allow_remote_control = true;
+      term = "xterm-256color";
     };
 
     # macOS specific settings
-    #darwinLaunchOptions = ["--start-as=maximized"];
+    darwinLaunchOptions = ["--start-as=maximized"];
   };
 }
