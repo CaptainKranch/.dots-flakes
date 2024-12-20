@@ -18,7 +18,7 @@
 
     # TODO replace with your own name & email
     userName = "Daniel Garcia M";
-    userEmail = "dgarcia1.c@aes.com";
+    userEmail = "danielgm32410.c@aes.com";
 
     includes = [
       {
@@ -29,7 +29,7 @@
     ];
 
     extraConfig = {
-      init.defaultBranch = "main";
+      init.defaultBranch = "master";
       push.autoSetupRemote = true;
       pull.rebase = true;
     };
