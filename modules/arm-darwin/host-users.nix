@@ -13,9 +13,9 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."dgm" = {
-    home = "/Users/dgm";
-    description = "dgm";
+    home = "/Users/danielgm";
+    description = "danielgm";
   };
 
-  nix.settings.trusted-users = [ "dgm" ];
+  nix.settings.trusted-users = [ "danielgm" ];
 }

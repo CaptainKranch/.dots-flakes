@@ -49,7 +49,7 @@
       systems = [ "x86_64-linux" "aarch64-darwin" ];
       forEachSystem = f: lib.genAttre systems (sys: f pkgsFor.${sys});
       pkgsFor = nixpkgs.legacyPackages;
-      username = "dgm";
+      username = "danielgm";
       specialArgs =
         inputs
         // {
@@ -88,10 +88,11 @@
           #inherit system specialArgs;
           modules = [
             #./hosts/neaYork/configuration.nix
-            ./hosts/neaYork/modules/nix-core.nix
-            ./hosts/neaYork/modules/system.nix
-            ./hosts/neaYork/modules/apps.nix
-            ./hosts/neaYork/modules/host-users.nix
+            ./modules/arm-darwin/nix-core.nix
+            ./modules/arm-darwin/system.nix
+            ./modules/arm-darwin/apps.nix
+            ./modules/arm-darwin/host-users.nix
+            ./modules/arm-darwin/nix-to-mac.nix
 
             # home manager
             home-manager.darwinModules.home-manager
