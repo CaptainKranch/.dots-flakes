@@ -9,7 +9,8 @@
     # inputs.hardware.nixosModules.common-ssd
 
     # You can also split up your configuration and import pieces of it here:
-    ./modules/nix-core.nix
+    #./modules/nix-core.nix
+    ../../modules/arm-darwin/nix-core.nix
     ./modules/system.nix
     ./modules/apps.nix
     ./modules/host-users.nix
