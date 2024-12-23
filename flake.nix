@@ -49,7 +49,7 @@
       systems = [ "x86_64-linux" "aarch64-darwin" ];
       forEachSystem = f: lib.genAttre systems (sys: f pkgsFor.${sys});
       pkgsFor = nixpkgs.legacyPackages;
-      username = "danielgm";
+      username = "dgm";
       specialArgs =
         inputs
         // {
@@ -82,12 +82,11 @@
       # Nix-Darwin configuration entrypoint
       # Available through 'darwin-rebuild switch --flake .#your-hostname'
       darwinConfigurations = {
+        # FIXME replace with your username@hostname
         # Main Workstation(Mac-mini aarch64-darwin)
         neayork = darwin.lib.darwinSystem {
           specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          #inherit system specialArgs;
           modules = [
-            #./hosts/neaYork/configuration.nix
             ./modules/arm-darwin/nix-core.nix
             ./modules/arm-darwin/system.nix
             ./modules/arm-darwin/apps.nix
@@ -100,8 +99,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = specialArgs;
-              home-manager.users.${username} = import ./hosts/neaYork/home;
-#              home-manager.users.dgm = import ./hosts/neaYork/home;
+              home-manager.users.${username} = import ./home/neaYork;
             }
           ];
         };

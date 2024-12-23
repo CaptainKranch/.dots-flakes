@@ -17,6 +17,9 @@
   environment.systemPackages = with pkgs; [
     neovim
     mkalias
+    azure-cli
+    kubectl
+    kubernetes-helm
     git
     just # use Justfile to simplify nix-darwin's commands 
   ];
