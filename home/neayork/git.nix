@@ -18,7 +18,7 @@
 
     # TODO replace with your own name & email
     userName = "Daniel Garcia M";
-    userEmail = "danielgm32410.c@aes.com";
+    userEmail = "danielgm32410@gmail.com";
 
     includes = [
       {

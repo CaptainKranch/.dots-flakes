@@ -16,12 +16,15 @@
 
     # productivity
     glow # markdown previewer in terminal
+    kitty
     lazygit
+    aerospace
 
     # Builds
     go
     cargo
     poetry
+    uv
   ];
 
   programs = {
