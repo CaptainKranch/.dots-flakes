@@ -1,7 +1,7 @@
 {...}: {
   programs.nushell = {
     enable = true;
-    configFile.source = ./config.nu;
+    configFile.source = ./nushell/config.nu;
   };
 
   home.shellAliases = {

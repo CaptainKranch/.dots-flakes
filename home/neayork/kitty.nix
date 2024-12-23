@@ -39,16 +39,49 @@
       background_opacity = "0.93";
       macos_option_as_alt = true; # Option key acts as Alt on macOS
       enable_audio_bell = false;
-      tab_bar_edge = "top"; # tab bar on top
+      tab_bar_edge = "bot"; # tab bar on top
+      copy_on_select = true;
+      allow_remote_control = true;
+      term = "xterm-256color";
       #  To resolve issues:
       #    1. https://github.com/ryan4yin/nix-config/issues/26
       #    2. https://github.com/ryan4yin/nix-config/issues/8
       #  Spawn a nushell in login mode via `bash`
       shell = "${pkgs.bash}/bin/bash --login -c 'nu --login --interactive'";
-      enabled_layouts = "tall:bias=50;full_size=1;mirrored=false";
+      #enabled_layouts = "tall:bias=50;full_size=1;mirrored=false";
+      ###########################################################
+      #┌──────────────┬───────────────┐
+      #│              │               │
+      #│              │               │
+      #│              │               │
+      #│              ├───────────────┤
+      #│              │               │
+      #│              │               │
+      #│              │               │
+      #│              ├───────────────┤
+      #│              │               │
+      #│              │               │
+      #│              │               │
+      #└──────────────┴───────────────┘
+      ###########################################################
+      enabled_layouts = "fat:bias=50;full_size=1;mirrored=false";
+      ###########################################################
+      #  ┌──────────────────────────────┐
+      #  │                              │
+      #  │                              │
+      #  │                              │
+      #  │                              │
+      #  ├─────────┬──────────┬─────────┤
+      #  │         │          │         │
+      #  │         │          │         │
+      #  │         │          │         │
+      #  │         │          │         │
+      #  │         │          │         │
+      #  └─────────┴──────────┴─────────┘
+      ###########################################################
     };
 
     # macOS specific settings
-    #darwinLaunchOptions = ["--start-as=maximized"];
+    darwinLaunchOptions = ["--start-as=maximized"];
   };
 }

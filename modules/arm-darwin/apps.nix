@@ -21,6 +21,7 @@
     kubectl
     kubernetes-helm
     git
+    kitty
     just # use Justfile to simplify nix-darwin's commands 
   ];
   environment.variables.EDITOR = "nvim";
@@ -77,6 +78,7 @@
       "openvpn-connect"
       "plex"
       "zen-browser"
+      "microsoft-outlook"
     ];
   };
 }
