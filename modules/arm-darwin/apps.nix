@@ -20,6 +20,10 @@
     azure-cli
     kubectl
     kubernetes-helm
+    docker
+    docker-compose
+    podman
+    google-cloud-sdk
     git
     kitty
     just # use Justfile to simplify nix-darwin's commands 
