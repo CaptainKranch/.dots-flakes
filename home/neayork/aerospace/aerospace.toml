@@ -21,7 +21,7 @@ after-startup-command = [
 ]
 
 # Start AeroSpace at login
-start-at-login = false
+start-at-login = true 
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -120,29 +120,29 @@ alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-1 = 'workspace 1Kitty'
-alt-2 = 'workspace 2Alacritty'
-alt-3 = 'workspace 3Work'
-alt-4 = 'workspace 4Firefox'
-alt-5 = 'workspace 5Chrome'
-alt-6 = 'workspace 6Chat'
-alt-7 = 'workspace 7Music'
-alt-8 = 'workspace 8Mail'
-alt-9 = 'workspace 9File'
-alt-0 = 'workspace 0Other'
+alt-1 = 'workspace Explore'
+alt-2 = 'workspace Kitty'
+alt-3 = 'workspace Thinking-Fortress'
+alt-4 = 'workspace aes'
+alt-5 = 'workspace Real-Plus'
+alt-6 = 'workspace Chat'
+alt-7 = 'workspace Music'
+alt-8 = 'workspace Mail'
+alt-9 = 'workspace File'
+alt-0 = 'workspace Other'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = 'move-node-to-workspace 1Kitty'
-alt-shift-2 = 'move-node-to-workspace 2Alacritty'
-alt-shift-3 = 'move-node-to-workspace 3Work'
-alt-shift-4 = 'move-node-to-workspace 4Firefox'
-alt-shift-5 = 'move-node-to-workspace 5Chrome'
-alt-shift-6 = 'move-node-to-workspace 6Chat'
-alt-shift-7 = 'move-node-to-workspace 7Music'
-alt-shift-8 = 'move-node-to-workspace 8Mail'
-alt-shift-9 = 'move-node-to-workspace 9File'
-alt-shift-0 = 'move-node-to-workspace 0Other'
+alt-shift-1 = 'move-node-to-workspace Explore'
+alt-shift-2 = 'move-node-to-workspace Kitty'
+alt-shift-3 = 'move-node-to-workspace Thinking-Forstress'
+alt-shift-4 = 'move-node-to-workspace aes'
+alt-shift-5 = 'move-node-to-workspace Real-Plus'
+alt-shift-6 = 'move-node-to-workspace Chat'
+alt-shift-7 = 'move-node-to-workspace Music'
+alt-shift-8 = 'move-node-to-workspace Mail'
+alt-shift-9 = 'move-node-to-workspace File'
+alt-shift-0 = 'move-node-to-workspace Other'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -196,84 +196,84 @@ alt-shift-l = ['join-with right', 'mode main']
 # =================================================================
 
 [[on-window-detected]]
-if.app-id = 'net.kovidgoyal.kitty'
-run = 'move-node-to-workspace 1Kitty'
-
-[[on-window-detected]]
 if.app-id = 'org.alacritty'
-run = 'move-node-to-workspace 2Alacritty'
+run = 'move-node-to-workspace Explore'
 
 [[on-window-detected]]
-if.app-id = 'com.tencent.WeWorkMac'
-run = 'move-node-to-workspace 3Work'
+if.app-id = 'net.kovidgoyal.kitty'
+run = 'move-node-to-workspace Kitty'
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = 'move-node-to-workspace Thinking-Fortress'
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
-run = 'move-node-to-workspace 4Firefox'
+run = 'move-node-to-workspace aes'
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-run = 'move-node-to-workspace 5Chrome'
+run = 'move-node-to-workspace Real-Plus'
 
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
-run = 'move-node-to-workspace 6Chat'
+run = 'move-node-to-workspace Chat'
 
 [[on-window-detected]]
 if.app-id = 'com.tencent.xinWeChat'
-run = 'move-node-to-workspace 6Chat'
+run = 'move-node-to-workspace Chat'
 
 [[on-window-detected]]
 if.app-id = 'com.tencent.qq'
-run = 'move-node-to-workspace 6Chat'
+run = 'move-node-to-workspace Chat'
 
 [[on-window-detected]]
 if.app-id = 'com.tencent.QQMusicMac'
-run = 'move-node-to-workspace 7Music'
+run = 'move-node-to-workspace Music'
 
 [[on-window-detected]]
 if.app-id = 'com.netease.163music'
-run = 'move-node-to-workspace 7Music'
+run = 'move-node-to-workspace Music'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
-run = 'move-node-to-workspace 8Mail'
+run = 'move-node-to-workspace Mail'
 
 # calendar
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
-run = 'move-node-to-workspace 8Mail'
+run = 'move-node-to-workspace Mail'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
-run = ['layout floating', 'move-node-to-workspace 9File']
+run = ['layout floating', 'move-node-to-workspace File']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iBooksX'
-run = ['layout floating', 'move-node-to-workspace 9File']
+run = ['layout floating', 'move-node-to-workspace File']
 
 # Book/Picture Preview
 [[on-window-detected]]
 if.app-id = 'com.apple.Preview'
-run = ['layout floating', 'move-node-to-workspace 9File']
+run = ['layout floating', 'move-node-to-workspace File']
 
 # Make all windows float by default
 [[on-window-detected]]
 check-further-callbacks = true
-run = ['layout floating', 'move-node-to-workspace 0Other']
+run = ['layout floating', 'move-node-to-workspace Other']
 
 # =================================================================
 # Multiple monitor configuration
 # =================================================================
 
 [workspace-to-monitor-force-assignment]
-1Kitty = 'secondary'  # Non-main monitor in case when there are only two monitors'
-2Alacritty = 'main'         # "Main" monitor ("main" as in System Settings → Displays → Use as)
-3Work = 'main'
-4Firefox = 'main'
-5Chrome = 'secondary'
-6Chat = 'main'
-7Music = 'main'
-8Mail = 'main'
-9File = 'main'
-0Other = 'main'
+Explore = 'main'  # Non-main monitor in case when there are only two monitors'
+Kitty = 'main'         # "Main" monitor ("main" as in System Settings → Displays → Use as)
+Thinking-Fortress = 'main'
+aes = 'main'
+Real-Plus = 'main'
+Chat = 'main'
+Music = 'main'
+Mail = 'main'
+File = 'main'
+Other = 'main'

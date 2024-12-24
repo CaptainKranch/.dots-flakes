@@ -1,5 +1,4 @@
-{config, ...}: {
-  home.file.".aerospace.toml".source =
-    config.lib.file.mkOutOfStoreSymlink
-    "./aerospace.toml";
+{ ... }:
+{
+  xdg.configFile."aerospace/aerospace.toml".source = ./aerospace.toml;
 }

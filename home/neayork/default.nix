@@ -9,6 +9,7 @@
     ./starship.nix
     ./kitty.nix
     ./nvim/default.nix
+    ./aerospace/default.nix
 
   ];
 
