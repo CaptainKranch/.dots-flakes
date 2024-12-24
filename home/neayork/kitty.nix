@@ -48,7 +48,7 @@
       #    2. https://github.com/ryan4yin/nix-config/issues/8
       #  Spawn a nushell in login mode via `bash`
       shell = "${pkgs.bash}/bin/bash --login -c 'nu --login --interactive'";
-      #enabled_layouts = "tall:bias=50;full_size=1;mirrored=false";
+      enabled_layouts = "tall:bias=50;full_size=1;mirrored=false";
       ###########################################################
       #┌──────────────┬───────────────┐
       #│              │               │
@@ -64,7 +64,7 @@
       #│              │               │
       #└──────────────┴───────────────┘
       ###########################################################
-      enabled_layouts = "fat:bias=50;full_size=1;mirrored=false";
+      #enabled_layouts = "fat:bias=50;full_size=1;mirrored=false";
       ###########################################################
       #  ┌──────────────────────────────┐
       #  │                              │

@@ -196,7 +196,7 @@ alt-shift-l = ['join-with right', 'mode main']
 # =================================================================
 
 [[on-window-detected]]
-if.app-id = 'org.alacritty'
+if.app-id = 'org.mozilla.com.zen.browser'
 run = 'move-node-to-workspace Explore'
 
 [[on-window-detected]]
@@ -216,23 +216,19 @@ if.app-id = 'com.google.Chrome'
 run = 'move-node-to-workspace Real-Plus'
 
 [[on-window-detected]]
-if.app-id = 'ru.keepcoder.Telegram'
+if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace Chat'
 
 [[on-window-detected]]
-if.app-id = 'com.tencent.xinWeChat'
+if.app-id = 'com.microsoft.teams2'
 run = 'move-node-to-workspace Chat'
 
 [[on-window-detected]]
-if.app-id = 'com.tencent.qq'
-run = 'move-node-to-workspace Chat'
-
-[[on-window-detected]]
-if.app-id = 'com.tencent.QQMusicMac'
+if.app-id = 'com.apple.podcast'
 run = 'move-node-to-workspace Music'
 
 [[on-window-detected]]
-if.app-id = 'com.netease.163music'
+if.app-id = 'com.apple.Music'
 run = 'move-node-to-workspace Music'
 
 [[on-window-detected]]
