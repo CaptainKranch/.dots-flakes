@@ -33,7 +33,7 @@
       python = {
         symbol = " ";
         python_binary = "['./venv/bin/python', 'python', 'python3', 'python2']";
-        format = "[$symbol ($version)]";
+        #format = "[$symbol ($version)]";
       };
 
       nix_shell = {

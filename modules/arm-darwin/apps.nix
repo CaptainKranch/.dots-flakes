@@ -18,11 +18,9 @@
     neovim
     mkalias
     azure-cli
+    awscli2
     kubectl
     kubernetes-helm
-    docker
-    docker-compose
-    podman
     google-cloud-sdk
     git
     kitty
@@ -70,6 +68,7 @@
       "wget" # download tool
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
       "openvpn"
+      "astro"
     ];
 
     # `brew install --cask`
@@ -82,7 +81,13 @@
       "openvpn-connect"
       "plex"
       "zen-browser"
-      "microsoft-outlook"
+      #"microsoft-outlook"
+      "ghostty"
+      "microsoft-azure-storage-explorer"
+      "microsoft-office"
+      "libreoffice"
+      "orbstack"
+      "ollama"
     ];
   };
 }
