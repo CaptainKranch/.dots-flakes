@@ -11,6 +11,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    disko.url = "github:nix-community/disko";
+
     # MacOS
     #nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     #nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
@@ -42,7 +44,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs: 
+  outputs = { self, nixpkgs, disko, home-manager, darwin, ... }@inputs: 
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
@@ -73,9 +75,10 @@
           # > Our main nixos configuration file <
           modules = [ ./hosts/medellin/configuration.nix ];
         };
-        iso = nixpkgs.lib.nixosSystem {
+        la13 = lib.nixosSystem {
           specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          modules = [ ./hosts/medellin/configuration.nix ];
+          # > Our main nixos configuration file <
+          modules = [ ./hosts/la13/configuration.nix ];
         };
       };
 
@@ -120,6 +123,12 @@
           extraSpecialArgs = { inherit inputs outputs; }; # Pass flake inputs to our config
           # > Our main home-manager configuration file <
           modules = [ ./home/medellin/medellin.nix ];
+        };
+        "captainkranch@la13" = lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs outputs; }; # Pass flake inputs to our config
+          # > Our main home-manager configuration file <
+          modules = [ ./home/yonaguni/la13.nix ];
         };
       };
     };
