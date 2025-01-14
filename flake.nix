@@ -124,11 +124,17 @@
           # > Our main home-manager configuration file <
           modules = [ ./home/medellin/medellin.nix ];
         };
-        "captainkranch@la13" = lib.homeManagerConfiguration {
+        "energybeeworker@la13" = lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs outputs; }; # Pass flake inputs to our config
           # > Our main home-manager configuration file <
-          modules = [ ./home/yonaguni/la13.nix ];
+          modules = [ ./home/la13/beeworker1.nix ];
+        };
+        "housebeeworker@la13" = lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs outputs; }; # Pass flake inputs to our config
+          # > Our main home-manager configuration file <
+          modules = [ ./home/la13/beeworker2.nix ];
         };
       };
     };
