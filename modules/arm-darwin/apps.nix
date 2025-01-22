@@ -77,7 +77,6 @@
       "openvpn-connect"
       "zen-browser"
       "ghostty"
-      "microsoft-office"
       "microsoft-office-businesspro"
       "libreoffice"
       "pocket-casts"
