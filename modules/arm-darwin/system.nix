@@ -62,46 +62,25 @@
     # the most important thing is to remap option key to alt key globally,
     # but it's not supported by macOS yet.
     keyboard = {
-#      enableKeyMapping = true;  # enable key mapping so that we can use `option` as `control`
-#
-#      # NOTE: do NOT support remap capslock to both control and escape at the same time
-#      remapCapsLockToControl = false;  # remap caps lock to control, useful for emac users
-#      remapCapsLockToEscape  = true;   # remap caps lock to escape, useful for vim users
-#
-#      # swap left command and left alt 
-#      # so it matches common keyboard layout: `ctrl | command | alt`
-#      #
-#      # disabled, caused only problems!
-#      swapLeftCommandAndLeftAlt = false;  
+      enableKeyMapping = true;  # enable key mapping so that we can use `option` as `control`
+
+      # NOTE: do NOT support remap capslock to both control and escape at the same time
+      remapCapsLockToControl = false;  # remap caps lock to control, useful for emac users
+      remapCapsLockToEscape  = true;   # remap caps lock to escape, useful for vim users
+
+      # swap left command and left alt 
+      # so it matches common keyboard layout: `ctrl | command | alt`
+      #
+      # disabled, caused only problems!
+      swapLeftCommandAndLeftAlt = false;  
     };
   };
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   # this is required if you want to use darwin's default shell - zsh
   programs.zsh.enable = true;
+  programs.nushell.enable = true;
   environment.shells = [
     pkgs.zsh
+    pkgs.nushell
   ];
-
-#  # Fonts
-#  fonts = {
-#    packages = with pkgs; [
-#      # icon fonts
-#      material-design-icons
-#      font-awesome
-#
-#      # nerdfonts
-#      # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/nerdfonts/shas.nix
-#      (nerdfonts.override {
-#        fonts = [
-#          # symbols icon only
-#          "NerdFontsSymbolsOnly"
-#          # Characters
-#          "FiraCode"
-#          "JetBrainsMono"
-#          "Iosevka"
-#        ];
-#      })
-#    ];
-#  };
-}
