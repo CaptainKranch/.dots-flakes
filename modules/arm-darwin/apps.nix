@@ -82,6 +82,7 @@
       "pocket-casts"
       "wealthfolio"
       "via"
+      "chromium"
     ];
   };
 }
