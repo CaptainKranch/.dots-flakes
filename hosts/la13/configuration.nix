@@ -8,6 +8,7 @@
     # You can also split up your configuration and import pieces of it here:
     # Like services that you want to run in the background, like airflow, grafana, prometeus, etc.
     #../../services/default.nix
+    ../../programs/terminal/nvim
     
 
     # Import your generated (nixos-generate-config) hardware configuration
