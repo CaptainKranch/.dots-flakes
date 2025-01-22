@@ -152,8 +152,7 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = 'mode service'
 
-#alt-h = []     # Disable "hide application"
-alt-alt-h = [] # Disable "hide others"
+alt-cmd-h = [] # Disable "hide others"
 
 alt-shift-c = 'reload-config'
 
