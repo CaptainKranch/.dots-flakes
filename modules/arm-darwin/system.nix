@@ -84,3 +84,4 @@
     pkgs.zsh
     pkgs.nushell
   ];
+}
