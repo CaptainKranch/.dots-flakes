@@ -84,6 +84,9 @@
       "via"
       "chromium"
       "dbvisualizer"
+      "slack"
+      "tailscale"
+      "obsidian"
     ];
   };
 }
