@@ -4,19 +4,8 @@
     zip
     unzip
     p7zip
-
-    # utils
-    nmap # A utility for network discovery and security auditing
-
-    # misc
-    cowsay
     tree
-    zstd
-    caddy
-
     # productivity
-    glow # markdown previewer in terminal
-    kitty
     lazygit
     aerospace
 
