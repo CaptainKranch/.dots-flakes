@@ -83,6 +83,7 @@
       "wealthfolio"
       "via"
       "chromium"
+      "dbvisualizer"
     ];
   };
 }
