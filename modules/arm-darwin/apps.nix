@@ -23,7 +23,6 @@
     kubernetes-helm
     google-cloud-sdk
     git
-    kitty
     just # use Justfile to simplify nix-darwin's commands 
   ];
   environment.variables.EDITOR = "nvim";
@@ -79,9 +78,11 @@
       "zen-browser"
       "ghostty"
       "microsoft-office"
+      "microsoft-office-businesspro"
       "libreoffice"
-      "orbstack"
-      "ollama"
+      "pocket-casts"
+      "wealthfolio"
+      "via"
     ];
   };
 }
