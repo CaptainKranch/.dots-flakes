@@ -10,15 +10,16 @@
         vim.keymap.set('n', '<leader>cf', '<cmd>NvimTreeToggle<CR>', {noremap = true})
         vim.opt.termguicolors = true
         require("nvim-tree").setup({
+          side = "right",
           sort_by = "case_sensitive",
           view = {
-            width = 30,
+            width = 63,
           },
           renderer = {
             group_empty = true,
           },
           filters = {
-            dotfiles = true,
+            dotfiles = false,
           },
         })
       '';
