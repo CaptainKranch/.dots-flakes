@@ -211,7 +211,7 @@ if.app-id = 'org.mozilla.firefox'
 run = 'move-node-to-workspace aes'
 
 [[on-window-detected]]
-if.app-id = 'com.google.Chromium'
+if.app-id = 'org.chromium.Chromium'
 run = 'move-node-to-workspace Real-Plus'
 
 [[on-window-detected]]
