@@ -195,11 +195,11 @@ alt-shift-l = ['join-with right', 'mode main']
 # =================================================================
 
 [[on-window-detected]]
-if.app-id = 'org.mozilla.com.zen.browser'
+if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace Explore'
 
 [[on-window-detected]]
-if.app-id = 'net.kovidgoyal.kitty'
+if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace Kitty'
 
 [[on-window-detected]]
@@ -211,7 +211,7 @@ if.app-id = 'org.mozilla.firefox'
 run = 'move-node-to-workspace aes'
 
 [[on-window-detected]]
-if.app-id = 'com.google.Chrome'
+if.app-id = 'com.google.Chromium'
 run = 'move-node-to-workspace Real-Plus'
 
 [[on-window-detected]]
