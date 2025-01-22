@@ -4,7 +4,7 @@
   imports = [
     ./bufferline-nvim.nix
     ./vim-fugitive.nix
-    ./gen.nix
+    #./gen.nix
     ./lsp.nix
     ./dadbod.nix
     ./lua-line.nix

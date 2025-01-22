@@ -67,7 +67,6 @@
     brews = [
       "wget" # download tool
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
-      "openvpn"
       "astro"
     ];
 
@@ -75,15 +74,10 @@
     # TODO Feel free to add your favorite apps here.
     casks = [
       # IM & audio & remote desktop & meeting
-      "discord"
       "dbeaver-community"
-      "wireshark" # network analyzer
       "openvpn-connect"
-      "plex"
       "zen-browser"
-      #"microsoft-outlook"
       "ghostty"
-      "microsoft-azure-storage-explorer"
       "microsoft-office"
       "libreoffice"
       "orbstack"
