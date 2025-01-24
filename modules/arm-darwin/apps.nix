@@ -87,6 +87,9 @@
       "slack"
       "tailscale"
       "obsidian"
+      "mos"
+      "telegram"
+      "nvidia-geforce-now"
     ];
   };
 }
