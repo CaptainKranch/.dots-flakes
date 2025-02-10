@@ -207,7 +207,11 @@ if.app-id = 'md.obsidian'
 run = 'move-node-to-workspace Thinking-Fortress'
 
 [[on-window-detected]]
-if.app-id = 'org.mozilla.firefox'
+if.app-id = 'com.dbvis.DbVisualizer'
+run = 'move-node-to-workspace aes'
+
+[[on-window-detected]]
+if.app-id = 'org.jkiss.dbeaver.core.product'
 run = 'move-node-to-workspace aes'
 
 [[on-window-detected]]
