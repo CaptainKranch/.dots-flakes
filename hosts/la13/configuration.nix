@@ -10,7 +10,6 @@
     #../../services/default.nix
     ../../programs/terminal/nvim
     
-
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
