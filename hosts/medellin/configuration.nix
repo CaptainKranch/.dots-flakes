@@ -11,29 +11,17 @@
     # You can also split up your configuration and import pieces of it here:
     # Like services that you want to run in the background, like airflow, grafana, prometeus, etc.
     ../../services/default.nix
-    
+
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
-  
+
   nixpkgs = {
     # You can add overlays here
     overlays = [
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
-      (final: prev: {
-        dwm = prev.dwm.overrideAttrs (old: { 
-          src = /home/danielgm/.dots-flakes/modules/dwm;
-          }
-        );
-      })
-      (final: prev: {
-        dmenu = prev.dmenu.overrideAttrs (old: { 
-          src = /home/danielgm/.dots-flakes/modules/dmenu;
-          }
-        );
-      })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -64,37 +52,37 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  environment.systemPackages = with pkgs; [ 
-    (import ../../scripts/screenshotsel.nix { inherit pkgs; })
-    (import ../../scripts/wallpaper.nix { inherit pkgs; })
-    (import ../../scripts/lock-screen.nix { inherit pkgs; })
+  environment.systemPackages = with pkgs; [
     git
-    kitty
     vim
-    dmenu
     home-manager
-    pavucontrol
-    xorg.libX11
-    xorg.libX11.dev
-    xorg.libxcb
-    xorg.libXft
-    xorg.libXinerama
-    xorg.xinit
-    xorg.xinput
+    yt-dlp
+    xcaddy
+    go
+    cargo
   ];
 
-  #XORG
-  services.xserver = {
-    enable = true;
-    windowManager.dwm.enable = true;
-    displayManager.autoLogin.enable = true;
-    displayManager.autoLogin.user = "danielgm";
-    videoDrivers = ["intel"];
-  };
-  #services.displayManager.autoLogin = true;
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
   services.tailscale.enable = true;
+
+  # Reverse proxy
+  systemd.services.caddy = {
+    serviceConfig = {
+      ExecStart = "/home/danielgm/Documents/Services/Caddy/caddy run --config /home/danielgm/Documents/Services/Caddy/Caddyfile";
+#      User = "caddy";
+#      Group = "caddy";
+      AmbientCapabilities = "CAP_NET_BIND_SERVICE";
+    };
+  };
+  users.users.caddy = {
+    group = "caddy";
+    createHome = true;
+    home = "/var/lib/caddy";
+    shell = "/bin/false";  # for non-login user
+    isSystemUser = true;
+  };
+  users.groups.caddy = {};
 
   systemd.services.promtail = {
     description = "Promtail service for Loki";
@@ -106,7 +94,7 @@
       '';
     };
   };
-  
+
   services.loki = {
     enable = true;
     configuration = {
@@ -183,7 +171,7 @@
     };
   };
 
-  # Services 
+  # Services
   services = {
     grafana = {
       enable = true;
@@ -194,12 +182,12 @@
     };
     prometheus = {
       enable = true;
-      port = 9001;
+      port = 9031;
       exporters = {
         node = {
           enable = true;
           enabledCollectors = [ "systemd" ];
-          port = 9002;
+          port = 9032;
         };
       };
       scrapeConfigs = [{
@@ -218,49 +206,7 @@
         };
       };
     };
-    jellyfin = {
-      enable = true;
-      openFirewall = true;
-      user = "danielgm";
-    };
   };
-
-  # Fonst
-  fonts = {
-    packages = with pkgs; [
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-      font-awesome
-      source-han-sans
-      source-han-sans-japanese
-      source-han-serif-japanese
-      (nerdfonts.override { fonts = [ "Meslo" ]; })
-    ];
-    fontconfig = {
-      enable = true;
-      defaultFonts = {
-	     monospace = [ "Meslo LG M Regular Nerd Font Complete Mono" ];
-	     serif = [ "Noto Serif" "Source Han Serif" ];
-	     sansSerif = [ "Noto Sans" "Source Han Sans" ];
-      };
-    };
-  };
-
-  #Audio
-  sound.enable = false;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-    services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  # Bluethooth
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 
   # Select internationalisation properties.
   time.timeZone = "America/Bogota";
@@ -295,8 +241,8 @@
       # TODO: You can set an initial password for your user.
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
-      initialPassword = "123";
-      shell = pkgs.nushell;
+      # initialPassword = "123";
+      # shell = pkgs.nushell;
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
@@ -311,13 +257,13 @@
   services.openssh = {
     enable = true;
     # Forbid root login through SSH.
-    settings = { 
-      PermitRootLogin = "no"; 
+    settings = {
+      PermitRootLogin = "no";
       PasswordAuthentication = true;
     };
     # Use keys only. Remove if you want to SSH using password (not recommended)
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }

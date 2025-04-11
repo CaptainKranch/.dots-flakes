@@ -2,8 +2,9 @@
 {
   imports = [
     #./themes/theme-rose-pine.nix
-    ./themes/theme-kanagawa.nix
+    #./themes/theme-kanagawa.nix
     #./themes/theme-github.nix
+    #./themes/theme-oxocarbon.nix
     ./plugins/default.nix
   ];
   home.sessionVariables.EDITOR = "nvim";

@@ -130,7 +130,7 @@
       "podman-compose-nixarr-root.target"
     ];
   };
-  
+
   virtualisation.oci-containers.containers."qbittorrent" = {
     image = "linuxserver/qbittorrent:4.6.5";
     environment = {
