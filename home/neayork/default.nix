@@ -8,7 +8,7 @@
     ./git.nix
     ./starship.nix
     ./kitty.nix
-    ./nvim/default.nix
+    #./nvim/default.nix
     ./aerospace/default.nix
 
   ];
