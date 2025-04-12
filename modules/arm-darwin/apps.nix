@@ -90,6 +90,7 @@
       "mos"
       "telegram"
       "nvidia-geforce-now"
+      "multiviewer-for-f1"
     ];
   };
 }
